@@ -969,7 +969,7 @@ function graphFromQuery(msgIdx) {
   // Set the query in the search box for reference
   document.getElementById('graphQuery').value = question;
   lastSearchQuery = question;
-  renderGraphExplore({mode: 'query_pages', seeds, query: question, analyze: true});
+  renderGraphExplore({mode: 'query_pages', seeds, query: question, analyze: false});
 }
 
 function escHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}

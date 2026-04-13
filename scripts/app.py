@@ -1109,12 +1109,12 @@ def api_graph_explore():
         sub_n, sub_e = _subgraph(nodes, edges, adj, seeds, depth, max_nodes)
 
     elif mode == 'query_pages':
-        # Grafo desde páginas específicas de una consulta
+        # Grafo desde páginas específicas de una consulta (solo esas páginas, sin expandir)
         page_seeds = data.get('seeds', [])
         valid_seeds = [s for s in page_seeds if s in nodes]
         if valid_seeds:
             seeds = valid_seeds
-            sub_n, sub_e = _subgraph(nodes, edges, adj, seeds, depth=1, max_n=max_nodes)
+            sub_n, sub_e = _subgraph(nodes, edges, adj, seeds, depth=0, max_n=max_nodes)
         else:
             sub_n, sub_e = [], []
 
