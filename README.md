@@ -42,7 +42,7 @@ El resultado es especialmente útil para dominios densos, como agentes de inteli
 
 - Python 3.11 o superior.
 - Ollama ejecutándose localmente si se usarán ingestión o consulta con modelo.
-- Modelo por defecto: `qwen2.5:7b`, configurable desde la interfaz o editando `scripts/utils.py`.
+- Modelo por defecto: `gemma4:e4b`, configurable desde la interfaz o editando `scripts/utils.py`.
 
 Instalación:
 
