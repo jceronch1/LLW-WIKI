@@ -34,12 +34,12 @@ from utils import (
     clean_response, check_ollama, read_file, write_file, append_file,
     load_index, slugify, get_today, get_now, get_wiki_pages,
     extract_wiki_links, get_existing_concepts, get_existing_entities,
-    list_pdf_status,
+    list_pdf_status, load_config, save_config,
 )
 from ingest import (
     generate_source_page, extract_concepts_from_doc, extract_entities_from_doc,
     generate_faq, build_concept_page, build_entity_page, update_existing_page,
-    update_index, append_log, summarize_chunk, SYSTEM_PROMPT,
+    update_index, append_log, summarize_chunk,
 )
 from query import select_relevant_pages, load_pages_content, answer_question, save_to_faq
 from lint import (
@@ -163,6 +163,284 @@ def api_documents():
             'size_human': f"{size/1024:.0f} KB" if size < 1048576 else f"{size/1048576:.1f} MB",
         })
     return jsonify(result)
+
+
+# ─── API: Upload PDFs ────────────────────────────────────────────────────────
+
+@app.route('/api/upload', methods=['POST'])
+def api_upload():
+    """Sube uno o más PDFs al directorio de papers."""
+    if 'files' not in request.files:
+        return jsonify({'error': 'No se enviaron archivos'}), 400
+
+    files = request.files.getlist('files')
+    uploaded = []
+    errors = []
+
+    for f in files:
+        if not f.filename:
+            continue
+        if not f.filename.lower().endswith('.pdf'):
+            errors.append(f'{f.filename}: no es un PDF')
+            continue
+        dest = DOCS_DIR / f.filename
+        try:
+            f.save(str(dest))
+            uploaded.append(f.filename)
+        except Exception as e:
+            errors.append(f'{f.filename}: {str(e)}')
+
+    return jsonify({'uploaded': uploaded, 'errors': errors})
+
+
+# ─── API: Delete Document ────────────────────────────────────────────────────
+
+@app.route('/api/documents/<path:filename>', methods=['DELETE'])
+def api_delete_document(filename):
+    """Elimina un PDF y todas las páginas wiki generadas a partir de él."""
+    import re as _re
+
+    pdf_path = DOCS_DIR / filename
+    if not pdf_path.exists():
+        return jsonify({'error': f'Archivo no encontrado: {filename}'}), 404
+
+    source_slug = slugify(Path(filename).stem)
+    source_link = f"[[sources/{source_slug}]]"
+    deleted_pages = []
+
+    # 1. Borrar la página de fuente
+    source_file = WIKI_DIR / "sources" / f"{source_slug}.md"
+    if source_file.exists():
+        source_file.unlink()
+        deleted_pages.append(f"sources/{source_slug}.md")
+
+    # 2. Borrar FAQ asociado
+    faq_file = WIKI_DIR / "faq" / f"{source_slug}-faq.md"
+    if faq_file.exists():
+        faq_file.unlink()
+        deleted_pages.append(f"faq/{source_slug}-faq.md")
+
+    # 3. Buscar concepts y entities que referencian este source y limpiar
+    for subdir in ["concepts", "entities"]:
+        wiki_subdir = WIKI_DIR / subdir
+        if not wiki_subdir.exists():
+            continue
+        for page_file in list(wiki_subdir.glob("*.md")):
+            content = read_file(page_file)
+            if source_link in content:
+                # Verificar si esta es la ÚNICA fuente
+                other_sources = [
+                    line for line in content.split('\n')
+                    if line.strip().startswith('- [[sources/') and source_link not in line
+                ]
+                if not other_sources:
+                    # Única fuente → borrar la página
+                    page_file.unlink()
+                    deleted_pages.append(f"{subdir}/{page_file.name}")
+                else:
+                    # Múltiples fuentes → solo quitar la referencia
+                    new_content = content.replace(f"- {source_link}\n", "")
+                    new_content = new_content.replace(f"- {source_link}", "")
+                    write_file(page_file, new_content)
+
+    # 4. Limpiar index.md
+    index_path = WIKI_DIR / "index.md"
+    index_content = read_file(index_path)
+    new_index_lines = []
+    for line in index_content.split('\n'):
+        # Quitar líneas que referencian páginas borradas
+        skip = False
+        for dp in deleted_pages:
+            dp_ref = dp.replace('.md', '')
+            if f"[[{dp_ref}]]" in line:
+                skip = True
+                break
+        if not skip:
+            new_index_lines.append(line)
+    write_file(index_path, '\n'.join(new_index_lines))
+
+    # 5. Borrar el PDF
+    pdf_path.unlink()
+
+    # 6. Log
+    append_file(WIKI_DIR / "log.md",
+                f"\n## [{get_today()}] delete | {filename}\n"
+                f"- PDF eliminado: {filename}\n"
+                f"- Páginas eliminadas: {len(deleted_pages)}\n")
+
+    return jsonify({
+        'deleted_pdf': filename,
+        'deleted_pages': deleted_pages,
+        'total_deleted': len(deleted_pages),
+    })
+
+
+# ─── API: Reset completo ────────────────────────────────────────────────────
+
+@app.route('/api/reset', methods=['POST'])
+def api_reset():
+    """Borra todos los PDFs y toda la wiki para empezar de cero."""
+    deleted_pdfs = []
+    deleted_pages = []
+
+    # 1. Borrar todos los PDFs
+    for pdf in DOCS_DIR.glob("*.pdf"):
+        pdf.unlink()
+        deleted_pdfs.append(pdf.name)
+
+    # 2. Borrar todo el contenido wiki (todas las subcarpetas)
+    for item in WIKI_DIR.iterdir():
+        if item.is_dir():
+            for f in item.glob("*.md"):
+                deleted_pages.append(f"{item.name}/{f.name}")
+                f.unlink()
+
+    # 3. Borrar archivos .md sueltos en la raíz de wiki (excepto los de estructura)
+    keep = {"index.md", "log.md", "overview.md"}
+    for f in WIKI_DIR.glob("*.md"):
+        if f.name not in keep:
+            deleted_pages.append(f.name)
+            f.unlink()
+
+    # 4. Leer configuración actual
+    cfg = load_config()
+    topic = cfg.get('topic', 'Conocimiento')
+
+    # 5. Resetear index.md
+    write_file(WIKI_DIR / "index.md",
+        f"# Índice del Wiki - LLM Kiwi\n\n"
+        f"> Wiki de conocimiento sobre {topic}.\n"
+        "> Mantenida por un LLM local siguiendo el patrón "
+        "[LLM Wiki de Karpathy](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f).\n\n"
+        "## Overview\n- [[overview]]: Visión general del dominio, mapa del conocimiento y prioridades.\n\n"
+        "## Sources\n\n## Concepts\n\n## Entities\n\n## FAQ\n\n## Comparisons\n\n## Timelines\n")
+
+    # 6. Resetear overview.md
+    write_file(WIKI_DIR / "overview.md",
+        f"# Overview - LLM Kiwi\n\n"
+        f"## Dominio\nEsta wiki compila y estructura conocimiento sobre **{topic}**.\n\n"
+        f"## Fuentes principales\nLos documentos fuente se encuentran en `/papers/`.\n\n"
+        f"## Estado actual\n- Wiki inicializada. Pendiente de ingesta de documentos.\n")
+
+    # 7. Resetear log.md
+    write_file(WIKI_DIR / "log.md",
+        "# Log del Wiki - LLM Kiwi\n\n"
+        "> Historial cronológico de ingestas, consultas y revisiones.\n"
+        "> Formato: `## [FECHA] tipo | descripción`\n\n"
+        f"## [{get_today()}] reset | Reset completo\n"
+        f"- Se eliminaron {len(deleted_pdfs)} PDFs y {len(deleted_pages)} páginas wiki\n")
+
+    return jsonify({
+        'deleted_pdfs': len(deleted_pdfs),
+        'deleted_pages': len(deleted_pages),
+    })
+
+
+# ─── API: Configuración ──────────────────────────────────────────────────────
+
+@app.route('/api/config')
+def api_config_get():
+    """Retorna la configuración actual."""
+    return jsonify(load_config())
+
+
+@app.route('/api/config', methods=['POST'])
+def api_config_post():
+    """Guarda la configuración y regenera archivos base."""
+    data = request.json or {}
+    cfg = load_config()
+    cfg['topic'] = data.get('topic', cfg['topic']).strip()
+    cfg['description'] = data.get('description', cfg['description']).strip()
+    cfg['domain'] = data.get('domain', cfg['domain']).strip()
+    save_config(cfg)
+
+    topic = cfg['topic']
+    description = cfg['description']
+    domain = cfg['domain']
+
+    # Regenerar overview.md
+    write_file(WIKI_DIR / "overview.md",
+        f"# Overview - LLM Kiwi\n\n"
+        f"## Dominio\nEsta wiki compila y estructura conocimiento sobre **{topic}**.\n\n"
+        f"{description}\n\n"
+        f"## Fuentes principales\nLos documentos fuente se encuentran en `/papers/`.\n\n"
+        f"## Estado actual\n- Wiki inicializada. Pendiente de ingesta de documentos.\n")
+
+    # Regenerar index.md header (solo si está en estado limpio)
+    index = read_file(WIKI_DIR / "index.md")
+    old_header_end = index.find("## Overview")
+    if old_header_end > 0:
+        write_file(WIKI_DIR / "index.md",
+            f"# Índice del Wiki - LLM Kiwi\n\n"
+            f"> Wiki de conocimiento sobre {topic}.\n"
+            "> Mantenida por un LLM local siguiendo el patrón "
+            "[LLM Wiki de Karpathy](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f).\n\n"
+            + index[old_header_end:])
+
+    # Regenerar schema/AGENTS.md
+    write_file(SCHEMA_DIR / "AGENTS.md",
+        f"# Reglas del LLM Kiwi - Wiki de {topic}\n\n"
+        f"## Rol\n"
+        f"Eres el mantenedor de una wiki local en Markdown sobre {topic}.\n"
+        f"No eres un chatbot genérico. Tu trabajo es compilar, estructurar y mantener conocimiento.\n\n"
+        f"## Dominio\n{domain}\n\n"
+        f"## Objetivo\n"
+        f"Mantener una base de conocimiento coherente, enlazada y acumulativa a partir de\n"
+        f"documentos locales. Cada ingesta debe dejar la wiki más completa y mejor conectada.\n\n"
+        f"## Idioma\n"
+        f"Escribe siempre en español. Mantén términos técnicos en su idioma original cuando\n"
+        f"sea la convención (e.g., \"machine learning\", \"deep learning\", \"RAG\", \"agentic AI\").\n\n"
+        "---\n\n"
+        "## Reglas de Ingesta (ingest)\n\n"
+        "1. **Nunca** modificar archivos dentro de `/papers/` ni `/raw/`. Son fuentes inmutables.\n"
+        "2. Leer la fuente completa y crear o actualizar páginas en `/wiki/`.\n"
+        "3. Crear una página de fuente en `/wiki/sources/` con resumen estructurado.\n"
+        "4. Identificar conceptos clave y crear o actualizar páginas en `/wiki/concepts/`.\n"
+        "5. Identificar entidades (organizaciones, personas, leyes) y usar `/wiki/entities/`.\n"
+        "6. Generar preguntas frecuentes en `/wiki/faq/`.\n"
+        "7. **Siempre** actualizar `/wiki/index.md` con las nuevas páginas.\n"
+        "8. **Siempre** registrar la ingesta en `/wiki/log.md` con fecha y cambios.\n"
+        "9. Reutilizar páginas existentes antes de crear nuevas. Evitar duplicados.\n"
+        "10. Usar enlaces internos tipo `[[pagina]]` para conectar conceptos.\n\n"
+        "## Reglas de Consulta (query)\n\n"
+        "1. Leer primero `/wiki/index.md` para orientarse.\n"
+        "2. Leer las páginas más relevantes según la pregunta.\n"
+        "3. Responder **usando la wiki como fuente principal**, no inventar.\n"
+        "4. Citar las páginas consultadas con enlaces `[[fuente]]`.\n"
+        "5. Si falta contexto, indicarlo claramente: \"La wiki no contiene información sobre X.\"\n"
+        "6. Si la respuesta aporta valor duradero, sugerir guardarla en `/wiki/faq/` o `/wiki/comparisons/`.\n\n"
+        "## Reglas de Mantenimiento (lint)\n\n"
+        "1. Detectar páginas huérfanas (sin enlaces entrantes).\n"
+        "2. Detectar enlaces rotos (apuntan a páginas inexistentes).\n"
+        "3. Detectar conceptos mencionados pero sin página propia.\n"
+        "4. Verificar que todas las páginas estén en `index.md`.\n"
+        "5. Detectar posibles duplicados o solapamientos.\n"
+        "6. Detectar contradicciones entre fuentes.\n"
+        "7. Sugerir nuevas páginas, comparaciones o líneas de tiempo.\n\n"
+        "## Convenciones de Escritura\n\n"
+        "- Markdown claro y simple.\n"
+        "- Títulos con `#`, subtítulos con `##`.\n"
+        "- Enlaces internos: `[[nombre-pagina]]` o `[[ruta/nombre-pagina]]`.\n"
+        "- Listas con `-` para items, `1.` para pasos ordenados.\n"
+        "- Citas textuales con `>`.\n"
+        "- **No inventar hechos.** Si algo es inferencia, marcarlo como tal.\n"
+        "- **Marcar incertidumbre** cuando exista: \"(dato no confirmado)\" o \"(requiere verificación)\".\n"
+        "- Nombres de archivo en minúsculas, sin tildes, separados por guiones: `ejemplo-concepto.md`.\n\n"
+        "## Estructura de Páginas\n\n"
+        "Cada página debe seguir una estructura consistente según su tipo:\n\n"
+        "### Página de Fuente (sources/)\n```\n# [Título del documento]\n## Resumen\n## Datos clave\n"
+        "## Temas principales\n## Relación con otros conceptos\n## Citas textuales relevantes\n## Notas\n```\n\n"
+        "### Página de Concepto (concepts/)\n```\n# [Nombre del concepto]\n## Definición\n## Ideas clave\n"
+        "## Relación con otros conceptos\n## Fuentes relacionadas\n## Preguntas abiertas\n```\n\n"
+        "### Página de Entidad (entities/)\n```\n# [Nombre de la entidad]\n## Descripción\n"
+        "## Rol en el ecosistema\n## Documentos relacionados\n## Fuentes\n```\n\n"
+        "### Página de FAQ (faq/)\n```\n# FAQ: [Tema]\n## ¿Pregunta?\nRespuesta...\n## Fuentes\n```\n\n"
+        "### Página de Comparación (comparisons/)\n```\n# Comparación: [X] vs [Y]\n## Contexto\n"
+        "## Similitudes\n## Diferencias\n## Conclusión\n## Fuentes\n```\n\n"
+        "### Página de Línea de Tiempo (timelines/)\n```\n# Línea de tiempo: [Tema]\n"
+        "## [Año/Fecha] - [Evento]\nDescripción...\n## Fuentes\n```\n")
+
+    return jsonify({'saved': True, 'config': cfg})
 
 
 # ─── API: Modelo ──────────────────────────────────────────────────────────────

@@ -1,12 +1,12 @@
-# Creative Commons Attribution 4.0 International License (CC BY 4.0)
+# LinkedIn
 
-**Tipo:** norma
+**Tipo:** organizacion
 
 ## Descripción
-Licencia internacional bajo la cual se publica el contenido del artículo de la revista.
+Red profesional en línea utilizada como fuente para identificar tendencias de agentes de IA en 2025.
 
 ## Rol en el ecosistema de IA
-Norma de derechos de autor que regula el uso y distribución del documento.
+Plataforma de discusión y difusión de tendencias en el ecosistema de IA.
 
 ## Documentos relacionados
 - [[sources/36-01-the-evolution-of-artificial-intelligence-agents-architectures-trends-and-t]]

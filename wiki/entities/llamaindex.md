@@ -1,12 +1,12 @@
 # LlamaIndex
 
-**Tipo:** programa
+**Tipo:** organizacion
 
 ## Descripción
-Framework y organización enfocada en datos (RAG) para la orquestación de agentes de IA, especializado en recuperación e indexación de información.
+Organización desarrolladora del framework del mismo nombre, enfocado en la orquestación de agentes orientados a la recuperación e indexación de datos (RAG).
 
 ## Rol en el ecosistema de IA
-Herramienta de desarrollo para agentes de IA centrada en la conexión de datos y RAG.
+Desarrollador de frameworks de IA centrados en datos para agentes.
 
 ## Documentos relacionados
 - [[sources/36-01-the-evolution-of-artificial-intelligence-agents-architectures-trends-and-t]]

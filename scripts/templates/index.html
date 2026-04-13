@@ -302,6 +302,10 @@ input,textarea,select{font-family:inherit;font-size:.875rem}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
       Log
     </div>
+    <div class="nav-item" data-view="config" onclick="showView('config')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+      Configuracion
+    </div>
   </nav>
 
   <div class="sidebar-footer">
@@ -331,9 +335,27 @@ input,textarea,select{font-family:inherit;font-size:.875rem}
     <h2>Ingestar Documentos</h2>
     <div class="btn-group">
       <button class="btn btn-primary" onclick="ingestAll()" id="btnIngestAll">Ingestar todos los pendientes</button>
+      <button class="btn btn-danger btn-sm" onclick="confirmReset()" title="Borrar todos los PDFs y wiki para empezar de cero">Resetear todo</button>
     </div>
   </div>
   <div class="content">
+    <!-- Upload zone -->
+    <div class="panel" style="margin-bottom:16px">
+      <div class="panel-body" style="padding:16px">
+        <div id="uploadZone" style="border:2px dashed var(--bg4);border-radius:var(--radius);padding:24px;text-align:center;cursor:pointer;transition:all .2s"
+          onclick="document.getElementById('fileInput').click()"
+          ondragover="event.preventDefault();this.style.borderColor='var(--kiwi)';this.style.background='var(--kiwi3)'"
+          ondragleave="this.style.borderColor='var(--bg4)';this.style.background=''"
+          ondrop="event.preventDefault();this.style.borderColor='var(--bg4)';this.style.background='';handleFileDrop(event)">
+          <div style="font-size:2rem;margin-bottom:8px">&#128194;</div>
+          <div style="color:var(--tx2);font-size:.9rem"><strong>Arrastra PDFs aqui</strong> o haz clic para seleccionar</div>
+          <div style="color:var(--tx3);font-size:.75rem;margin-top:4px">Soporta multiples archivos PDF</div>
+        </div>
+        <input type="file" id="fileInput" multiple accept=".pdf" style="display:none" onchange="handleFileSelect(this.files)">
+        <div id="uploadStatus" style="margin-top:10px;display:none"></div>
+      </div>
+    </div>
+
     <div id="ingestProgress" style="display:none">
       <div class="panel">
         <div class="panel-header"><h3 id="ingestTitle">Ingesta en progreso...</h3></div>
@@ -478,6 +500,55 @@ input,textarea,select{font-family:inherit;font-size:.875rem}
   </div>
 </div>
 
+<!-- ═══ CONFIG ═════════════════════════════════════════════════ -->
+<div id="view-config" class="view" style="display:none">
+  <div class="header"><h2>Configuracion</h2></div>
+  <div class="content">
+    <div class="panel">
+      <div class="panel-header"><h3>Tema de la Wiki</h3></div>
+      <div class="panel-body">
+        <p style="color:var(--tx3);font-size:.85rem;margin-bottom:16px">
+          Define el tema principal de tu wiki. Esta configuracion se usa para generar los archivos iniciales
+          (overview, esquema, prompts del LLM) y se aplica al resetear o crear nueva wiki.
+        </p>
+        <div style="display:flex;flex-direction:column;gap:14px;max-width:600px">
+          <div>
+            <label style="font-size:.8rem;color:var(--tx2);display:block;margin-bottom:4px;font-weight:600">Tema principal</label>
+            <input type="text" id="cfgTopic" class="query-input" style="padding:10px 14px;font-size:.9rem"
+              placeholder="Ej: Agentes de Inteligencia Artificial, Ciberseguridad, Biologia Molecular...">
+          </div>
+          <div>
+            <label style="font-size:.8rem;color:var(--tx2);display:block;margin-bottom:4px;font-weight:600">Descripcion</label>
+            <textarea id="cfgDescription" class="query-input" rows="3" style="padding:10px 14px;font-size:.85rem;resize:vertical"
+              placeholder="Descripcion breve de lo que cubre esta wiki..."></textarea>
+          </div>
+          <div>
+            <label style="font-size:.8rem;color:var(--tx2);display:block;margin-bottom:4px;font-weight:600">Dominio (para el esquema del LLM)</label>
+            <textarea id="cfgDomain" class="query-input" rows="3" style="padding:10px 14px;font-size:.85rem;resize:vertical"
+              placeholder="Ej: Papers academicos, documentos tecnicos y estudios sobre el tema..."></textarea>
+          </div>
+          <div style="display:flex;gap:10px;align-items:center;margin-top:4px">
+            <button class="btn btn-primary" onclick="saveConfig()" id="btnSaveConfig">Guardar configuracion</button>
+            <span id="cfgSaveStatus" style="font-size:.8rem;color:var(--kiwi);display:none"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-header"><h3>Archivos afectados</h3></div>
+      <div class="panel-body" style="font-size:.85rem;color:var(--tx2);line-height:1.8">
+        Al guardar la configuracion se actualizan automaticamente:
+        <ul style="margin-top:8px;padding-left:20px">
+          <li><code>wiki/overview.md</code> — Vision general del dominio</li>
+          <li><code>wiki/index.md</code> — Encabezado del indice</li>
+          <li><code>schema/AGENTS.md</code> — Reglas y dominio del LLM</li>
+          <li>Prompts del sistema en ingesta y consulta</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
 </div><!-- /main -->
 </div><!-- /app -->
 
@@ -510,6 +581,7 @@ function showView(name) {
   }
   if (name === 'graph') loadGraph();
   if (name === 'log') loadLog();
+  if (name === 'config') loadConfig();
 }
 
 // ─── Toast ───────────────────────────────────────────────────────
@@ -647,7 +719,9 @@ async function loadDocuments() {
     document.getElementById('docCount').textContent = `${docs.length} documentos | ${pending} pendientes`;
     document.getElementById('btnIngestAll').disabled = pending === 0;
 
-    list.innerHTML = docs.map(d => `
+    list.innerHTML = docs.map(d => {
+      const safeName = d.name.replace(/'/g, "\\'");
+      return `
       <li class="doc-item">
         <div class="doc-icon ${d.ingested?'ingested':'pending'}">${d.ingested?'&#9989;':'&#128196;'}</div>
         <div class="doc-info">
@@ -656,10 +730,78 @@ async function loadDocuments() {
         </div>
         <span class="doc-status ${d.ingested?'ok':'wait'}">${d.ingested?'Ingestado':'Pendiente'}</span>
         ${d.ingested
-          ? `<button class="btn btn-secondary btn-sm" onclick="ingestFile('${d.name}')">Re-ingestar</button>`
-          : `<button class="btn btn-primary btn-sm" onclick="ingestFile('${d.name}')">Ingestar</button>`}
-      </li>
-    `).join('');
+          ? `<button class="btn btn-secondary btn-sm" onclick="ingestFile('${safeName}')">Re-ingestar</button>`
+          : `<button class="btn btn-primary btn-sm" onclick="ingestFile('${safeName}')">Ingestar</button>`}
+        <button class="btn btn-danger btn-sm" onclick="deleteDocument('${safeName}')" title="Eliminar PDF y wiki generada">&#128465;</button>
+      </li>`;
+    }).join('');
+  } catch(e) {}
+}
+
+// ─── Upload PDFs ────────────────────────────────────────────────
+function handleFileDrop(event) {
+  const files = event.dataTransfer.files;
+  if (files.length) uploadFiles(files);
+}
+
+function handleFileSelect(files) {
+  if (files.length) uploadFiles(files);
+}
+
+async function uploadFiles(files) {
+  const statusEl = document.getElementById('uploadStatus');
+  statusEl.style.display = '';
+  statusEl.innerHTML = '<div class="spinner" style="display:inline-block;margin-right:8px"></div> Subiendo ' + files.length + ' archivo(s)...';
+
+  const formData = new FormData();
+  for (let i = 0; i < files.length; i++) {
+    formData.append('files', files[i]);
+  }
+
+  try {
+    const r = await fetch('/api/upload', {method: 'POST', body: formData});
+    const data = await r.json();
+    if (!r.ok) throw new Error(data.error || 'Error al subir');
+
+    let msg = '';
+    if (data.uploaded.length) msg += '<span style="color:var(--kiwi)">' + data.uploaded.length + ' PDF(s) subidos correctamente.</span>';
+    if (data.errors.length) msg += '<br><span style="color:var(--red)">' + data.errors.join(', ') + '</span>';
+    statusEl.innerHTML = msg;
+    toast(data.uploaded.length + ' PDF(s) subidos', 'success');
+    loadDocuments();
+    setTimeout(() => { statusEl.style.display = 'none'; }, 5000);
+  } catch(e) {
+    statusEl.innerHTML = '<span style="color:var(--red)">Error: ' + e.message + '</span>';
+    toast(e.message, 'error');
+  }
+  // Reset file input
+  document.getElementById('fileInput').value = '';
+}
+
+// ─── Delete Document ────────────────────────────────────────────
+async function deleteDocument(filename) {
+  if (!confirm('¿Eliminar "' + filename + '" y todas las paginas wiki generadas a partir de este PDF?')) return;
+  try {
+    const r = await fetch('/api/documents/' + encodeURIComponent(filename), {method: 'DELETE'});
+    const data = await r.json();
+    if (!r.ok) throw new Error(data.error || 'Error al eliminar');
+    toast('Eliminado: ' + filename + ' (' + data.total_deleted + ' paginas wiki borradas)', 'success');
+    loadDocuments();
+    loadDashboard();
+  } catch(e) {
+    toast(e.message, 'error');
+  }
+}
+
+// ─── Reset All ──────────────────────────────────────────────────
+async function confirmReset() {
+  if (!confirm('¿RESETEAR TODO? Esto eliminara TODOS los PDFs y TODO el contenido de la wiki. Esta accion no se puede deshacer.')) return;
+  if (!confirm('¿Estas completamente seguro? Se perdera todo el trabajo de ingesta.')) return;
+  try {
+    const r = await api('/api/reset', {method: 'POST', body: {}});
+    toast('Reset completo: ' + r.deleted_pdfs + ' PDFs y ' + r.deleted_pages + ' paginas eliminadas', 'success');
+    loadDocuments();
+    loadDashboard();
   } catch(e) {}
 }
 
@@ -1253,8 +1395,50 @@ function updateGraphStats(data) {
   el.innerHTML = h + '</div>';
 }
 
+// ─── Config ─────────────────────────────────────────────────────
+async function loadConfig() {
+  try {
+    const cfg = await api('/api/config');
+    document.getElementById('cfgTopic').value = cfg.topic || '';
+    document.getElementById('cfgDescription').value = cfg.description || '';
+    document.getElementById('cfgDomain').value = cfg.domain || '';
+  } catch(e) {}
+}
+
+async function saveConfig() {
+  const topic = document.getElementById('cfgTopic').value.trim();
+  const description = document.getElementById('cfgDescription').value.trim();
+  const domain = document.getElementById('cfgDomain').value.trim();
+  if (!topic) { toast('El tema principal es obligatorio', 'error'); return; }
+
+  const btn = document.getElementById('btnSaveConfig');
+  const status = document.getElementById('cfgSaveStatus');
+  btn.disabled = true;
+  btn.textContent = 'Guardando...';
+
+  try {
+    await api('/api/config', {method: 'POST', body: {topic, description, domain}});
+    status.textContent = 'Configuracion guardada correctamente';
+    status.style.display = '';
+    toast('Configuracion guardada. Archivos base actualizados.', 'success');
+    // Update UI elements that show the topic
+    document.querySelector('.query-input[id="queryInput"]').placeholder = 'Escribe tu pregunta sobre ' + topic + '...';
+    setTimeout(() => { status.style.display = 'none'; }, 4000);
+  } catch(e) {}
+  finally {
+    btn.disabled = false;
+    btn.textContent = 'Guardar configuracion';
+  }
+}
+
 // ─── Init ────────────────────────────────────────────────────────
 loadDashboard();
+// Load config to set dynamic UI elements
+api('/api/config').then(cfg => {
+  if (cfg.topic) {
+    document.getElementById('queryInput').placeholder = 'Escribe tu pregunta sobre ' + cfg.topic + '...';
+  }
+}).catch(() => {});
 </script>
 </body>
 </html>

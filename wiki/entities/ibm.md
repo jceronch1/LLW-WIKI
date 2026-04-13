@@ -3,10 +3,10 @@
 **Tipo:** organizacion
 
 ## Descripción
-Empresa tecnológica desarrolladora de watsonx Orchestrate y fuente de análisis sobre tendencias de agentes de IA en 2025.
+Empresa tecnológica multinacional, desarrolladora de la plataforma watsonx Orchestrate y fuente de publicaciones sobre tendencias de IA.
 
 ## Rol en el ecosistema de IA
-Proveedor de plataformas de automatización y gobernanza de procesos con IA, y analista del ecosistema.
+Desarrollador de plataformas empresariales de agentes de IA y fuente de investigación sobre tendencias.
 
 ## Documentos relacionados
 - [[sources/36-01-the-evolution-of-artificial-intelligence-agents-architectures-trends-and-t]]

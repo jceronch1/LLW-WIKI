@@ -19,6 +19,8 @@ WIKI_DIR = BASE_DIR / "wiki"
 SCHEMA_DIR = BASE_DIR / "schema"
 OUTPUTS_DIR = BASE_DIR / "outputs"
 
+CONFIG_PATH = BASE_DIR / "config.json"
+
 OLLAMA_URL = "http://localhost:11434/api/chat"
 DEFAULT_MODEL = "qwen2.5:7b"
 
@@ -263,6 +265,27 @@ def get_existing_entities():
     if not d.exists():
         return []
     return [f.stem for f in d.glob("*.md")]
+
+
+def load_config():
+    """Carga la configuración desde config.json."""
+    default = {
+        'topic': 'Conocimiento',
+        'description': 'Wiki de conocimiento local.',
+        'domain': 'Documentos y conocimiento general.',
+    }
+    try:
+        with open(str(CONFIG_PATH), "r", encoding="utf-8") as f:
+            cfg = json.load(f)
+            return {**default, **cfg}
+    except (FileNotFoundError, json.JSONDecodeError):
+        return dict(default)
+
+
+def save_config(cfg):
+    """Guarda la configuración en config.json."""
+    with open(str(CONFIG_PATH), "w", encoding="utf-8") as f:
+        json.dump(cfg, f, ensure_ascii=False, indent=2)
 
 
 def list_pdf_status():

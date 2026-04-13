@@ -1,17 +1,19 @@
-# automatizacion-proactiva
+# Automatización Proactiva
 
 ## Definición
-Tendencia en la que los agentes de IA no solo responden a comandos directos, sino que anticipan necesidades yacen acciones de manera autónoma para optimizar procesos y flujos de trabajo. Representa la transición de modelos pasivos a entidades proactivas en la Era de los Agentes.
+Capacidad de los agentes de IA para anticipar necesidades e iniciar acciones para optimizar procesos y flujos de trabajo, en lugar de limitarse a responder a comandos humanos. Es una de las tendencias clave en la era de la IA Agéntica.
 
 ## Ideas clave
 - Anticipación de necesidades del usuario
 - Inicio autónomo de acciones
-- Optimización de flujos de trabajo
-- Transición desde la IA pasiva o reactiva
+- Optimización de procesos y flujos de trabajo
+- Superación del modelo de respuesta pasiva
+- Aumento de la productividad y eficiencia empresarial
 
 ## Relación con otros conceptos
-- [[concepts/ia-agentiva|ia-agentiva]]
-- [[concepts/orquestacion-de-agentes|orquestacion-de-agentes]]
+- [[concepts/ia-agentica|IA Agéntica]]
+- [[concepts/agentes-de-ia|Agentes de IA]]
+- [[concepts/planificacion-dinamica|Planificación Dinámica]]
 
 ## Fuentes relacionadas
 - [[sources/36-01-the-evolution-of-artificial-intelligence-agents-architectures-trends-and-t]]

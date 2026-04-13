@@ -1,12 +1,12 @@
-# Creative Commons Attribution 4.0 International License (CC BY 4.0)
+# Journal of Engineering Research
 
-**Tipo:** norma
+**Tipo:** organizacion
 
 ## Descripción
-Licencia internacional bajo la cual se publica el contenido del artículo de la revista.
+Revista científica donde se publicó el artículo analizado (ISSN 2764-1317).
 
 ## Rol en el ecosistema de IA
-Norma de derechos de autor que regula el uso y distribución del documento.
+Publicador académico de investigaciones en ingeniería e inteligencia artificial.
 
 ## Documentos relacionados
 - [[sources/36-01-the-evolution-of-artificial-intelligence-agents-architectures-trends-and-t]]

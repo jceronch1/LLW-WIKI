@@ -1,12 +1,12 @@
-# Creative Commons Attribution 4.0 International License (CC BY 4.0)
+# Raquel Segalla Reis
 
-**Tipo:** norma
+**Tipo:** persona
 
 ## Descripción
-Licencia internacional bajo la cual se publica el contenido del artículo de la revista.
+Autora de la tesis sobre gestión de riesgos en el despacho aduanero de importación utilizando inteligencia artificial.
 
 ## Rol en el ecosistema de IA
-Norma de derechos de autor que regula el uso y distribución del documento.
+Investigadora académica en aplicaciones de IA para gestión de riesgos aduaneros.
 
 ## Documentos relacionados
 - [[sources/36-01-the-evolution-of-artificial-intelligence-agents-architectures-trends-and-t]]

@@ -3,10 +3,10 @@
 **Tipo:** organizacion
 
 ## Descripción
-Empresa tecnológica desarrolladora de Agentforce, una plataforma de agentes autónomos integrada en ecosistemas de CRM.
+Empresa de software en la nube, desarrolladora de la plataforma Agentforce orientada a CRM y ventas.
 
 ## Rol en el ecosistema de IA
-Proveedor de soluciones empresariales de agentes de IA enfocadas en ventas y atención al cliente.
+Proveedor de plataformas empresariales con agentes autónomos integrados a datos de clientes.
 
 ## Documentos relacionados
 - [[sources/36-01-the-evolution-of-artificial-intelligence-agents-architectures-trends-and-t]]

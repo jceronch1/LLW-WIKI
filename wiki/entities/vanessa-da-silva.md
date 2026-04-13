@@ -1,12 +1,12 @@
-# Creative Commons Attribution 4.0 International License (CC BY 4.0)
+# Vanessa da Silva
 
-**Tipo:** norma
+**Tipo:** persona
 
 ## Descripción
-Licencia internacional bajo la cual se publica el contenido del artículo de la revista.
+Coautora del artículo sobre agentes conversacionales basados en IA generativa aplicados al sector financiero.
 
 ## Rol en el ecosistema de IA
-Norma de derechos de autor que regula el uso y distribución del documento.
+Investigadora académica en aplicaciones de IA conversacional en finanzas.
 
 ## Documentos relacionados
 - [[sources/36-01-the-evolution-of-artificial-intelligence-agents-architectures-trends-and-t]]

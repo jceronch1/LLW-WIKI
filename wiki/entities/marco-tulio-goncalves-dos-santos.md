@@ -1,12 +1,12 @@
-# Creative Commons Attribution 4.0 International License (CC BY 4.0)
+# Marco Túlio Gonçalves dos Santos
 
-**Tipo:** norma
+**Tipo:** persona
 
 ## Descripción
-Licencia internacional bajo la cual se publica el contenido del artículo de la revista.
+Autor de la tesis sobre inteligencia artificial agêntica en ambientes multicloud para el sector público.
 
 ## Rol en el ecosistema de IA
-Norma de derechos de autor que regula el uso y distribución del documento.
+Investigador académico en frameworks de automatización y gobernanza de IA agéntica.
 
 ## Documentos relacionados
 - [[sources/36-01-the-evolution-of-artificial-intelligence-agents-architectures-trends-and-t]]

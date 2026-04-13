@@ -1,31 +1,29 @@
 # 37 - AI_Agents_Syntax_Semantics_Interface
 
 ## Resumen
-Este documento presenta una propuesta de taller (workshop) para la 59ª reunión anual de la Societas Linguistica Europaea (SLE), a celebrarse en agosto de 2026. Organizado por Evelina Leivada y Vittoria Dentella, el taller se centra en la interfaz sintaxis-semántica de los agentes de Inteligencia Artificial, específicamente los Modelos de Lenguaje Grande (LLMs), y busca determinar qué tipo de agentes lingüísticos son.
+Este documento es una propuesta de taller (workshop) para la 59ª Reunión Anual de la Societas Linguistica Europaea (SLE), coordinada por Evelina Leivada y Vittoria Dentella. El taller se centra en evaluar las capacidades lingüísticas de los Agentes de Inteligencia Artificial, específicamente los Modelos de Lenguaje Grande (LLMs), a través de la lente de la interfaz sintaxis-semántica y desde una perspectiva translingüística. Aunque el lenguaje sintético generado por estas aplicaciones guarda un notable parecido superficial con el lenguaje humano, el debate sobre si sus habilidades son cualitativa y cuantitativamente equivalentes a las humanas sigue abierto.
 
-Aunque el texto generado por los LLMs parece sorprendentemente humano en la superficie, el documento señala que el debate sobre si sus habilidades lingüísticas son cualitativa y cuantitativamente iguales a las de los humanos sigue abierto. Se plantea que, si bien estos modelos pueden haber desarrollado una "competencia formal" (integrando sintaxis y semántica en sus representaciones) y un rico conocimiento morfosintáctico, fallan críticamente en el mapeo de conceptos a una realidad externa, lo cual es el núcleo de la semántica para muchos lingüistas.
+Un aspecto esquivo y central de la discusión es la interfaz sintaxis-semántica. Por un lado, se argumenta que los LLMs han adquirido una "competencia formal", integrando sintaxis y semántica en sus representaciones; por otro, se cuestiona si pueden inferir jerarquías de términos con relaciones sistemáticas y mapear conceptos a una realidad externa. El documento ilustra esta limitación con un ejemplo donde ChatGPT-4o falla en el razonamiento de relaciones semánticas posesivas/transitivas, un error que no debería ocurrir si el modelo solo careciera de "competencia funcional" (conocimiento pragmático y del mundo), lo que sugiere un déficit en la semántica referencial.
 
-Esta desconexión se ilustra con un error de razonamiento de ChatGPT-4o, que falla al rastrear las relaciones semánticas de posesión y partes del cuerpo, concluyendo erróneamente que una esposa tiene un corte de forma "indirecta". El documento argumenta que la probabilidad transicional de las palabras no equivale a gramaticalidad ni a comprensión semántica real.
-
-El objetivo del taller es examinar estas habilidades sintáctico-semánticas y sus extensiones pragmáticas, con un enfoque particular en la estabilidad translingüística, dado que existen evidencias preliminares de que los modelos multilingües no rinden igual en todos los idiomas. Se invita a presentar estudios sobre lenguas distintas al inglés, reflexiones teóricas sobre la capacidad de los LLMs para adquirir conocimiento del mundo, y análisis sobre cómo las desviaciones de los modelos respecto a las líneas base humanas pueden generar sesgos algorítmicos en los usuarios.
+El objetivo del taller es examinar qué tipo de agentes lingüísticos son los LLMs, prestando especial atención a la estabilidad translingüística, dado que los modelos multilingües no rinden igual en todas las lenguas. Se busca fomentar la presentación de trabajos que prueben lenguas distintas al inglés, reflexiones teóricas sobre la capacidad de los agentes para adquirir conocimiento mundial a partir de texto, y análisis sobre cómo las desviaciones de los LLMs respecto a las líneas base humanas pueden afectar a los usuarios mediante sesgos algorítmicos.
 
 ## Datos clave
-- **Evento:** 59th Annual Meeting of the Societas Linguistica Europaea (SLE).
-- **Sede:** Universität Osnabrück, Alemania.
-- **Fecha del evento:** 26 – 29 de agosto de 2026.
-- **Organizadoras:** Evelina Leivada (Universitat Autònoma de Barcelona / ICREA) y Vittoria Dentella (Università di Pavia).
-- **Fecha límite de resúmenes preliminares:** 17 de noviembre de 2025.
-- **Fecha límite de envío de resúmenes vía EasyChair:** 15 de enero de 2026.
-- **Fecha de notificación de aceptación/rechazo:** 31 de marzo de 2026.
-- **Caso de prueba documentado:** Error de razonamiento semántico de ChatGPT-4o registrado en diciembre de 2024.
+- **Evento:** 59th Annual Meeting of the Societas Linguistica Europaea (SLE)
+- **Ubicación:** Universität Osnabrück, Alemania
+- **Fecha del evento:** 26 – 29 de agosto de 2026
+- **Organizadoras:** Evelina Leivada (Universitat Autònoma de Barcelona / ICREA) y Vittoria Dentella (Università di Pavia)
+- **Fecha límite de resúmenes preliminares:** 17 de noviembre de 2025
+- **Fecha límite de envío de resúmenes vía EasyChair (si se acepta el taller):** 15 de enero de 2026
+- **Fecha de notificación de aceptación/rechazo:** 31 de marzo de 2026
+- **Extensión máxima del resumen preliminar:** 300 palabras
+- **Ejemplo empírico documentado:** Error de razonamiento semántico de ChatGPT-4o registrado en diciembre de 2024.
 
 ## Temas principales
-1. La interfaz sintaxis-semántica en los Modelos de Lenguaje Grande (LLMs).
-2. Distinción entre competencia formal y competencia funcional en Inteligencia Artificial.
-3. La capacidad referencial de los agentes de IA (conexión entre palabras y mundos externos).
-4. Estabilidad translingüística y rendimiento desigual de los modelos multilingües.
-5. Evaluación de la comprensión lingüística frente a la mera probabilidad transicional léxica.
-6. Impacto de los sesgos algorítmicos en los usuarios humanos debido a desviaciones lingüísticas de los LLMs.
+1. La interfaz sintaxis-semántica en los Agentes de Inteligencia Artificial y los Modelos de Lenguaje Grande (LLMs).
+2. La distinción entre competencia formal (integración de sintaxis y semántica) y competencia funcional (pragmática, conocimiento del mundo) en los LLMs.
+3. La capacidad referencial del lenguaje: si los agentes de IA pueden conectar palabras y mundos externos o solo asignan probabilidades a cadenas de palabras.
+4. La estabilidad translingüística: el rendimiento desigual de los modelos multilingües a través de diferentes lenguas.
+5. El impacto de los sesgos algorítmicos en los usuarios humanos debido a las desviaciones de los LLMs respecto al uso humano del lenguaje.
 
 ## Actores y entidades mencionadas
 - **Societas Linguistica Europaea (SLE)**
@@ -35,30 +33,31 @@ El objetivo del taller es examinar estas habilidades sintáctico-semánticas y s
 - **Università di Pavia**
 - **Evelina Leivada**
 - **Vittoria Dentella**
-- **ChatGPT-4o (OpenAI)**
-- **Autores de referencia citados:** Moro, van Rooij, Piantadosi, Bolhuis, Mahowald, Dentella, Lenneberg, Ramchand, Boleda, Mandelkern, Linzen, Baggio, Murphy, Pantelidou.
+- **Autores de referencia citados:** Moro, van Rooij, Piantadosi, Bolhuis, Mahowald, Dentella, Baggio, Murphy, Mandelkern, Linzen, Lenneberg, Boleda, Pantelidou, Ramchand.
 
 ## Relación con otros conceptos
-- [[concepts/inteligencia-artificial|inteligencia-artificial]]
-- [[concepts/modelos-de-lenguaje-grandes|modelos-de-lenguaje-grandes]]
-- [[concepts/linguistica-computacional|linguistica-computacional]]
-- [[concepts/sintaxis-semantica|sintaxis-semantica]]
-- [[concepts/competencia-formal|competencia-formal]]
-- [[concepts/competencia-funcional|competencia-funcional]]
-- [[concepts/agi|inteligencia-artificial-general]]
-- [[concepts/sesgo-algoritmico|sesgo-algoritmico]]
-- [[concepts/procesamiento-de-lenguaje-natural|procesamiento-de-lenguaje-natural]]
+- [[inteligencia-artificial]]
+- [[modelos-de-lenguaje-grande]]
+- [[sintaxis-semantica]]
+- [[competencia-formal]]
+- [[competencia-funcional]]
+- [[linguistica-translinguistica]]
+- [[inteligencia-artificial-general]]
+- [[sesgo-algoritmico]]
+- [[referencia-linguistica]]
 
 ## Citas textuales relevantes
 > "While surface similarities between natural language and text generated by language models (LLMs) are pervasive, the jury is still out with respect to whether the models’ linguistic ability can be described as qualitatively and quantitatively equal to that of humans"
 
 > "One particularly elusive aspect of the linguistic abilities of the Artificial Agents concerns the syntax-semantics interface."
 
+> "Crucially, if Artificial Intelligence agents have developed formal competence and only lack functional competence (i.e. knowledge pertaining to pragmatic requirements of discourse, world-knowledge, and social reasoning), this error should not arise. However, it is precisely this mapping of concepts to an external reality what some semanticists would define as semantics"
+
 > "Models can assign probabilities to strings of words, but grammaticality cannot be construed as a phenomenon of transitional probability extracted from lexical items alone"
 
 > "Can Artificial Intelligence agents use language to refer and establish connections between words and worlds?"
 
 ## Notas
-- El documento es una propuesta de taller académico y no un artículo de investigación empírica en sí mismo, aunque sintetiza y cita hallazgos empíricos recientes sobre las limitaciones de los LLMs.
-- Aunque el contexto de la wiki se enfoca en la Inteligencia Artificial en Colombia, este documento aporta un marco teórico y lingüístico fundamental para la evaluación crítica de modelos en español y lenguas minoritarias, relevante para la región.
-- El error documentado de ChatGPT-4o sobre la posesión transitiva de partes del cuerpo es un ejemplo clave del debate actual sobre si los modelos realmente "entienden" el significado o solo predicen sintácticamente secuencias de texto.
+- El documento es una convocatoria académica (propuesta de taller), no un artículo de investigación empírica final, aunque sintetiza debates teóricos y empíricos actuales sobre el procesamiento semántico en IA.
+- El ejemplo del fallo de ChatGPT-4o (la inferencia posesiva transitiva de "corte" en una cadena de relaciones) es utilizado para desafiar directamente la hipótesis de que los LLMs solo tienen déficits en la competencia funcional, demostrando que hay un problema en el mapeo semántico-referencial.
+- Se hace un llamamiento explícito a superar el sesgo del inglés en la evaluación de LLMs, fomentando la presentación de investigaciones sobre otras lenguas.

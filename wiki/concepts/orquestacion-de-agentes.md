@@ -1,18 +1,19 @@
-# orquestacion-de-agentes
+# Orquestación de Agentes
 
 ## Definición
-Desarrollo de sistemas capaces de gestionar y coordinar múltiples agentes de IA para que trabajen juntos en la resolución de problemas más grandes y complejos. Es una tendencia clave en la evolución hacia sistemas multiagente más sofisticados y colaborativos.
+Desarrollo de sistemas capaces de gestionar y coordinar múltiples agentes de IA para que trabajen en conjunto. Permite resolver problemas más grandes y complejos que los que un solo agente podría resolver de forma individual.
 
 ## Ideas clave
-- Gestión de múltiples agentes simultáneos
-- Resolución de problemas complejos mediante colaboración
-- Evolución de sistemas reactivos a proactivos
-- Relevancia en entornos multicloud
+- Coordinación de múltiples agentes de IA
+- Resolución de problemas complejos y de mayor escala
+- Tendencia principal para 2025
+- Integración con entornos multicloud
+- Uso de frameworks como CrewAI y AutoGen para implementación
 
 ## Relación con otros conceptos
-- [[concepts/ia-agentiva|ia-agentiva]]
-- [[concepts/riesgo-de-interaccion-multi-agente|riesgo-de-interaccion-multi-agente]]
-- [[concepts/propagacion-de-vulnerabilidades-en-sistemas-multi-agente|propagacion-de-vulnerabilidades-en-sistemas-multi-agente]]
+- [[concepts/ia-agentica|IA Agéntica]]
+- [[concepts/sistemas-multiagente|Sistemas Multiagente]]
+- [[concepts/automatizacion-proactiva|Automatización Proactiva]]
 
 ## Fuentes relacionadas
 - [[sources/36-01-the-evolution-of-artificial-intelligence-agents-architectures-trends-and-t]]

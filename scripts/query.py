@@ -207,9 +207,12 @@ def answer_question(question, pages_content, model):
         "- Sé preciso, conciso y útil. Responde en español."
     )
 
+    cfg = load_config()
+    topic = cfg.get('topic', 'Conocimiento')
+
     messages = [
         {"role": "system", "content": (
-            "Eres el asistente de consulta de una wiki sobre Agentes de Inteligencia Artificial.\n"
+            f"Eres el asistente de consulta de una wiki sobre {topic}.\n"
             f"{agents_rules}"
         )},
         {"role": "user", "content": (

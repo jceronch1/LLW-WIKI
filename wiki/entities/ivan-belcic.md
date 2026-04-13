@@ -1,12 +1,12 @@
-# Creative Commons Attribution 4.0 International License (CC BY 4.0)
+# Ivan Belcic
 
-**Tipo:** norma
+**Tipo:** persona
 
 ## Descripción
-Licencia internacional bajo la cual se publica el contenido del artículo de la revista.
+Coautor del artículo "AI agents in 2025: Expectations vs. reality" publicado en IBM Think.
 
 ## Rol en el ecosistema de IA
-Norma de derechos de autor que regula el uso y distribución del documento.
+Investigador y analista de tendencias en agentes de IA.
 
 ## Documentos relacionados
 - [[sources/36-01-the-evolution-of-artificial-intelligence-agents-architectures-trends-and-t]]

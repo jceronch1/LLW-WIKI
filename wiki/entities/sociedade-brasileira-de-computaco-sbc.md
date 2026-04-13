@@ -3,10 +3,10 @@
 **Tipo:** organizacion
 
 ## Descripción
-Sociedad científica brasileña que publica los anales de eventos como ERAMIA-RS, donde se presentaron investigaciones sobre agentes conversacionales.
+Sociedad científica brasileña, editora de la biblioteca SBC OpenLib (SOL) donde se publican investigaciones sobre IA.
 
 ## Rol en el ecosistema de IA
-Organización académica promotora de la investigación en computación e inteligencia artificial en Brasil.
+Editor académico y promotor de la investigación en computación e inteligencia artificial.
 
 ## Documentos relacionados
 - [[sources/36-01-the-evolution-of-artificial-intelligence-agents-architectures-trends-and-t]]

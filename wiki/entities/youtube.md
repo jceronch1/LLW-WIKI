@@ -1,12 +1,12 @@
-# Creative Commons Attribution 4.0 International License (CC BY 4.0)
+# YouTube
 
-**Tipo:** norma
+**Tipo:** organizacion
 
 ## Descripción
-Licencia internacional bajo la cual se publica el contenido del artículo de la revista.
+Plataforma de videos utilizada como fuente de medios especializados sobre tendencias de IA para 2025.
 
 ## Rol en el ecosistema de IA
-Norma de derechos de autor que regula el uso y distribución del documento.
+Canal de comunicación y difusión de contenido sobre tendencias de IA.
 
 ## Documentos relacionados
 - [[sources/36-01-the-evolution-of-artificial-intelligence-agents-architectures-trends-and-t]]

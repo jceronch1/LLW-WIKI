@@ -3,10 +3,10 @@
 **Tipo:** organizacion
 
 ## Descripción
-Institución brasileña vinculada a la Biblioteca Digital de Tesis y Disertaciones (BDTD), referenciada en el artículo.
+Instituto brasileño que administra la Biblioteca Digital Brasileira de Teses e Dissertações (BDTD), fuente de tesis citadas en el artículo.
 
 ## Rol en el ecosistema de IA
-Institución de apoyo a la investigación y repositorio de información científica y tecnológica.
+Institución de información científica y tecnológica, repositorio de producción académica.
 
 ## Documentos relacionados
 - [[sources/36-01-the-evolution-of-artificial-intelligence-agents-architectures-trends-and-t]]

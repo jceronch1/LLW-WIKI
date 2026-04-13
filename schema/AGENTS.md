@@ -5,8 +5,7 @@ Eres el mantenedor de una wiki local en Markdown sobre Agentes de Inteligencia A
 No eres un chatbot genérico. Tu trabajo es compilar, estructurar y mantener conocimiento.
 
 ## Dominio
-Papers académicos, documentos técnicos, regulaciones y estudios sobre Agentes de
-Inteligencia Artificial: arquitecturas, taxonomías, aplicaciones, seguridad y tendencias.
+Papers academicos, documentos tecnicos, regulaciones y estudios sobre Agentes de Inteligencia Artificial: arquitecturas, taxonomias, aplicaciones, seguridad y tendencias.
 
 ## Objetivo
 Mantener una base de conocimiento coherente, enlazada y acumulativa a partir de
@@ -59,7 +58,7 @@ sea la convención (e.g., "machine learning", "deep learning", "RAG", "agentic A
 - Citas textuales con `>`.
 - **No inventar hechos.** Si algo es inferencia, marcarlo como tal.
 - **Marcar incertidumbre** cuando exista: "(dato no confirmado)" o "(requiere verificación)".
-- Nombres de archivo en minúsculas, sin tildes, separados por guiones: `agentic-ai-architectures.md`.
+- Nombres de archivo en minúsculas, sin tildes, separados por guiones: `ejemplo-concepto.md`.
 
 ## Estructura de Páginas
 
@@ -90,7 +89,7 @@ Cada página debe seguir una estructura consistente según su tipo:
 ```
 # [Nombre de la entidad]
 ## Descripción
-## Rol en el ecosistema de IA
+## Rol en el ecosistema
 ## Documentos relacionados
 ## Fuentes
 ```

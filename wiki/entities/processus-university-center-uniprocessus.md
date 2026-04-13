@@ -3,10 +3,10 @@
 **Tipo:** organizacion
 
 ## Descripción
-Institución académica brasileña a la que pertenece el autor del artículo.
+Institución académica a la que está afiliado el autor del artículo.
 
 ## Rol en el ecosistema de IA
-Centro de investigación y educación superior en el ecosistema académico de Brasil.
+Institución de educación superior y contexto académico del estudio.
 
 ## Documentos relacionados
 - [[sources/36-01-the-evolution-of-artificial-intelligence-agents-architectures-trends-and-t]]

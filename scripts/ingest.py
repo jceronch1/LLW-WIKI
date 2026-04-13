@@ -16,14 +16,24 @@ import argparse
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from utils import *
+from utils import *  # noqa: includes load_config
 
 
 # ─── Prompts del sistema ─────────────────────────────────────────────────────
 
-SYSTEM_PROMPT = """Eres el mantenedor de una wiki sobre Agentes de Inteligencia Artificial.
-Tu trabajo es leer documentos y producir contenido wiki estructurado en español.
-Sé preciso, factual y exhaustivo. No inventes datos. Usa formato Markdown limpio."""
+def get_system_prompt():
+    """Genera el prompt del sistema basado en la configuración actual."""
+    cfg = load_config()
+    topic = cfg.get('topic', 'Conocimiento')
+    return (
+        f"Eres el mantenedor de una wiki sobre {topic}.\n"
+        "Tu trabajo es leer documentos y producir contenido wiki estructurado en español.\n"
+        "Sé preciso, factual y exhaustivo. No inventes datos. Usa formato Markdown limpio."
+    )
+
+
+# Backward compat: módulos que importen SYSTEM_PROMPT obtienen el valor actual
+SYSTEM_PROMPT = get_system_prompt()
 
 
 # ─── Funciones de generación ─────────────────────────────────────────────────
@@ -31,7 +41,7 @@ Sé preciso, factual y exhaustivo. No inventes datos. Usa formato Markdown limpi
 def summarize_chunk(chunk, doc_name, chunk_num, total, model):
     """Resume un fragmento individual de un documento largo."""
     messages = [
-        {"role": "system", "content": SYSTEM_PROMPT},
+        {"role": "system", "content": get_system_prompt()},
         {"role": "user", "content": (
             f"Resume este fragmento ({chunk_num}/{total}) del documento '{doc_name}'.\n"
             f"Incluye TODOS los datos, cifras, fechas, nombres de entidades y hechos relevantes.\n"
@@ -45,7 +55,7 @@ def summarize_chunk(chunk, doc_name, chunk_num, total, model):
 def generate_source_page(doc_name, text, model):
     """Genera una página wiki de fuente a partir del texto del documento."""
     messages = [
-        {"role": "system", "content": SYSTEM_PROMPT},
+        {"role": "system", "content": get_system_prompt()},
         {"role": "user", "content": (
             f"Crea una página wiki estructurada para el documento '{doc_name}'.\n\n"
             f"USA EXACTAMENTE ESTE FORMATO:\n\n"
@@ -76,7 +86,7 @@ def extract_concepts_from_doc(text, doc_name, existing_concepts, model):
     existing_str = ", ".join(existing_concepts) if existing_concepts else "(ninguno aún)"
 
     messages = [
-        {"role": "system", "content": SYSTEM_PROMPT},
+        {"role": "system", "content": get_system_prompt()},
         {"role": "user", "content": (
             f"Del documento '{doc_name}', identifica los 5-10 conceptos más importantes.\n\n"
             f"Conceptos que YA EXISTEN en la wiki (reutilízalos si aplican): {existing_str}\n\n"
@@ -121,7 +131,7 @@ def extract_entities_from_doc(text, doc_name, existing_entities, model):
     existing_str = ", ".join(existing_entities) if existing_entities else "(ninguna aún)"
 
     messages = [
-        {"role": "system", "content": SYSTEM_PROMPT},
+        {"role": "system", "content": get_system_prompt()},
         {"role": "user", "content": (
             f"Del documento '{doc_name}', identifica las entidades más importantes:\n"
             f"organizaciones, instituciones, leyes, normas o personas clave.\n\n"
@@ -161,7 +171,7 @@ def extract_entities_from_doc(text, doc_name, existing_entities, model):
 def generate_faq(text, doc_name, source_slug, model):
     """Genera preguntas frecuentes basadas en el documento."""
     messages = [
-        {"role": "system", "content": SYSTEM_PROMPT},
+        {"role": "system", "content": get_system_prompt()},
         {"role": "user", "content": (
             f"Basándote en el documento '{doc_name}', genera 5-8 preguntas frecuentes\n"
             f"con respuestas detalladas y útiles.\n\n"

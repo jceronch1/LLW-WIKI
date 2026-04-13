@@ -1,48 +1,55 @@
 # FAQ: 36 - 01 - THE EVOLUTION OF ARTIFICIAL INTELLIGENCE AGENTS ARCHITECTURES, TRENDS, AND THE IMPACT OF AGENTIC AI
 
 ## ¿Qué es la IA Agéntica (Agentic AI) y en qué se diferencia de los modelos tradicionales?
-La IA Agéntica representa la transición desde modelos de inteligigencia artificial pasivos (como los chatbots tradicionales que solo responden a comandos) hacia entidades proactivas y autónomas. Estos agentes modernos son capaces de razonar, planificar y ejecutar tareas complejas sin necesidad de intervención humana constante. El año 2025 ha sido señalado como el inicio de la "Era de los Agentes", donde la IA deja de ser solo reactiva para convertirse en un sistema que puede anticipar necesidades, iniciar acciones y usar herramientas para extender sus capacidades en el mundo real.
+La IA Agéntica representa la transición desde modelos de Inteligencia Artificial pasivos —como los chatbots tradicionales que solo responden a comandos específicos— hacia entidades proactivas y autónomas. Estos nuevos agentes son capaces de razonar, planificar y ejecutar tareas complejas sin necesidad de intervención humana constante. Esta evolución, impulsada por los Grandes Modelos de Lenguaje (LLMs) que actúan como el "cerebro" del agente, marca lo que se ha denominado la "Era de los Agentes" a partir de 2025.
 
 ## ¿Cuáles son los componentes fundamentales de la arquitectura de un agente de IA moderno?
-Según el documento, la arquitectura de un agente de IA moderno, especialmente aquellos impulsados por LLMs, se compone de cinco elementos principales:
-1. **LLM (Modelo de Lenguaje Grande):** Actúa como el núcleo o "cerebro" del agente, encargado del razonamiento, la comprensión y la generación de lenguaje.
-2. **Memoria:** Permite almacenar y recuperar información a corto y largo plazo, lo que permite al agente mantener el contexto y aprender de experiencias pasadas.
-3. **Planificación/Razonamiento:** Es el módulo responsable de descomponer tareas complejas en subtareas más pequeñas y secuenciar las acciones necesarias para alcanzar un objetivo.
-4. **Herramientas/APIs:** Conjunto de funcionalidades externas que el agente puede invocar para interactuar con su entorno (ej. buscar en la web, enviar correos, acceder a bases de datos).
+Según el documento, la arquitectura de un agente de IA moderno, especialmente los impulsados por LLMs, se compone de cinco elementos principales:
+1. **LLM (Gran Modelo de Lenguaje):** El núcleo para el razonamiento, la comprensión y la generación de lenguaje.
+2. **Memoria:** La capacidad de almacenar y recuperar información a corto y largo plazo, permitiendo mantener el contexto y aprender de experiencias pasadas.
+3. **Planificación/Razonamiento:** Un módulo que descompone tareas complejas en subtareas más pequeñas y secuencia las acciones para alcanzar un objetivo.
+4. **Herramientas/APIs:** Conjunto de funcionalidades externas que el agente puede invocar para interactuar con el entorno (ej. buscar en la web, enviar correos, acceder a bases de datos).
 5. **Percepción y Acción:** Módulos que permiten al agente recibir información del entorno y ejecutar acciones sobre el mismo.
 
-## ¿Qué papel desempeñan los Modelos de Lenguaje Grande (LLMs) en los agentes de IA?
-Los LLMs (como GPT o Claude) actúan como el "cerebro" de los agentes de IA. Su función principal es proporcionar la capacidad de entender, razonar y generar lenguaje natural, lo que permite a los agentes interpretar instrucciones complejas y determinar los siguientes pasos (pensamiento de alto nivel). Además, los LLMs facilitan la capacidad de uso de herramientas (*tool-calling*), permitiendo que el agente extienda su funcionalidad más allá de su texto intrínseco y logre interactuar con APIs, bases de datos y otros sistemas externos.
-
-## ¿Cuáles son las capacidades técnicas fundamentales que distinguen a los agentes de IA modernos?
-El documento identifica cuatro capacidades técnicas esenciales en los agentes modernos:
-1. **Razonamiento:** La capacidad de descomponer problemas complejos, lo cual es esencial para la autonomía y la resolución de problemas no triviales.
-2. **Uso de Herramientas (*Tool-calling*):** La interacción con APIs y sistemas externos, lo que permite al agente realizar acciones en el mundo real (como enviar un correo electrónico).
-3. **Memoria a Largo Plazo:** La retención de contexto entre sesiones, crucial para la personalización y la continuidad en tareas complejas.
-4. **Planificación Dinámica:** La capacidad de ajustar los planes basándose en nuevos datos o imprevistos durante la ejecución de una tarea.
-
-## ¿Qué frameworks y plataformas empresariales destacan en el desarrollo de agentes de IA?
-El documento destaca varios frameworks y plataformas para el desarrollo y uso empresarial de agentes:
-- **Frameworks de desarrollo:** LangGraph (control refinado y flujos cíclicos), CrewAI (colaboración basada en roles), AutoGen de Microsoft (conversación entre múltiples agentes), LlamaIndex (enfoque en datos y RAG) y Manus de Google (automatización de tareas complejas).
-- **Plataformas empresariales:** Agentforce de Salesforce (integrado al ecosistema CRM), Copilot Studio de Microsoft (creación *low-code* para productividad), watsonx Orchestrate de IBM (enfoque en gobernanza y cumplimiento), Google Agent Builder (creación de agentes de búsqueda y conversación) y Manus de Google (automatización de flujos de trabajo en Linux Sandbox).
+## ¿Qué capacidades técnicas distinguen a los agentes de IA actuales?
+Las capacidades técnicas fundamentales que definen a los agentes modernos son:
+*   **Razonamiento:** La habilidad de descomponer problemas complejos, esencial para la autonomía.
+*   **Llamada a herramientas (Tool-calling):** La interacción con APIs y sistemas externos, lo que permite al agente realizar acciones en el mundo real.
+*   **Memoria a largo plazo:** La retención de contexto entre sesiones, crucial para la personalización y la continuidad de tareas.
+*   **Planificación dinámica:** El ajuste de los planes basándose en nuevos datos o eventos imprevistos durante la ejecución.
 
 ## ¿Cuáles son las principales tendencias de los agentes de IA para el año 2025?
-Las tendencias clave para la "Era de los Agentes" incluyen:
-- **Automatización Proactiva:** Agentes que no solo responden a comandos, sino que anticipan necesidades e inician acciones para optimizar flujos de trabajo.
-- **Orquestación de Agentes:** Desarrollo de sistemas que gestionan y coordinan múltiples agentes de IA trabajando en conjunto para resolver problemas más grandes y complejos.
-- **Integración Multicloud:** Frameworks diseñados para la automatización y gobernanza de agentes en entornos híbridos y multicloud, especialmente relevantes para el sector público.
-- **Agentes Conversacionales Avanzados:** Chatbots que utilizan IA generativa para ofrecer respuestas más contextualizadas, seguras y eficientes, con un crecimiento notable en el sector financiero.
+El documento identifica cuatro tendencias clave para la era de los agentes proactivos:
+*   **Automatización Proactiva:** Agentes que anticipan necesidades e inician acciones para optimizar procesos, en lugar de solo responder a comandos.
+*   **Orquestación de Agentes:** Desarrollo de sistemas que gestionan y coordinan múltiples agentes de IA trabajando en conjunto para resolver problemas más grandes y complejos.
+*   **Integración Multicloud:** Marcos de trabajo para la automatización y gobernanza de agentes en entornos híbridos y multicloud, con especial relevancia para el sector público.
+*   **Agentes Conversacionales Avanzados:** Chatbots que utilizan IA generativa para ofrecer respuestas más contextualizadas, seguras y eficientes, con aplicaciones crecientes en el sector financiero.
+
+## ¿Qué frameworks y plataformas empresariales destacan en el desarrollo de agentes de IA?
+En el ámbito de los **frameworks de desarrollo**, destacan:
+*   **LangGraph:** Basado en gráficos (DAGs), ofrece control refinado y flujos cíclicos.
+*   **CrewAI:** Basado en roles, facilita la colaboración entre agentes.
+*   **AutoGen:** Basado en conversaciones, soporta diálogo entre múltiples agentes y ejecución de código.
+*   **LlamaIndex:** Enfocado en datos (RAG), para orquestación centrada en recuperación e indexación.
+*   **Manus:** De propósito general (Agent-as-a-Service), para automatización de tareas complejas.
+
+En cuanto a las **plataformas empresariales**, se incluyen:
+*   **Agentforce (Salesforce):** Enfocada en CRM y ventas.
+*   **Copilot Studio (Microsoft):** Para productividad y oficina con enfoque low-code.
+*   **watsonx Orchestrate (IBM):** Centrada en automatización de procesos, gobernanza y cumplimiento.
+*   **Google Agent Builder:** Para creación de agentes de búsqueda y conversación en Vertex AI.
+*   **Manus (Google):** Para automatización de flujos de trabajo en entornos Linux Sandbox.
 
 ## ¿En qué sectores prácticos se están aplicando los agentes de IA?
-Los agentes de IA tienen un impacto transformador en varios sectores:
-- **Sector Financiero:** Agentes conversacionales que responden consultas en lenguaje natural a bases de datos estructuradas, reduciendo la sobrecarga de información y mejorando la eficiencia operativa.
-- **Gobernanza Pública:** Agentes en entornos multicloud que optimizan la automatización de procesos y mejoran la prestación de servicios y gestión de datos.
-- **Desarrollo de Software:** Asistencia en generación de código, automatización de pruebas y monitoreo predictivo.
-- **Videojuegos Digitales:** Modelado de personajes no jugables (NPCs) con comportamientos más realistas y adaptativos.
-- **Gestión de Riesgos:** Uso como instrumento y agente de control en la gestión de riesgos de despacho aduanero de importación, aumentando la seguridad y eficiencia.
+Los agentes de IA están teniendo un impacto transformador en varios sectores:
+*   **Sector Financiero:** Agentes conversacionales que responden consultas en lenguaje natural a bases de datos estructuradas, reduciendo la sobrecarga de información.
+*   **Gobernanza Pública:** Optimización de la automatización de procesos y gestión de datos en entornos multicloud.
+*   **Desarrollo de Software:** Asistencia en generación de código, automatización de pruebas y monitoreo predictivo.
+*   **Videojuegos Digitales:** Modelado de personajes no jugables (NPCs) con comportamientos más realistas y adaptativos.
+*   **Gestión de Riesgos:** Uso como agentes de control e instrumento en el despacho aduanero de importación para aumentar la seguridad y eficiencia.
 
-## ¿Cuáles son los desafíos éticos y de gobernanza que plantea la IA Agéntica?
-A medida que los agentes de IA se vuelven más autónomos e influyentes, surgen desafíos críticos en torno a la responsabilidad (*accountability*), la transparencia y los sesgos algorítmicos. La capacidad de tomar decisiones y ejecutar acciones sin intervención humana exige la formación de "agentes moralmente responsables" y la creación de regulaciones claras. La gobernanza de la IA debe asegurar que los agentes operen dentro de límites éticos y legales, siendo fundamentales la transparencia en los procesos de toma de decisiones y la capacidad de auditarlos para construir confianza y mitigar riesgos en la sociedad.
+## ¿Qué desafíos éticos y de gobernanza plantea la IA Agéntica?
+A medida que los agentes de IA se vuelven más autónomos e influyentes, surgen desafíos significativos en torno a la responsabilidad, la transparencia y los sesgos algorítmicos. La capacidad de tomar decisiones y ejecutar acciones sin intervención humana requiere la formación de "agentes moralmente responsables" y la creación de directrices claras para su diseño, desarrollo y despliegue. La transparencia en los procesos de toma de decisiones y la capacidad de auditar a los agentes son fundamentales para construir confianza y mitigar riesgos, garantizando que la IA beneficie a la sociedad.
 
 ## Fuentes
 - [[sources/36-01-the-evolution-of-artificial-intelligence-agents-architectures-trends-and-t]]
