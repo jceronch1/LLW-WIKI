@@ -1,0 +1,28 @@
+# Stargate Uae
+
+## Definición
+Stargate Uae es un concepto usado en la wiki dentro del dominio de infraestructura, datos y capacidad computacional. A partir de las fuentes relacionadas, se refiere a: El documento *Artificial Intelligence and the Great Divergence*, publicado por el Council of Economic Advisers (CEA) en enero de 2026, establece un paralelo histórico entre la Revolución Industrial y la inteligencia artificial como tecnologías transformadoras.
+
+## Ideas clave
+- millones
+- inversion
+- revolucion
+- divergencia
+- 2024
+
+## Uso en la wiki
+- En [[sources/17-27-whitehouse-ai-great-divergence]], se usa en este contexto: El documento *Artificial Intelligence and the Great Divergence*, publicado por el Council of Economic Advisers (CEA) en enero de 2026, establece un paralelo histórico entre la Revolución Industrial y la inteligencia artificial como tecnologías transformadoras capaces de generar una "Gran Divergencia" económica global....
+- En [[entities/stargate]], se usa en este contexto: ## Descripción Iniciativa de inversión en infraestructura de IA anunciada por OpenAI en colaboración con socios internacionales, incluyendo "Stargate UAE" con los Emiratos Árabes Unidos.
+
+## Relación con otros conceptos
+- [[concepts/gran-divergencia]]
+- [[concepts/inteligencia-artificial]]
+- [[concepts/ia-generativa]]
+- [[concepts/modelos-de-lenguaje-grandes]]
+- [[concepts/ia-agentica]]
+- [[concepts/agi]]
+- [[concepts/superinteligencia-artificial]]
+- [[concepts/productividad-total-factores]]
+
+## Fuentes relacionadas
+- [[sources/17-27-whitehouse-ai-great-divergence]]

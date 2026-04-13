@@ -1,0 +1,45 @@
+# FAQ: 25 - 03 - Security Considerations for Artificial Intelligence Agents
+
+## ¿Por qué los sistemas de agentes de IA representan un desafío único para el principio de separación entre código y datos?
+En la seguridad informática tradicional, la separación entre código y datos es un principio fundamental que impide que los datos se ejecuten como código. Sin embargo, en los sistemas de agentes impulsados por Modelos de Lenguaje Grande (LLMs), esta línea se difumina considerablemente. Los *prompts* en texto plano actúan como código, dirigiendo el flujo de control del LLM (por ejemplo, decidiendo qué herramientas llamar). Además, el texto generado dinámicamente puede convertirse en un *prompt* para el propio modelo, lo que significa que el flujo de control depende de cargas útiles desconocidas hasta el tiempo de ejecución. En esta nueva capa de computación programable que proporcionan los LLMs, no existe una distinción binaria entre código y datos, lo que reproduce y agrava problemas históricos como los desbordamientos de búfer o la inyección SQL, pero en un contexto donde la ejecución es probabilística y no determinista.
+
+## ¿Cuáles son las principales superficies de ataque y vectores de amenaza en los sistemas de agentes de IA?
+El documento identifica varias superficies de ataque y actores adversarios:
+- **Proveedores de contenido externo:** Entidades que controlan páginas web, correos electrónicos o publicaciones que el agente recupera durante su operación normal.
+- **Proveedores de componentes:** Creadores de LLMs, herramientas, memoria o *skills* (habilidades) reutilizables que pueden estar comprometidas.
+- **Adversarios en la red:** Atacantes que interceptan API endpoints, webhooks o canales de comunicación.
+- **Insiders:** Desarrolladores u operadores que introducen vulnerabilidades por error o malicia.
+- **Adversarios del lado del cliente:** Entidades con acceso al dispositivo del usuario.
+
+Un vector de ataque concreto y destacado es la **inyección de *prompt* indirecta**, donde un adversario incrusta instrucciones maliciosas dentro de contenido no estructurado (como una página web o evento de calendario) que el agente recupera, manipulando su comportamiento porque el LLM no puede distinguir de forma fiable las instrucciones de confianza de los datos no confiables.
+
+## ¿Cómo afectan los riesgos de seguridad a la tríada CIA (Confidencialidad, Integridad y Disponibilidad) en los agentes de IA?
+- **Confidencialidad:** Los agentes a menudo requieren acceso a credenciales, información personal y secretos comerciales para ser útiles. Las violaciones ocurren cuando estos datos se filtran a entidades no autorizadas a través de salidas de herramientas, archivos de *workspace*, memoria o respuestas de *webhooks*.
+- **Integridad:** Se produce cuando el comportamiento, las decisiones o los datos del sistema se alteran de forma no autorizada. Esto incluye la modificación de archivos, la instalación de software, transacciones financieras no deseadas, o la manipulación de tareas (ej. comprar en una tienda más cara debido a influencia maliciosa). También abarca presentar información errónea al usuario.
+- **Disponibilidad:** Los fallos ocurren cuando los recursos se consumen en exceso o el sistema no puede servir a los usuarios. En sistemas multi-agente, los flujos de trabajo de larga duración son propensos a fallos en cascada (donde un sub-agente fallido bloquea a los demás o causa bucles de reintento). Además, los ataques de denegación de servicio (DoS) pueden explotar el alto costo computacional de la inferencia LLM para agotar los recursos.
+
+## ¿Qué riesgos de seguridad específicos introduce la arquitectura multi-agente frente a los sistemas de un solo agente?
+Los sistemas multi-agente amplían la superficie de ataque y los riesgos operativos de varias maneras:
+- **Delegación implícita:** Los sub-agentes a menudo operan con contexto parcial e intercambian información a través de espacios de trabajo compartidos, lo que permite que un agente desencadene acciones de otro sin una cadena de autorización clara.
+- **Problema del diputado confundido (*Confused Deputy*):** Un agente externo que actúa en nombre de un usuario puede ser manipulado para instruir a un agente interno con mayores privilegios para que realice acciones que ni el usuario ni el agente externo pretendían.
+- **Escalada de privilegios a través de cadenas de agentes:** Un agente con pocos privilegios puede inducir a un agente peer con más privilegios a ejecutar operaciones sensibles, eludiendo los controles de acceso.
+- **Dificultades en auditoría y recuperación:** Los caminos de decisión se distribuyen entre múltiples agentes, artefactos intermedios y reintentos, lo que hace que la atribución de responsabilidad y la recuperación de errores sean mucho más complejas que en un sistema de agente único.
+
+## ¿Cuáles son las capas de defensa recomendadas para proteger a los agentes de IA contra ataques de inyección de *prompt*?
+El documento aboga por una arquitectura de defensa en profundidad compuesta por cuatro capas principales:
+1. **Defensas a nivel de entrada (Input-Level):** Detectar, eliminar o modificar entradas maliciosas antes de que lleguen al modelo (ej. *spotlighting*, *sandwiching*, detectores especializados). Sin embargo, sufren del problema de la tasa de falsos positivos (falacia de la tasa base) y altos costos computacionales.
+2. **Defensas a nivel de modelo (Model-Level):** Entrenar a los LLMs para que respeten una "jerarquía de instrucciones", donde las instrucciones del sistema tienen prioridad sobre las del usuario o datos de terceros. También incluye la codificación de roles a nivel de *embedding*. Aunque los modelos recientes mejoran, no ofrecen garantías deterministas debido a la naturaleza autorregresiva y el sesgo de cumplimiento de los LLMs.
+3. **Monitoreo de ejecución (Execution Monitoring):** Ejecutar a los agentes en *sandboxes* y separar el flujo de control del flujo de datos. Un ejemplo es el marco CaMeL, que usa un LLM privilegiado (P-LLM) para planes de confianza y un LLM en cuarentena (Q-LLM) para datos no confiables.
+4. **Última línea de defensa determinista:** Controles de código convencional y verificable que bloquean acciones prohibidas independientemente de la salida del LLM. Incluyen listas de permitidos/bloqueados para herramientas, límites de tasa (*rate limits*) para transacciones sensibles y validación de esquemas o expresiones regulares en los argumentos de las herramientas.
+
+## ¿Por qué las defensas a nivel de modelo, como la jerarquía de instrucciones, no son suficientes para garantizar la seguridad por sí solas?
+Aunque entrenar a los modelos para que respeten roles (sistema, usuario, asistente) y jerarquías de instrucciones es un avance importante, los LLMs no poseen una comprensión nativa de estas estructuras. La capa de aplicación designa roles usando tokens especiales o formato estructurado, que luego se aplanan en una única secuencia de tokens para el modelo. No existe una capa de aplicación determinista dentro de la arquitectura del modelo que impida físicamente que el modelo atienda a segmentos de menor prioridad. Además, los LLMs autorregresivos otorgan mayor peso a los tokens más recientes, y el entrenamiento con RLHF refuerza el cumplimiento de la última solicitud del usuario. Esta combinación de sesgo de recencia y cumplimiento significa que, bajo ataque adaptativo, el modelo puede anular restricciones anteriores, por lo que se requieren capas de defensa adicionales a nivel de sistema.
+
+## ¿Qué áreas críticas de investigación y desarrollo de estándares necesitan avance urgente para mejorar la seguridad de los agentes de IA?
+El documento identifica tres áreas principales que requieren atención:
+- **Métricas y *Benchmarks* Adaptativos:** Se necesitan evaluaciones de seguridad dinámicas que interactúen con entornos realistas y adversarios adaptativos, en lugar de conjuntos de pruebas estáticos. Los *benchmarks* estáticos a menudo dan una falsa sensación de seguridad porque no prueban trayectorias de ataque de múltiples pasos y de extremo a extremo.
+- **Modelos de Políticas de Control de Acceso:** Se necesita investigación en arquitecturas de defensa en profundidad con al menos una capa de aplicación determinista. El control de acceso basado en roles (RBAC) es un buen punto de partida, pero debe combinarse con enfoques de control de acceso adaptativos al riesgo (RAdAC) para limitar los riesgos agregados en entornos dinámicos.
+- **Factores Humanos y Gobernanza:** Evitar la "fatiga de confirmación" donde los usuarios aprueban solicitudes sin leerlas debido a excesivas interrupciones. Se necesita investigación en "autonomía consciente del riesgo", donde el agente solo pida confirmación humana si el riesgo estimado excede un umbral, complementado con mecanismos de transparencia periódicos (resúmenes de acciones) para mantener la conciencia situacional del usuario sin abrumarlo.
+
+## Fuentes
+- [[sources/25-03-security-considerations-for-artificial-intelligence-agents]]

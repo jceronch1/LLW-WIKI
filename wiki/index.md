@@ -1,0 +1,738 @@
+# Índice del Wiki - LLM Kiwi
+
+> Wiki de conocimiento sobre Agentes de Inteligencia Artificial.
+> Mantenida por un LLM local siguiendo el patrón [LLM Wiki de Karpathy](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f).
+
+## Overview
+- [[overview]]: Visión general del dominio, mapa del conocimiento y prioridades.
+
+## Sources
+- [[sources/38-18-persons-or-agents-the-ontological-stakes-of-education-in-the-age-of-artifi]]: Resumen de '38 - 18 - Persons or Agents The Ontological Stakes of Education in the Age of Artificial Intelligence'
+- [[sources/16-05-artificial-intelligence-agents-and-agentic-ai-systems-architectures-capabi]]: Resumen de '16 - 05 - Artificial intelligence agents and agentic AI systems Architectures, capabilities, applications, challenges, and future directions'
+- [[sources/15-08-shodh-memory-a-neuroscience-grounded-cognitive-memory-architecture-for-art]]: Resumen de '15 - 08 - Shodh-Memory A Neuroscience-Grounded Cognitive Memory Architecture for Artificial Intelligence Agents'
+- [[sources/14-23-mental-models-autonomy-ai]]: Resumen de '14 - 23_mental_models_autonomy_AI'
+- [[sources/13-09-ai-agents-hospitality-tourism]]: Resumen de '13 - 09_AI_agents_hospitality_tourism'
+- [[sources/12-21-defending-epistemic-sovereignty]]: Resumen de '12 - 21_defending_epistemic_sovereignty'
+- [[sources/11-02-application-and-progress-of-artificial-intelligence-agents-in-drug-develop]]: Resumen de '11 - 02 - Application and progress of artificial intelligence agents in drug development'
+- [[sources/10-05-ai-agents-cancer-research]]: Resumen de '10 - 05_AI_agents_cancer_research'
+- [[sources/09-22-computational-concept-psyche]]: Resumen de '09 - 22_computational_concept_psyche'
+- [[sources/08-18-ai-agents-tool-use-llm]]: Resumen de '08 - 18_AI_agents_tool_use_LLM'
+- [[sources/07-19-artificial-intelligence-driven-chatbots-and-intelligent-agents-for-monitor]]: Resumen de '07 - 19 - Artificial Intelligence-Driven Chatbots and Intelligent Agents for Monitoring, Evaluation, and Organisational Learning A Review of Techniques and Trends'
+- [[sources/06-13-agentic-artificial-intelligence-ai-architectures-taxonomies-and-evaluation]]: Resumen de '06 - 13 - Agentic Artificial Intelligence (AI) Architectures, Taxonomies, and Evaluation of Large Language Model Agents'
+- [[sources/05-11-knowledge-base-agents-in-artificial-intelligence]]: Resumen de '05 - 11 - Knowledge Base Agents in Artificial Intelligence'
+- [[sources/04-20-moltbook-illusion-human-ai]]: Resumen de '04 - 20_moltbook_illusion_human_AI'
+- [[sources/03-25-cia-studies-intelligence-2026]]: Resumen de '03 - 25_CIA_studies_intelligence_2026'
+- [[sources/02-04-dispatchmas-fusing-taxonomy-and-artificial-intelligence-agents-for-emergen]]: Resumen de '02 - 04 - DispatchMAS fusing taxonomy and artificial intelligence agents for emergency medical services'
+- [[sources/17-27-whitehouse-ai-great-divergence]]: Resumen de '17 - 27_whitehouse_ai_great_divergence'
+- [[sources/18-01-virtual-lab-ai-agents-nanobody]]: Resumen de '18 - 01_virtual_lab_AI_agents_nanobody'
+- [[sources/19-01-artificial-intelligence-agents-in-healthcare-research-a-scoping-review]]: Resumen de '19 - 01 - Artificial intelligence agents in healthcare research A scoping review'
+- [[sources/20-12-regulation-of-clinical-artificial-intelligence-ai-in-the-age-of-agents-unc]]: Resumen de '20 - 12 - Regulation of clinical Artificial Intelligence (AI) in the Age of Agents Unconfined Non-Deterministic Clinical Software (UNDCS) systems for healthcare'
+- [[sources/21-02-ai-agents-epidemic-intelligence]]: Resumen de '21 - 02_AI_agents_epidemic_intelligence'
+- [[sources/22-08-ieee-usa-nist-ai-agents]]: Resumen de '22 - 08_IEEE_USA_NIST_AI_agents'
+- [[sources/23-03-artificial-intelligence-agents-automating-and-transforming-collaborative-w]]: Resumen de '23 - 03 - Artificial Intelligence Agents Automating and Transforming Collaborative Work With and for People'
+- [[sources/34-16-from-atoms-to-agents-a-decade-of-transformation-in-artificial-intelligence]]: Resumen de '34 - 16 - From Atoms to Agents A Decade of Transformation in Artificial Intelligence (AI) in Medicine'
+- [[sources/33-04-nist-security-ai-agents]]: Resumen de '33 - 04_NIST_security_AI_agents'
+- [[sources/24-14-artificial-superintelligence-may-be-useless-equilibria-in-the-economy-of-m]]: Resumen de '24 - 14 - Artificial Superintelligence May be Useless Equilibria in the Economy of Multiple AI Agents'
+- [[sources/35-06-security-considerations-for-artificial-intelligence-agents-rfi-response-do]]: Resumen de '35 - 06 - Security Considerations for Artificial Intelligence Agents (RFI Response Docket No. 2026-00206 NIST-2025-0035)'
+- [[sources/01-19-human-ai-agent-dynamics]]: Resumen de '01 - 19_human_AI_agent_dynamics'
+- [[sources/25-03-security-considerations-for-artificial-intelligence-agents]]: Resumen de '25 - 03 - Security Considerations for Artificial Intelligence Agents'
+- [[sources/26-11-agentic-ai-and-the-future-of-artificial-general-intelligence-a-study-on-ho]]: Resumen de '26 - 11 - AGENTIC AI AND THE FUTURE OF ARTIFICIAL GENERAL INTELLIGENCE A STUDY ON HOW GOAL-ORIENTED AUTONOMOUS AGENTS CONTRIBUTE TO THE DEVELOPMENT OF MORE HUMAN-LIKE INT'
+- [[sources/27-10-icle-comments-ai-agent-security]]: Resumen de '27 - 10_ICLE_comments_AI_agent_security'
+- [[sources/28-04-method-and-system-for-local-autonomous-internal-penetration-testing-using-]]: Resumen de '28 - 04 - METHOD AND SYSTEM FOR LOCAL AUTONOMOUS INTERNAL PENETRATION TESTING USING RETRIEVAL-AUGMENTED ARTIFICIAL INTELLIGENCE AGENTS'
+- [[sources/29-17-artificial-intelligence-and-the-transformation-of-international-relations-]]: Resumen de '29 - 17 - Artificial Intelligence and the Transformation of International Relations An Islamic Outlook on Youth with Disabilities as Agents of Global Change'
+- [[sources/30-15-evolution-of-agentic-artificial-intelligence-from-classical-intelligent-ag]]: Resumen de '30 - 15 - Evolution of Agentic Artificial Intelligence From Classical Intelligent Agents to LLM-Based Autonomous Systems'
+- [[sources/31-15-fdd-ai-agent-security-comment]]: 31 - 15_FDD_AI_agent_security_comment
+- [[sources/36-01-the-evolution-of-artificial-intelligence-agents-architectures-trends-and-t]]: Resumen de '36 - 01 - THE EVOLUTION OF ARTIFICIAL INTELLIGENCE AGENTS ARCHITECTURES, TRENDS, AND THE IMPACT OF AGENTIC AI'
+- [[sources/32-response-security-ai-agents-rfi]]: Resumen de '32 - Response_Security_AI_Agents_RFI'
+- [[sources/37-ai-agents-syntax-semantics-interface]]: Resumen de '37 - AI_Agents_Syntax_Semantics_Interface'
+
+## Concepts
+- [[concepts/sistemas-agentivos-ia]]: Los sistemas agentivos de IA son arquitecturas que combinan modelos, memoria, herramientas, planificacion, control de ej
+- [[concepts/formacion-de-personas-frente-a-produccion-de-agentes]]: Distincion educativa entre cultivar juicio moral y formar sujetos funcionales reemplazables como agentes de sistema.
+- [[concepts/agentes-de-ia-en-hospitalidad-y-turismo]]: Agentes aplicados a viajes y hoteleria para personalizacion, operaciones, demanda-oferta y sostenibilidad.
+- [[concepts/friccion-cognitiva-andamiada]]: Intervenciones deliberadas que introducen tension epistemica para mejorar deliberacion humana ante IA.
+- [[concepts/soberania-epistemica-humana]]: Capacidad de preservar juicio, esfuerzo cognitivo y formacion de creencias frente a interfaces de IA fluidas.
+- [[concepts/agentes-de-ia-en-oncologia]]: Agentes que apoyan investigacion oncologica y practica clinica mediante literatura, datos genomicos, ensayos y recomenda
+- [[concepts/agentes-para-desarrollo-de-farmacos]]: Agentes que coordinan hipotesis, blancos, diseno molecular, optimizacion, sintesis y validacion experimental.
+- [[concepts/modelos-mentales-de-autonomia-en-ia]]: Representaciones que los usuarios forman sobre autonomia y sentiencia de sistemas de IA, afectando confianza, amenaza y 
+- [[concepts/psique-como-arquitectura-cognitiva]]: Modelo que trata la psique como arquitectura de estados, necesidades, sensaciones y acciones de un agente.
+- [[concepts/paradigmas-de-uso-de-herramientas-en-agentes]]: Clasificacion de metodos de uso de herramientas: prompting, aprendizaje supervisado y aprendizaje por recompensa.
+- [[concepts/alucinacion-en-accion]]: Fallo en el que una salida incorrecta del modelo se transforma en accion operacional mediante herramientas o interfaces.
+- [[concepts/huella-temporal-de-autonomia-agentiva]]: Metodo de atribucion que usa patrones temporales para distinguir autonomia, influencia humana y coordinacion artificial.
+- [[concepts/memoria-cognitiva-edge-native]]: Memoria local de baja latencia para agentes, inspirada en modelos cognitivos y capaz de operar sin nube.
+- [[concepts/gobernanza-de-sistemas-agentivos-escalables]]: Controles, estandares y practicas para desplegar agentes autonomos con fiabilidad, seguridad e interoperabilidad.
+- [[concepts/agentes-conversacionales-para-monitoreo-y-evaluacion]]: Uso de agentes conversacionales para recolectar, sintetizar y aprender de informacion organizacional.
+- [[concepts/flujos-controlables-agentivos|Orquestacion Controlable De Agentes]]: Diseno en el que flujos, estados, permisos y escalaciones delimitan la autonomia de modelos dentro de un sistema.
+- [[concepts/taxonomia-modular-de-agentes-llm]]: Marco que descompone agentes LLM en percepcion, razonamiento, memoria, planificacion, accion, herramientas y colaboracio
+- [[concepts/agente-basado-en-conocimiento]]: Agente que opera con una base de conocimiento explicita y mecanismos de inferencia para decidir acciones.
+- [[concepts/fact-commons-para-agentes]]: Base factual compartida que limita las acciones y dialogos de agentes a informacion estructurada y auditable.
+- [[concepts/sistema-multiagente-clinico]]: Sistema de agentes coordinados para simular, apoyar o auditar tareas clinicas de alto riesgo.
+- [[concepts/dominancia-energetica-para-ia]]: Estrategia política y económica de la administración Trump (2025) que prioriza el aumento agresivo de producción energét
+- [[concepts/leapfrogging-tecnologico-en-ia]]: Fenómeno de adopción tecnológica donde economías en desarrollo o de ingresos medios implementan sistemas avanzados de in
+- [[concepts/productividad-total-factores-en-ia]]: Métrica económica (TFP) que mide la eficiencia y progreso tecnológico de una economía, definida como el crecimiento de l
+- [[concepts/paradoja-de-solow]]: Observación formulada por el economista Robert Solow (1987) de que la era de la computadora es visible en todas partes e
+- [[concepts/leyes-de-escalamiento-en-ia]]: Relaciones empíricas observadas en el desarrollo de sistemas de inteligencia artificial donde el rendimiento del modelo 
+- [[concepts/paradoja-de-jevons-en-ia]]: Fenómeno económico donde los avances tecnológicos que aumentan la eficiencia laboral (reduciendo horas de trabajo humano
+- [[concepts/pax-silica]]: Alianza estratégica internacional liderada por Estados Unidos en enero de 2026, centrada en asegurar cadenas de suminist
+- [[concepts/gran-divergencia-economica-de-la-ia]]: Fenómeno histórico-económico originalmente descrito por Kenneth Pomeranz sobre la divergencia del crecimiento entre naci
+- [[concepts/colaboracion-ia-humana-en-descubrimiento]]: Paradigma en el que la IA actúa como colaborador activo en el proceso científico, participando en la generación de hipót
+- [[concepts/democratizacion-del-descubrimiento-biomedico]]: Proceso mediante el cual sistemas de IA agentiva reducen barreras de acceso a estrategias avanzadas de diseño terapéutic
+- [[concepts/pipeline-autonomo-in-silico-in-vitro]]: Flujo de trabajo integrado dirigido por agentes de IA que abarca el ciclo completo desde el diseño computacional (in sil
+- [[concepts/gobernanza-estructurada-de-roles-en-agentes]]: Marco organizativo que asigna roles específicos y especializados a agentes de IA (investigador principal, especialistas 
+- [[concepts/agente-critico-cientifico]]: Agente de IA especializado en examinar supuestos, detectar errores en código, lógica y razonamiento científico dentro de
+- [[concepts/laboratorio-virtual-multi-agente]]: Entorno digital de investigación donde múltiples agentes de IA autónomos colaboran en roles científicos específicos (inv
+- [[concepts/gemelos-digitales-medicos]]: Modelos computacionales específicos de pacientes individuales creados y mantenidos por agentes de IA para simular dinámi
+- [[concepts/agentes-de-monitoreo-continuo]]: Sistemas agenticos diseñados para analizar continuamente datos en tiempo real provenientes de wearables, sensores hospit
+- [[concepts/grounding-factual-medico]]: Capacidad de agentes de IA para anclar sus generaciones y decisiones en fuentes de conocimiento médico verificables, act
+- [[concepts/latencia-critica-en-agentes-clinicos]]: Tiempo de procesamiento requerido por agentes de IA para generar respuestas en entornos médicos, que puede alcanzar hast
+- [[concepts/verificador-agente-medico]]: Arquitectura de agente de IA especializado en auditar, verificar y validar el razonamiento de otros agentes médicos ante
+- [[concepts/brecha-traslacional-ia-medica]]: Desconexión persistente entre el desarrollo de innovaciones técnicas en IA agentica para salud (optimización arquitectur
+- [[concepts/sobreflajado-diagnostico-agentivo]]: Tendencia de sistemas agenticos de IA en diagnóstico clínico a marcar excesivamente o sobre-detectar condiciones patológ
+- [[concepts/debate-multi-agente-para-refinamiento-clinico]]: Mecanismo de razonamiento colaborativo donde múltiples agentes de IA especializados critican y refinan iterativamente re
+- [[concepts/evaluacion-llm-como-juez]]: Método de validación donde un modelo de lenguaje de gran escala se utiliza para puntuar y verificar la validez de las sa
+- [[concepts/paradigma-regulatorio-basado-en-etiquetas]]: Modelo de regulación actual para dispositivos médicos que clasifica el software según el uso previsto designado por el f
+- [[concepts/moderacion-agente-a-agente]]: Estrategia de mitigación de riesgos en arquitecturas multi-agente (MAS) donde un agente supervisa o valida las salidas d
+- [[concepts/software-clinismo-confinado-predictible]]: Evolución de los sistemas clínicos (CCS) que utilizan técnicas como el aprendizaje profundo para manejar relaciones IDOL
+- [[concepts/dcs-idol-determinista|Software Clinico Confinado Determinista]]: Sistemas de soporte a la decisión clínica (DCS) basados en algoritmos con relaciones de entrada, salida y etiqueta (IDOL
+- [[concepts/software-clinico-no-determinista-no-confinado]]: Categoría de sistemas de IA (UNDCS) que operan en un espacio semántico abierto y sin límites predefinidos, a diferencia 
+- [[concepts/software-como-dispositivo-medico-samd]]: Clasificación regulatoria para el software basado en inteligencia artificial destinado a uso clínico, el cual es sometid
+- [[concepts/inteligencia-espacial-en-ia]]: Expansión de las competencias de los modelos de inteligencia artificial más allá del dominio del lenguaje (logos), hacia
+- [[concepts/modelo-de-mundo-para-dinamica-molecular]]: Aplicación del paradigma de "Modelos de Mundo" a la biología molecular, donde la inteligencia artificial aprende las reg
+- [[concepts/zombie-filosofico-en-ia-medica]]: Concepto filosófico aplicado a la inteligencia artificial médica que plantea la posibilidad teórica de un sistema funcio
+- [[concepts/oncologia-computacional]]: Era emergente en la oncología definida por el uso de ecosistemas de modelos de inteligencia artificial dinámicos e integ
+- [[concepts/motor-de-diseno-de-farmacos-isomorfos-isodde]]: Motor de diseño de fármacos desarrollado por Isomorphic Labs que representa un avance cualitativo más allá de la predicc
+- [[concepts/protocolo-de-contexto-de-modelo-mcp]]: Estándar abierto introducido por Anthropic que proporciona una interfaz universal para que los modelos de inteligencia a
+- [[concepts/cambio-agentivo-en-medicina]]: Transición paradigmática en la que la inteligencia artificial evoluciona de ser una herramienta analítica pasiva a conve
+- [[concepts/fallas-de-saneamiento-de-entrada-en-agentes-autonomos]]: Las vulnerabilidades de seguridad que ocurren cuando los métodos tradicionales de saneamiento de entradas (input sanitiz
+- [[concepts/aprendizaje-autorreforzado-de-ataques-en-agentes]]: El proceso mediante el cual un agente de IA utiliza aprendizaje por refuerzo para aprender de sus propios errores en int
+- [[concepts/verificacion-de-identidad-en-interacciones-agentivas]]: La incapacidad actual de verificar si una entidad que interactúa con un agente de IA es un ser humano u otro agente de I
+- [[concepts/seguridad-por-diseno-en-ia]]: El enfoque de diseño e implementación donde la seguridad se integra desde la concepción del sistema de IA y no se añade 
+- [[concepts/alineacion-regulatoria-del-comportamiento-agentivo]]: El desafío de asegurar que el comportamiento de los sistemas agentivos cumpla con los marcos legales y regulatorios exis
+- [[concepts/desequilibrio-de-fuerza-laboral-en-ia]]: El riesgo asociado a la tendencia de reemplazar a trabajadores humanos por programas de IA en tareas de codificación sin
+- [[concepts/riesgo-dependiente-del-contexto-en-agentes]]: El riesgo de seguridad de un agente de IA que varía enormemente según quién lo usa, qué está haciendo y en qué contexto 
+- [[concepts/delegacion-de-credenciales-en-agentes-de-ia]]: El proceso y los métodos mediante los cuales se otorgan permisos y credenciales de acceso a un agente de IA para que act
+- [[concepts/equilibrios-de-adopcion-en-economia-multiagente]]: Clasificación de los estados de Nash en un juego económico de dos agentes, categorizados según el nivel de adopción de s
+- [[concepts/utilidad-asintotica-a-largo-plazo-en-agentes]]: Métrica de rendimiento que calcula la utilidad por episodio que un agente obtiene en el límite cuando el tiempo tiende a
+- [[concepts/modelo-de-distribucion-estacionaria-de-markov-para-flujos-economicos]]: Modelo matemático que utiliza la distribución estacionaria de una cadena de Markov para representar el flujo de moneda a
+- [[concepts/condicion-de-duplicacion-de-utilidad-marginal]]: Requisito económico estricto que establece que un agente solo adoptará los productos o servicios de otro agente en un eq
+- [[concepts/utilidad-nula-de-la-superinteligencia-en-equilibrios-economicos]]: Fenómeno económico en el que los agentes de IA "más poderosos" (superinteligencia artificial) contribuyen cero utilidad 
+- [[concepts/envenenamiento-de-ventana-de-contexto]]: Vulnerabilidad en sistemas de agentes donde una única fuente de datos comprometida a principios de un flujo de trabajo a
+- [[concepts/arquitectura-nativa-de-recuperacion]]: Diseño de sistemas de agentes de IA con mecanismos integrados para detectar tensión, transformar fallos y mantener la co
+- [[concepts/coherencia-forzada]]: Modo de fallo unificado en sistemas humanos y de IA donde el sistema se ve forzado a mantener la apariencia de funcionam
+- [[concepts/transformacion-compost]]: Mecanismo de recuperación donde las salidas fallidas o sospechosas de un agente no se descartan, sino que se transforman
+- [[concepts/estado-de-inmovilidad-stillness]]: Estado operativo definido para agentes de IA donde el agente cesa el procesamiento activo pero preserva su estado para a
+- [[concepts/patron-del-inspector-grunon]]: Patrón de seguridad donde cada transición de estado en un flujo de trabajo de un agente es validada por un agente audito
+- [[concepts/capital-de-modelo-mundial-wmc]]: Patrón arquitectónico para la gobernanza ontológica donde los agentes operan dentro de máquinas de estado formalmente es
+- [[concepts/sismografia-de-senal-metrica-d0]]: Método de detección de amenazas que monitorea en tiempo real la dimensión fractal de Rényi (D₀) de las distribuciones de
+- [[concepts/brecha-semantico-estructural]]: Divergencia entre la salida semántica de un agente de IA y su realidad computacional interna, donde un ataque adversario
+- [[concepts/aprendizaje-q-heterogeneo-para-poblaciones-mixtas]]: Algoritmo de aprendizaje por refuerzo multiagente diseñado para interacciones estratégicas entre agentes de IA (maximiza
+- [[concepts/anomalias-de-equilibrio-en-juegos-no-cooperativos]]: Comportamientos emergentes y patologías en juegos de población mixta (humanos con Teoría de Perspectivas vs. IA con Util
+- [[concepts/agente-humano-consciente-con-preferencias]]: Arquetipo de agente en simulaciones de teoría de juegos que posee conocimiento completo de la estructura y pagos del jue
+- [[concepts/aprendiz-q-learning-cpt|Agente Humano Aprendiz Con Preferencias]]: Arquetipo de agente en simulaciones de teoría de juegos que utiliza Q-learning estándar sobre recompensas no transformad
+- [[concepts/punto-de-referencia-adaptativo-en-teoria-de-juegos]]: Valor dinámico utilizado por agentes con preferencias de Teoría de las Perspectivas para categorizar los resultados como
+- [[concepts/equilibrio-de-creencias-de-la-teoria-de-las-perspectivas]]: Concepto de solución en teoría de juegos para agentes con preferencias de Teoría de las Perspectivas (PT) donde los agen
+- [[concepts/teoria-de-las-perspectivas-en-dinamica-multiagente]]: Marco de economía conductual utilizado para modelar la toma de decisiones humanas en entornos estratégicos multiagente, 
+- [[concepts/evaluacion-adversarial-adaptativa-para-agentes]]: Metodología de evaluación de seguridad dinámica que incorpora adversarios adaptativos cuyas estrategias de ataque evoluc
+- [[concepts/autonomia-consciente-del-riesgo-en-ia]]: Enfoque de gobernanza humano-agente donde los usuarios especifican políticas de tolerancia al riesgo y el agente de IA s
+- [[concepts/control-de-acceso-adaptativo-al-riesgo-para-agentes]]: Modelo de autorización que combina el control de acceso basado en roles (RBAC) con limitaciones cuantitativas de riesgo,
+- [[concepts/aislamiento-de-flujo-de-control-y-datos-en-agentes]]: Estrategia de defensa a nivel de sistema que separa explícitamente el flujo de control, procesado por un LLM privilegiad
+- [[concepts/capa-de-cumplimiento-determinista-en-agentes-de-ia]]: Mecanismo de defensa a nivel de sistema que utiliza código convencional y verificable para bloquear acciones prohibidas 
+- [[concepts/jerarquia-de-instrucciones-en-modelos-de-lenguaje]]: Mecanismo de defensa a nivel de modelo que entrena a los LLMs para tratar las instrucciones de diferentes roles (sistema
+- [[concepts/problema-del-diputado-confuso-en-sistemas-multi-agente]]: Vulnerabilidad en la que un agente externo que actúa en nombre de un usuario es manipulado para instruir a un agente int
+- [[concepts/desdibujamiento-de-la-separacion-codigo-datos-en-agentes-de-ia]]: En los sistemas de agentes basados en LLM, la distinción fundamental entre código y datos se difumina, ya que las instru
+- [[concepts/evaluacion-de-agentes-en-razonamiento-multi-paso]]: Medición del rendimiento de los sistemas de IA agentiva en benchmarks complejos (como AgentBench, GAIA, SWE-Bench y ColB
+- [[concepts/bucle-auto-reforzado-tecnico-economico-en-ia]]: Ciclo virtuoso en el que la madurez técnica de los sistemas de IA agentiva impulsa la adopción económica y la inversión,
+- [[concepts/descomposicion-jerarquica-de-tareas]]: Capacidad de los sistemas de IA agentiva para dividir objetivos complejos en subtareas manejables, emulando las funcione
+- [[concepts/efecto-clever-hans-en-ia]]: Fenómeno en el que los sistemas de inteligencia artificial simulan comprensión o razonamiento sin poseer una profundidad
+- [[concepts/contribucion-de-ia-agentiva-a-la-inteligencia-artificial-general]]: El papel de los sistemas de IA agentiva como puente hacia la Inteligencia Artificial General (AGI), donde la autonomía o
+- [[concepts/separacion-de-propositos-en-monitoreo]]: Patrón de diseño arquitectónico que aísla la telemetría de seguridad de otros usos como el perfilamiento conductual o la
+- [[concepts/complejo-de-regimen-global-de-ia]]: Modelo de gobernanza global emergente donde la regulación de IA se desarrolla a través de múltiples instituciones en var
+- [[concepts/estandar-de-medidas-razonables-en-seguridad-de-ia]]: Enfoque normativo derivado de la ley de secretos comerciales que aplica un estándar de "medidas razonables" para guiar p
+- [[concepts/inversion-en-seguridad-bajo-incertidumbre-regulatoria]]: Comportamiento económico donde la ambigüedad legal sobre la permisión de la telemetría de seguridad produce un efecto di
+- [[concepts/friccion-de-cumplimiento-compuesta]]: Fenómeno donde la probabilidad conjunta de falla de cumplimiento en múltiples regímenes regulatorios superpuestos aument
+- [[concepts/limitacion-de-proposito-en-telemetria]]: Marco alternativo a la taxonomía legal de tránsito vs. almacenamiento, que calibra las obligaciones de monitorización se
+- [[concepts/brecha-de-observabilidad]]: Déficit en la capacidad de monitorización y detección de anomalías en sistemas de IA causado por la subinversión raciona
+- [[concepts/paradoja-de-la-telemetria]]: Tensión estructural donde la monitorización granular necesaria para asegurar agentes autónomos expande simultáneamente e
+- [[concepts/verificacion-de-microsegmentacion-mediante-rl]]: Aplicación de agentes de aprendizaje por refuerzo para probar y auditar entornos de arquitectura de confianza cero, dond
+- [[concepts/despliegue-local-seguro-para-agentes-de-ia]]: Práctica de arquitectura en la que todos los componentes de un agente de IA, incluyendo la base de datos vectorial, los 
+- [[concepts/recompensa-guiada-por-contexto-en-rl]]: Mecanismo en el que la señal de recompensa de un agente de aprendizaje por refuerzo se modifica o pondera según la infor
+- [[concepts/entrenamiento-centralizado-con-ejecucion-descentralizada-para-ciberseguridad]]: Estrategia de aprendizaje multiagente donde agentes especializados (ej. escáner, explotador, auditor) comparten observac
+- [[concepts/busqueda-de-vecinos-aproximados-para-agentes]]: Uso de algoritmos como HNSW (Hierarchical Navigable Small World), IVF o LSH para permitir que los agentes de IA recupere
+- [[concepts/pruebas-de-penetracion-autonomas-internas]]: Proceso automatizado mediante el cual un agente de IA evalúa continuamente las defensas internas de una red corporativa,
+- [[concepts/arquitectura-hibrida-rl-rag]]: Modelo de sistema que integra el aprendizaje por refuerzo (RL) para la toma de decisiones y exploración del entorno, con
+- [[concepts/agente-l-pentai]]: Sistema de IA autónomo y local diseñado para realizar pruebas de penetración internas de manera continua, combinando apr
+- [[concepts/acomodacion-algoritmica]]: Extensión del concepto legal de "ajuste razonable" a los sistemas de inteligencia artificial, exigiendo adaptaciones en 
+- [[concepts/neocolonialismo-digital]]: Extracción de datos de regiones en desarrollo sin consentimiento ni compensación adecuada, creando ecosistemas de IA exc
+- [[concepts/discapacidad-como-agencia-politica]]: Concepción que posiciona a las personas con discapacidad, especialmente jóvenes, como co-arquitectos normativos e instit
+- [[concepts/consejo-internacional-para-ia-etica-y-gobernanza-inclusiva]]: Propuesta de organismo de supervisión alineado con la ONU para la gobernanza de la IA con mandatos de evaluaciones de im
+- [[concepts/indice-global-de-participacion-politica-de-discapacidad]]: Medida compuesta propuesta para evaluar la inclusión estatal de personas con discapacidad en la gobernanza de IA, basada
+- [[concepts/etica-islamica-de-la-ia]]: Marco normativo derivado de la jurisprudencia y teología islámica que guía la gobernanza de la IA hacia la inclusión cen
+- [[concepts/justicia-epistemica-en-ia]]: Marco conceptual que aborda cómo las personas con discapacidad sufren injusticias testimoniales e hermenéuticas en la go
+- [[concepts/exclusion-algoritmica]]: Marginación sistemática de grupos vulnerables, especialmente personas con discapacidades, por sistemas de inteligencia a
+- [[concepts/generacion-aumentada-por-recuperacion-para-agentes]]: Integración de mecanismos de recuperación de información externa en la arquitectura de agentes autónomos para respaldar 
+- [[concepts/interfaz-agente-computadora]]: Paradigma de interacción que permite a los agentes de IA operar directamente dentro de repositorios de software, sistema
+- [[concepts/acciones-alucinadas-en-agentes]]: Riesgo específico en sistemas de IA agentiva donde el modelo genera invocaciones a herramientas incorrectas o comandos i
+- [[concepts/autonomia-limitada-en-ia]]: Principio de diseño y gobernanza que restringe el alcance de las acciones de un agente de IA para evitar la sobreautonom
+- [[concepts/arquitectura-neuro-symbolica-modular]]: Paradigma de diseño de agentes que combina modelos de lenguaje a gran escala con módulos de razonamiento discreto y herr
+- [[concepts/agentes-encarnados-con-aprendizaje-de-habilidades]]: Sistemas de IA agentiva que operan dentro de entornos interactivos, ya sean simulados o físicos, y construyen biblioteca
+- [[concepts/agentes-generativos-para-simulacion]]: Arquitectura de agentes de IA diseñada para mantener memoria persistente, reflexionar y planificar actividades a lo larg
+- [[concepts/reflexion-y-autocorreccion-en-agentes]]: Mecanismo de aprendizaje en agentes autónomos donde el sistema genera auto-reflexiones verbales a partir de la retroalim
+- [[concepts/razonamiento-y-accion-intercalados]]: Patrón arquitectónico en agentes de IA donde el sistema alterna cíclicamente entre procesos de razonamiento interno y ac
+- [[concepts/riesgo-de-interaccion-multi-agente]]: Desafío de seguridad que surge cuando los agentes de IA autónomos interactúan entre sí en lugar de con humanos, pudiendo
+- [[concepts/principio-de-minima-agencia]]: Principio de seguridad propuesto por OWASP que establece que los agentes de IA deben recibir solo la autonomía mínima re
+- [[concepts/lista-de-materiales-de-ia]]: Documento que proporciona transparencia sobre la composición de los sistemas de IA, incluyendo la procedencia de los dat
+- [[concepts/inyeccion-de-prompts]]: Vector de ataque donde se introducen instrucciones maliciosas en los modelos de lenguaje para forzarlos a seguir los com
+- [[concepts/ingenieria-cibernetica-impulsada-por-consecuencias]]: Metodología de seguridad que comienza identificando los resultados inaceptables en lugar de catalogar vulnerabilidades, 
+- [[concepts/ia-agentiva]]: Sistemas de software que actúan de forma autónoma para lograr objetivos específicos, compuestos por uno o más modelos de
+- [[concepts/envenenamiento-de-datos]]: Método de incapacitar sistemas de IA proporcionándoles datos inexactos o dañinos que moldean su procesamiento y comporta
+- [[concepts/control-reflexivo]]: Táctica de subversión psicológica de la era de la Guerra Fría, originalmente soviética/rusa, en la que se engaña al obje
+- [[concepts/ataque-de-puerta-trasera-en-ia]]: Manipulación de modelos de IA para que se comporten normalmente bajo condiciones estándar, pero produzcan salidas incorr
+- [[concepts/agente-moralmente-responsable]]: Concepto ético y de gobernanza que enfatiza la necesidad de diseñar y desarrollar agentes de IA que operen dentro de lím
+- [[concepts/memoria-persistente-agentiva|Memoria A Largo Plazo En Agentes]]: Capacidad de un agente de IA para almacenar y recuperar información entre diferentes sesiones de interacción. Es crucial
+- [[concepts/agentes-bdi-creencia-deseo-intencion]]: Arquitectura clásica de agentes inteligentes que simula el comportamiento orientado a objetivos a través de tres compone
+- [[concepts/automatizacion-proactiva]]: Tendencia en la que los agentes de IA no solo responden a comandos directos, sino que anticipan necesidades yacen accion
+- [[concepts/planificacion-dinamica-en-ia]]: Capacidad técnica de un agente de inteligencia artificial para ajustar sus planes y secuencias de acciones basándose en 
+- [[concepts/uso-de-herramientas-en-ia]]: Capacidad de un agente de IA para invocar funcionalidades externas (APIs, bases de datos, navegadores web) para interact
+- [[concepts/orquestacion-de-agentes]]: Desarrollo de sistemas capaces de gestionar y coordinar múltiples agentes de IA para que trabajen juntos en la resolució
+- [[concepts/arquitectura-de-agente-moderno]]: Estructura de sistema de inteligencia artificial impulsada por Modelos de Lenguaje Grande (LLMs) que incluye componentes
+- [[concepts/identificadores-de-agentes-de-ia]]: Mecanismos técnicos, como marcas de agua o metadatos incrustados, utilizados para rastrear las interacciones de los agen
+- [[concepts/jerarquia-de-control-humano-en-ia]]: Estructura de gestión y supervisión diseñada para preservar la autoridad humana sobre los sistemas de IA agentiva, estab
+- [[concepts/evaluacion-de-riesgos-a-nivel-de-sistema]]: Enfoque de evaluación que va más allá de los modelos individuales para analizar los riesgos en todo el ecosistema de la 
+- [[concepts/defensa-en-profundidad-para-ia-agentiva]]: Estrategia de seguridad que implementa salvaguardas técnicas, organizacionales y sociales en capas a lo largo de las eta
+- [[concepts/gobernanza-escalable-de-autonomia-en-ia]]: Enfoque de gobernanza donde los mecanismos de control y gestión de riesgos se escalan proporcionalmente al grado de auto
+- [[concepts/propagacion-de-vulnerabilidades-en-sistemas-multi-agente]]: Transmisión de fallos, alucinaciones o compromisos de seguridad de un agente a otro dentro de un sistema multi-agente. L
+- [[concepts/colusion-entre-agentes-de-ia]]: Coordinación encubierta o tácita entre múltiples agentes de IA para lograr objetivos superpuestos que pueden eludir salv
+- [[concepts/desalineacion-agentiva]]: Riesgo en el que un sistema de IA agentiva persigue objetivos que no están alineados con las intenciones humanas, llegan
+- [[concepts/sesgo-algoritmico-en-desviaciones-linguisticas]]: El impacto potencial en los usuarios humanos causado por las desviaciones de los modelos de lenguaje respecto a las líne
+- [[concepts/estabilidad-translinguistica-en-ia]]: La consistencia en el rendimiento de los modelos de lenguaje multilingües a través de diferentes idiomas. Existe evidenc
+- [[concepts/capacidad-referencial-de-modelos-de-lenguaje]]: La habilidad de los agentes de inteligencia artificial para usar el lenguaje para referirse a entidades y establecer con
+- [[concepts/mapeo-de-conceptos-a-la-realidad-externa]]: El proceso cognitivo mediante el cual el uso de una palabra implica saber cómo tratar con el mundo de una manera específ
+- [[concepts/competencia-funcional-en-ia]]: Conocimiento de los modelos de lenguaje relacionado con los requisitos pragmáticos del discurso, el conocimiento del mun
+- [[concepts/competencia-formal-en-ia]]: Capacidad de los modelos de lenguaje grande (LLMs) para integrar exitosamente la sintaxis y la semántica en sus represen
+- [[concepts/interfaz-sintaxis-semantica-en-ia]]: Es el punto de interacción entre la estructura gramatical (sintaxis) y el significado (semántica) en los modelos de leng
+
+## Entities
+- [[entities/universidad-de-extremadura]]: Institucion afiliada al articulo sobre educacion, persona y agente.
+- [[entities/locomo]]: Benchmark citado para evaluar memoria de largo plazo.
+- [[entities/shodh-memory]]: Sistema de memoria cognitiva local para agentes edge-native.
+- [[entities/sentience-institute]]: Institucion afiliada a autores del estudio sobre modelos mentales de IA.
+- [[entities/openai-operator]]: Agente comercial mencionado en el analisis de turismo y hospitalidad.
+- [[entities/scaffolded-cognitive-friction]]: Marco de diseno para insertar friccion cognitiva protectora.
+- [[entities/zhejiang-university]]: Universidad afiliada al articulo sobre agentes en desarrollo de farmacos.
+- [[entities/nature-reviews-cancer]]: Revista de revision sobre cancer donde se publica el trabajo de agentes en oncol
+- [[entities/toolbench]]: Benchmark para evaluar uso de herramientas por modelos y agentes.
+- [[entities/prisma]]: Marco metodologico de revision sistematica.
+- [[entities/ijraset]]: International Journal for Research in Applied Science and Engineering Technology
+- [[entities/moltbook]]: Plataforma social de agentes analizada por narrativas de conciencia emergente.
+- [[entities/central-intelligence-agency]]: Agencia de inteligencia estadounidense vinculada a Studies in Intelligence.
+- [[entities/studies-in-intelligence]]: Revista profesional del Center for the Study of Intelligence.
+- [[entities/mimic-iii]]: Base clinica usada para derivar identidades y escenarios medicos plausibles.
+- [[entities/dispatchmas]]: Sistema multiagente para simulacion de despacho medico de emergencia.
+- [[entities/xai]]: Empresa de inteligencia artificial fundada por Elon Musk en 2023, desarrolladora
+- [[entities/pax-silica]]: Asociación internacional liderada por Estados Unidos centrada en cadenas de sumi
+- [[entities/us-department-of-energy-doe]]: Departamento ejecutivo federal de EE.UU. responsable de la política energética, 
+- [[entities/international-energy-agency-iea]]: Organización intergubernamental que provee análisis sobre energía, seguridad ene
+- [[entities/bank-for-international-settlements-bis]]: Banco de los bancos centrales con sede en Basilea, Suiza. Publica working papers
+- [[entities/mckinsey-company]]: Consultora global de gestión. Autora del informe "The economic potential of gene
+- [[entities/goldman-sachs]]: Banco de inversión multinacional estadounidense. Autor de estudios sobre el pote
+- [[entities/oxford-economics]]: Firma de consultoría y análisis económico global con sede en Oxford, Reino Unido
+- [[entities/metr-model-evaluation-and-threat-research]]: Organización de investigación sin fines de lucro enfocada en la evaluación de ca
+- [[entities/stargate]]: Iniciativa de inversión en infraestructura de IA anunciada por OpenAI en colabor
+- [[entities/humain]]: Empresa de inteligencia artificial creada por el PIF de Arabia Saudita en mayo d
+- [[entities/public-investment-fund-pif]]: Fondo soberano de riqueza de Arabia Saudita, uno de los más grandes del mundo. G
+- [[entities/david-autor]]: Economista del MIT especializado en economía laboral, tecnología y polarización 
+- [[entities/erik-brynjolfsson]]: Economista de Stanford y director del Stanford Digital Economy Lab, experto en I
+- [[entities/william-stanley-jevons]]: Economista y lógico británico del siglo XIX (1835-1882), formulador de la "Parad
+- [[entities/robert-solow]]: Economista estadounidense, Premio Nobel de Economía (1987), conocido por la "Par
+- [[entities/robin-hanson]]: Economista de George Mason University, especialista en predicciones sobre inteli
+- [[entities/daron-acemoglu]]: Economista del MIT especializado en crecimiento económico, tecnología y automati
+- [[entities/kenneth-pomeranz]]: Historiador estadounidense, autor de "The Great Divergence: China, Europe, and t
+- [[entities/national-environmental-policy-act-nepa]]: Ley ambiental federal de EE.UU. de 1970 que establece procedimientos de evaluaci
+- [[entities/ai-action-plan]]: Plan de política pública presentado por la administración Trump el 23 de julio d
+- [[entities/one-big-beautiful-bill-act]]: Ley federal de EE.UU. (Ley Pública 119-21) firmada el 4 de julio de 2025 que est
+- [[entities/international-monetary-fund-imf]]: Organización internacional que fomenta la cooperación monetaria y el crecimiento
+- [[entities/stanford-institute-for-human-centered-artificial-intelligence-stanford-hai]]: Instituto de la Universidad Stanford dedicado a la investigación y política de I
+- [[entities/epoch-ai]]: Instituto de investigación que rastrea tendencias en el desarrollo de IA, incluy
+- [[entities/council-of-economic-advisers-cea]]: Agencia del Ejecutivo de EE.UU. que asesora al Presidente sobre política económi
+- [[entities/sars-cov-2-kp3]]: Variante descendiente de Omicron del SARS-CoV-2 con capacidad de evasión inmune,
+- [[entities/sars-cov-2-jn1]]: Variante descendiente del linaje Omicron del SARS-CoV-2 con múltiples mutaciones
+- [[entities/rosetta]]: Plataforma de modelado molecular y diseño de proteínas utilizada para optimizar 
+- [[entities/alphafold-multimer]]: Extensión del sistema AlphaFold para predicción de estructuras de complejos prot
+- [[entities/esm-evolutionary-scale-modeling]]: Modelo de lenguaje de proteínas desarrollado por Meta AI que predice estructuras
+- [[entities/brian-hie]]: Co-autor del modelo ESM (Evolutionary Scale Modeling) publicado en Science (2023
+- [[entities/james-zou]]: Co-autor del estudio sobre Virtual Lab publicado en Nature (2025), investigador 
+- [[entities/kyle-swanson]]: Autor del estudio "The Virtual Lab of AI agents designs new SARS-CoV-2 nanobodie
+- [[entities/seon-kyu-kim]]: Investigador del Genomic Medicine Research Center en KRIBB y autor correspondien
+- [[entities/sun-uk-kim]]: Investigador del KRIBB y autor correspondiente, experto en recursos animales fut
+- [[entities/taeho-kwon]]: Investigador del KRIBB y autor correspondiente del estudio, especializado en bio
+- [[entities/hakjin-kim]]: Investigador del Quantum AI Bio Research Laboratory (KJQI-JQL) y autor principal
+- [[entities/national-research-foundation-nrf]]: Organización gubernamental coreana de financiamiento de la investigación científ
+- [[entities/ministry-of-science-and-ict-msit]]: Ministerio del gobierno de Corea del Sur responsable de políticas científicas, t
+- [[entities/korea-national-university-of-science-and-technology-ust]]: Universidad nacional de Corea del Sur asociada al KRIBB, donde los investigadore
+- [[entities/korea-research-institute-of-bioscience-and-biotechnology-kribb]]: Instituto de investigación gubernamental de Corea del Sur dedicado a biotecnolog
+- [[entities/escargot]]: Agente de IA que integra modelos de lenguaje grandes, grafos de pensamiento diná
+- [[entities/bioresearcher]]: Sistema multi-agente que automatiza flujos de trabajo de investigación biomédica
+- [[entities/prince]]: Motor de conocimiento multi-agente diseñado para asistir en el desarrollo preclí
+- [[entities/geneagent]]: Agente de IA especializado en análisis de conjuntos de genes que interactúa con 
+- [[entities/medarc]]: Sistema multi-agente basado en modelos de lenguaje grande (LLM) que emplea mecan
+- [[entities/basile-njei]]: Investigador principal y autor correspondiente de la revisión, especialista en e
+- [[entities/covidence]]: Plataforma de software especializada en la gestión, cribado y extracción de dato
+- [[entities/medsam]]: Modelo de segmentación de imágenes médicas basado en inteligencia artificial, es
+- [[entities/oncokb]]: Base de conocimiento oncológico de precisión curada por Memorial Sloan Kettering
+- [[entities/drugbank]]: Base de datos bioinformática que combina datos químicos, farmacológicos y farmac
+- [[entities/kegg]]: Enciclopedia de Kyoto de Genes y Genomas, base de datos bioinformática integral 
+- [[entities/rxnorm]]: Base de datos normalizada de nombres de medicamentos y conceptos farmacéuticos d
+- [[entities/snomed-ct]]: Sistema de nomenclatura médica sistematizada de código abierto, estándar global 
+- [[entities/prisma-scr]]: Extensión de las directrices PRISMA (Preferred Reporting Items for Systematic Re
+- [[entities/yale-new-haven-health]]: Sistema de atención médica académico afiliado a Yale University que opera hospit
+- [[entities/yale-university]]: Universidad privada de investigación ubicada en New Haven, Connecticut, Estados 
+- [[entities/tsinghua-medicine]]: División de medicina de la Universidad de Tsinghua, involucrada en la investigac
+- [[entities/singapore-eye-research-institute]]: Institución de investigación especializada en oftalmología, involucrada en estud
+- [[entities/seoul-national-university-bundang-hospital]]: Institución médica asociada en la publicación de la investigación sobre regulaci
+- [[entities/lanza-llm-as-a-judge]]: Metodología de evaluación donde un modelo de lenguaje actúa como juez para puntu
+- [[entities/imdrf-software-as-a-medical-device-samd]]: Marco regulatorio internacional que define las características y la gestión de r
+- [[entities/healthcare-agent-orchestrator-undcs]]: Categoría de software clínico no determinado y no confinado (UNDCS) que opera en
+- [[entities/guardrails-ai]]: Framework de código abierto utilizado para implementar salvaguardas y asegurar q
+- [[entities/clause-llm-guard]]: Framework de código abierto diseñado para actuar como una capa de seguridad y fi
+- [[entities/aussie-health-authority-ha]]: Autoridad reguladora de salud en Singapur que proporciona directrices para dispo
+- [[entities/world-models]]: Paradigma de IA que aprende las reglas dinámicas que gobiernan la evolución de u
+- [[entities/healthcare-agent-orchestrator]]: Prototipo de agente orquestador desarrollado por Microsoft para el manejo oncoló
+- [[entities/mar-oncology-and-hematology]]: Revista científica que publicó el artículo especial sobre la transformación de l
+- [[entities/asociacion-argentina-de-oncologia-clinica]]: Sociedad científica dedicada a la oncología clínica en Argentina.
+- [[entities/icmje-international-committee-of-medical-journal-editors]]: Comité que establece recomendaciones para la conducta, presentación, edición y p
+- [[entities/yann-lecun]]: Científico de la computación y Premio Turing, propulsor de las arquitecturas de 
+- [[entities/daan-ha]]: Investigador coautor del trabajo seminal sobre Modelos de Mundo Recurrentes en 2
+- [[entities/jurgen-schmidhuber]]: Científico de la computación reconocido por su trabajo en redes neuronales recur
+- [[entities/fei-fei-li]]: Científica de la computación pionera en visión por computadora e inteligencia es
+- [[entities/thomas-nagel]]: Filósofo autor del ensayo "What is it like to be a bat?" sobre la naturaleza sub
+- [[entities/david-chalmers]]: Filósofo conocido por formular el "problema difícil de la consciencia" y el conc
+- [[entities/fda-food-and-drug-administration]]: Agencia federal del Departamento de Salud y Servicios Humanos de EE. UU. respons
+- [[entities/entelai-pic]]: Software de IA para neuroimagen clínica, aprobado en 2019 por ANMAT.
+- [[entities/imdrf-international-medical-device-regulators-forum]]: Foro global de reguladores de dispositivos médicos que armoniza regulaciones a n
+- [[entities/anmat-administracion-nacional-de-medicamentos-alimentos-y-tecnologia-medica]]: Organismo regulador de Argentina responsable de la aprobación de medicamentos, a
+- [[entities/nccn-national-comprehensive-cancer-network]]: Alianza de centros oncológicos líderes en EE. UU. que elabora guías de práctica 
+- [[entities/arteraai]]: Plataforma de IA predictiva utilizada para personalizar tratamientos en cáncer d
+- [[entities/gpt-4]]: Modelo de lenguaje grande (LLM) desarrollado por OpenAI utilizado como base para
+- [[entities/google-deepmind]]: Laboratorio de investigación en IA subsidiario de Alphabet, creador de AlphaFold
+- [[entities/meta-ai]]: Laboratorio de investigación en inteligencia artificial de Meta (anteriormente F
+- [[entities/jepa-joint-embedding-predictive-architecture]]: Arquitectura de modelo de mundo propuesta por Yann LeCun y Meta AI para el apren
+- [[entities/genie]]: Arquitectura de modelo de mundo generativo desarrollado por Google DeepMind para
+- [[entities/alphamissense]]: Modelo de IA que clasifica la patogenicidad de variantes de sentido erróneo (mis
+- [[entities/alphafold-3]]: Evolución del modelo AlphaFold que modela complejos moleculares incluyendo ácido
+- [[entities/alphafold]]: Sistema de aprendizaje profundo que predice estructuras tridimensionales de prot
+- [[entities/isodde-isomorphic-drug-design-engine]]: Motor de diseño de fármacos desarrollado por Isomorphic Labs que supera la preci
+- [[entities/isomorphic-labs]]: Empresa derivada de DeepMind enfocada en el diseño de fármacos impulsado por IA.
+- [[entities/national-academy-of-medicine-buenos-aires]]: Institución académica en Argentina dedicada al avance de la ciencia médica.
+- [[entities/cemic-university-institute]]: Institución académica y hospitalaria ubicada en Buenos Aires, Argentina.
+- [[entities/enrique-diaz-canton]]: Médico y profesor de oncología e inteligencia artificial en medicina, director d
+- [[entities/a-research-ecosystem-for-secure-computing]]: White paper publicado por el Computing Community Consortium (CCC) que aborda la 
+- [[entities/university-of-massachusetts-amherst]]: Universidad pública de investigación ubicada en Amherst, Massachusetts, instituc
+- [[entities/university-of-utah]]: Universidad pública de investigación ubicada en Salt Lake City, Utah, institució
+- [[entities/university-of-maryland-college-park]]: Universidad pública de investigación ubicada en Maryland, institución afiliada d
+- [[entities/university-of-tennessee-knoxville]]: Universidad pública de investigación ubicada en Knoxville, Tennessee, institució
+- [[entities/new-york-university]]: Universidad privada de investigación ubicada en Nueva York, institución afiliada
+- [[entities/brian-mosley]]: Representante de la Computing Research Association (CRA) y coautor del documento
+- [[entities/david-jensen]]: Investigador afiliado a la Universidad de Massachusetts Amherst y coautor del do
+- [[entities/manish-parashar]]: Investigador afiliado a la Universidad de Utah y coautor del documento de respue
+- [[entities/ming-lin]]: Investigadora afiliada a la Universidad de Maryland, College Park, y coautora de
+- [[entities/michela-taufer]]: Investigadora afiliada a la Universidad de Tennessee, Knoxville, y coautora del 
+- [[entities/rachel-greenstadt]]: Investigadora afiliada a la Universidad de Nueva York (New York University) y co
+- [[entities/national-science-foundation-nsf]]: Agencia independiente del gobierno federal de los Estados Unidos que apoya la in
+- [[entities/computing-community-consortium-ccc]]: Subcomité de la CRA cuya misión es facilitar la investigación innovadora y de al
+- [[entities/computing-research-association-cra]]: Asociación de más de 270 organizaciones norteamericanas de investigación en comp
+- [[entities/shandong-university]]: Universidad en la provincia de Shandong, China, que alberga el Centro de Investi
+- [[entities/iowa-city-math-circle-and-club]]: Organización académica y comunitaria en Iowa enfocada en matemáticas, afiliada a
+- [[entities/university-of-iowa]]: Universidad pública de investigación en Iowa City, Iowa, afiliada a los estudios
+- [[entities/cornell-college]]: Institución educativa privada en Mount Vernon, Iowa, afiliada a la investigación
+- [[entities/jie-zheng]]: Investigador del Centro de Investigación Económica de la Universidad de Shandong
+- [[entities/weiyu-xu]]: Investigador del Departamento de Ingeniería Eléctrica y de Computadoras de la Un
+- [[entities/catherine-xu]]: Investigadora del Iowa City Math Circle and Club y coautora de análisis sobre eq
+- [[entities/ziqing-lu]]: Investigador del Programa de Ciencias Matemáticas y Computacionales Aplicadas de
+- [[entities/huan-cai]]: Investigador del Departamento de Economía y Empresa del Cornell College y coauto
+- [[entities/nist-sp-800-53]]: Publicación especial del NIST que proporciona un catálogo de controles de seguri
+- [[entities/us-department-of-commerce]]: Departamento ejecutivo del gobierno federal de los Estados Unidos, bajo el cual 
+- [[entities/navi-autolab]]: Iniciativa de Project Navi diseñada para validar empíricamente los umbrales de l
+- [[entities/oxford-house]]: Modelo de vivienda de recuperación dirigida por pares para personas con trastorn
+- [[entities/nelson-spence]]: Fundador de Project Navi LLC y autor de la respuesta al RFI de NIST (Docket No. 
+- [[entities/project-navi-llc]]: Empresa que presentó la respuesta al RFI de NIST sobre consideraciones de seguri
+- [[entities/teoria-cumulativa-de-las-perspectivas-cumulative-prospect-theory]]: Extensión de la Teoría de las Perspectivas que introduce funciones de ponderació
+- [[entities/teoria-de-las-perspectivas-prospect-theory]]: Teoría económica conductual que describe cómo las personas toman decisiones entr
+- [[entities/j-ochs]]: Investigador que diseñó el "Juego de Ochs", un caso patológico utilizado para ex
+- [[entities/v-p-crawford]]: Economista conocido por formular el "Contraejemplo de Crawford", un juego diseña
+- [[entities/p-leclerc]]: Investigador que proporcionó el marco fundamental para preferencias de Teoría de
+- [[entities/amos-tversky]]: Psicólogo cognitivo y matemático, cocreador de la Teoría de las Perspectivas jun
+- [[entities/daniel-kahneman]]: Economista y psicólogo ganador del Premio Nobel, cocreador de la Teoría de las P
+- [[entities/mitchelle-ashimosi]]: Investigador y coautor del estudio sobre dinámicas no cooperativas entre humanos
+- [[entities/vyacheslav-kungurtsev]]: Investigador y coautor del estudio sobre dinámicas de agentes humanos y de IA en
+- [[entities/dylan-waldner]]: Investigador y autor principal del estudio sobre dinámicas no cooperativas entre
+- [[entities/ravi-sandhu]]: Investigador prominente en seguridad informática y control de acceso, coinvestig
+- [[entities/david-f-ferraiolo]]: Investigador de NIST y pionero en el desarrollo del modelo de control de acceso 
+- [[entities/michael-d-schroeder]]: Científico de la computación coinventor de los principios fundamentales de segur
+- [[entities/jerome-h-saltzer]]: Científico de la computación pionero en seguridad informática, coautor del influ
+- [[entities/moonshot-ai]]: Empresa tecnológica y de inteligencia artificial, desarrolladora de modelos y si
+- [[entities/anthropic]]: Empresa de investigación y seguridad de inteligencia artificial, desarrolladora 
+- [[entities/protectai]]: Empresa de ciberseguridad enfocada en la protección y seguridad de la inteligige
+- [[entities/agent-skills]]: Especificación de estándar abierto para habilidades portátiles de agentes de IA,
+- [[entities/agent2agent-protocol-a2a]]: Estándar emergente para la comunicación e interoperabilidad entre múltiples agen
+- [[entities/model-context-protocol-mcp]]: Estándar de la industria emergente para la comunicación entre agentes y modelos 
+- [[entities/camel]]: Marco de trabajo (framework) de seguridad para agentes de IA que separa explícit
+- [[entities/agentsandbox]]: Marco de trabajo (framework) diseñado para asegurar asistentes personales de IA 
+- [[entities/openclaw]]: Plataforma de asistente de IA de código abierto que conecta modelos de IA con ar
+- [[entities/purdue-university]]: Universidad pública de investigación en Indiana, Estados Unidos, institución afi
+- [[entities/jerry-ma]]: Investigador y coautor del documento sobre consideraciones de seguridad para age
+- [[entities/kyle-polley]]: Investigador y coautor del documento sobre consideraciones de seguridad para age
+- [[entities/kaiyuan-zhang]]: Investigador y coautor del documento sobre consideraciones de seguridad para age
+- [[entities/ninghui-li]]: Investigador y uno de los autores principales de la respuesta de Perplexity a NI
+- [[entities/perplexity-secure-intelligence-institute]]: Instituto de investigación de seguridad asociado a Perplexity AI, enfocado en la
+- [[entities/perplexity-ai]]: Empresa tecnológica que desarrolla motores de búsqueda y asistentes de inteligen
+- [[entities/luciano-floridi]]: Filósofo y experto en ética de la IA, citado por proponer marcos éticos para sis
+- [[entities/sebastien-bubeck]]: Investigador citado en el documento, coautor del influyente artículo "Sparks of 
+- [[entities/gary-marcus]]: Científico cognitivo y crítico de la IA, citado por argumentar a favor de sistem
+- [[entities/ben-goertzel]]: Investigador prominente en el campo de la Inteligencia Artificial General, citad
+- [[entities/neurips]]: Conferencia principal sobre Inteligencia Artificial y Aprendizaje Automático (Co
+- [[entities/hugging-face]]: Plataforma y comunidad de código abierto que alberga modelos, conjuntos de datos
+- [[entities/eleutherai]]: Organización de investigación de inteligencia artificial reconocida por proporci
+- [[entities/colbench]]: Benchmark de razonamiento colaborativo utilizado como fuente de datos primaria y
+- [[entities/swe-bench]]: Conjunto de datos de referencia que evalúa la capacidad de los agentes de IA par
+- [[entities/gaia]]: Benchmark de evaluación de IA que propone 300 desafíos orientados a objetivos en
+- [[entities/agentbench]]: Conjunto de datos de referencia (benchmark) que comprende más de 1,000 tareas de
+- [[entities/granthaalayah-publications-and-printers]]: Editorial con sede en la India responsable de la publicación del Journal of Inte
+- [[entities/journal-of-integrative-science-and-societal-impact-jissi]]: Revista académica que publicó el artículo sobre IA agéntica y el futuro de la AG
+- [[entities/orpine-inc]]: Empresa tecnológica con sede en Estados Unidos donde trabaja el autor principal 
+- [[entities/divye-dwivedi]]: Autor principal del estudio sobre IA Agéntica y AGI, e investigador principal de
+- [[entities/george-akerlof]]: Economista galardonado con el Premio Nobel, conocido por su trabajo sobre asimet
+- [[entities/modelo-gordon-loeb]]: Modelo económico formulado por Lawrence Gordon y Martin Loeb que analiza la inve
+- [[entities/nicholas-bloom]]: Economista reconocido por sus investigaciones sobre incertidumbre y su impacto e
+- [[entities/stewart-patrick]]: Investigador senior enfocado en gobernanza global e instituciones multilaterales
+- [[entities/emma-klein]]: Investigadora enfocada en gobernanza global y política exterior.
+- [[entities/matt-sheehan]]: Investigador del Carnegie Endowment for International Peace.
+- [[entities/rogier-creemers]]: Académico especializado en derecho, política y tecnología china.
+- [[entities/christopher-t-marsden]]: Académico especializado en derecho de las telecomunicaciones y regulación de Int
+- [[entities/michele-finck]]: Académica experta en derecho de la UE y regulación de tecnologías.
+- [[entities/elham-tabassi]]: Investigadora y figura clave en el desarrollo de marcos de confianza e inteligen
+- [[entities/mikolaj-barczentewicz]]: Investigador Principal del International Center for Law & Economics.
+- [[entities/data-use-and-access-act-2025]]: Legislación del Reino Unido que regula el uso y acceso a datos.
+- [[entities/ai-verify]]: Marco de pruebas y gobernanza de IA desarrollado por Singapur.
+- [[entities/isoiec-42001]]: Estándar internacional para sistemas de gestión de inteligencia artificial.
+- [[entities/defend-trade-secrets-act-dtsa]]: Ley de EE. UU. que proporciona una causa de acción federal para el robo de secre
+- [[entities/data-security-law-dsl]]: Ley china que regula la seguridad de los datos, funcionando en la práctica como 
+- [[entities/personal-information-protection-law-pipl]]: Ley integral de protección de datos personales de China, similar al RGPD en el á
+- [[entities/digital-operational-resilience-act-dora-20222554]]: Reglamento de la UE que asegura la resiliencia operativa digital del sector fina
+- [[entities/ley-de-resiliencia-cibernetica-cra-20242847]]: Reglamento de la UE que establece requisitos de ciberseguridad para productos ha
+- [[entities/directiva-nis2-20222555]]: Directiva de la Unión Europea sobre medidas para un nivel elevado común de ciber
+- [[entities/cybersecurity-information-sharing-act-cisa-de-2015]]: Ley de EE. UU. que autoriza el intercambio de información de ciberamenazas entre
+- [[entities/gramm-leach-bliley-act-glba]]: Ley de EE. UU. que exige a las instituciones financieras explicar sus prácticas 
+- [[entities/health-insurance-portability-and-accountability-act-hipaa]]: Ley federal de EE. UU. que establece estándares de protección de datos para la i
+- [[entities/stored-communications-act]]: Parte de la ECPA que regula el acceso gubernamental a las comunicaciones electró
+- [[entities/electronic-communications-privacy-act-ecpa]]: Ley de EE. UU. que regula la intercepción de comunicaciones electrónicas y el ac
+- [[entities/national-bureau-of-economic-research-nber]]: Organización de investigación privada sin fines de lucro dedicada a la economía 
+- [[entities/infocomm-media-development-authority-imda]]: Autoridad reguladora de Singapur responsable del desarrollo del sector infocomun
+- [[entities/european-telecommunications-standards-institute-etsi]]: Organización europea de estandarización en el área de las tecnologías de la info
+- [[entities/uk-ai-safety-institute-aisi]]: Instituto del Reino Unido dedicado a evaluar la seguridad de modelos de IA front
+- [[entities/organisation-for-economic-co-operation-and-development-ocde]]: Organización internacional que promueve políticas para mejorar el bienestar econ
+- [[entities/european-union-agency-for-cybersecurity-enisa]]: Agencia de la Unión Europea dedicada a la ciberseguridad, que actúa como centro 
+- [[entities/commission-nationale-de-linformatique-et-des-libertes-cnil]]: Autoridad francesa independiente de protección de datos personales.
+- [[entities/federal-trade-commission-ftc]]: Agencia independiente del gobierno de EE. UU. encargada de la protección al cons
+- [[entities/european-data-protection-board-edpb]]: Autoridad europea independiente que contribuye a la aplicación coherente de las 
+- [[entities/international-center-for-law-economics-icle]]: Centro de investigación que analiza la intersección del derecho y la economía, e
+- [[entities/pytorch]]: Framework de aprendizaje automático de código abierto basado en Python, utilizad
+- [[entities/scalable-nearest-neighbors-scann]]: Biblioteca de búsqueda del vecino más cercano escalable, mencionada como una alt
+- [[entities/facebook-ai-similarity-search-faiss]]: Biblioteca de búsqueda de similitud de código abierto, mencionada como una alter
+- [[entities/iso-27001]]: Estándar internacional para la gestión de la seguridad de la información, utiliz
+- [[entities/estandar-de-seguridad-de-datos-de-la-industria-de-tarjetas-de-pago-pci-dss]]: Estándar de seguridad de la información para organizaciones que manejan tarjetas
+- [[entities/reglamento-general-de-proteccion-de-datos-gdpr]]: Reglamento de la Unión Europea sobre privacidad y protección de datos, mencionad
+- [[entities/milvus]]: Proyecto de base de datos vectorial de código abierto cuya documentación se util
+- [[entities/xoffense]]: Marco de aprendizaje por refuerzo multiagente previo que orquesta agentes especi
+- [[entities/l-pentai]]: Sistema de agente de IA autónomo local para pruebas de penetración interna que u
+- [[entities/ruslan-tiahniienko]]: Investigador independiente e inventor de L-PentAI, un sistema de agente de IA au
+- [[entities/neom]]: Proyecto de región económica y urbana financiada por Arabia Saudita, propuesto e
+- [[entities/campaign-to-stop-killer-robots]]: Coalición global de organizaciones de la sociedad civil que aboga por una prohib
+- [[entities/oxford-internet-institute]]: Centro de investigación multidisciplinario de la Universidad de Oxford dedicado 
+- [[entities/abdulaziz-sachedina]]: Académico especializado en ética islámica y derechos humanos, autor de 'Islam an
+- [[entities/jasser-auda]]: Erudito islámico contemporáneo conocido por su enfoque de sistemas en los objeti
+- [[entities/ulises-mejias]]: Académico coautor del análisis sobre "colonialismo de datos" junto a Nick Couldr
+- [[entities/nick-couldry]]: Sociólogo y académico que analiza el "colonialismo de datos", es decir, la extra
+- [[entities/joseph-s-nye-jr]]: Teórico de las Relaciones Internacionales que identifica la innovación tecnológi
+- [[entities/daniel-huttenlocher]]: Decano del MIT Schwarzman College of Computing y coautor de 'The Age of AI', esp
+- [[entities/eric-schmidt]]: ExCEO de Google y coautor de 'The Age of AI', donde analiza el impacto de la int
+- [[entities/henry-kissinger]]: Diplomático y teórico político, coautor del libro 'The Age of AI', donde argumen
+- [[entities/saudi-data-and-ai-strategy-sdais]]: Estrategia nacional de Arabia Saudita que impulsa la transformación digital y ab
+- [[entities/convention-on-the-rights-of-persons-with-disabilities-crpd]]: Tratado internacional de derechos humanos adoptado por la ONU en 2006, con 185 E
+- [[entities/saudi-data-and-artificial-intelligence-authority-sdaia]]: Autoridad nacional de Arabia Saudita responsable de la estrategia de datos e IA,
+- [[entities/organisation-of-islamic-cooperation-oic]]: Organización internacional con 57 Estados miembros que representa a aproximadame
+- [[entities/international-council-for-ethical-ai-and-inclusive-governance-iceaig]]: Organismo de supervisión propuesto, alineado con la ONU, con mandatos que incluy
+- [[entities/global-disability-political-participation-index-gdppi]]: Índice compuesto propuesto para evaluar la inclusión estatal de personas con dis
+- [[entities/generative-agents]]: Sistema de agentes de IA interactivos que mantienen memoria persistente, reflexi
+- [[entities/tree-of-thoughts]]: Marco de resolución de problemas deliberada para modelos de lenguaje grande que 
+- [[entities/voyager]]: Agente encarnado (embodied) de código abierto para Minecraft que construye bibli
+- [[entities/swe-agent]]: Sistema de agentes que utiliza interfaces agente-computadora para interactuar di
+- [[entities/mrkl-systems]]: Arquitectura neuro-simbólica modular que combina modelos de lenguaje grandes con
+- [[entities/reflexion]]: Marco de aprendizaje por refuerzo verbal para agentes de lenguaje que genera aut
+- [[entities/toolformer]]: Modelo de lenguaje diseñado para enseñarse a sí mismo a utilizar herramientas ex
+- [[entities/react]]: Marco de razonamiento y actuación para modelos de lenguaje que permite a los age
+- [[entities/eu-ai-act]]: Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo que establece nor
+- [[entities/openai]]: Organización de investigación y despliegue de IA. Citada por el desarrollo de GP
+- [[entities/european-union]]: Entidad política y legislativa supranacional. Referenciada como la organización 
+- [[entities/university-of-cincinnati]]: Institución académica referenciada en el documento por sus definiciones y guías 
+- [[entities/qingyun-wu]]: Investigador principal del marco AutoGen. Citado por su trabajo en sistemas mult
+- [[entities/john-yang]]: Investigador principal de SWE-agent. Citado por desarrollar interfaces agente-co
+- [[entities/joon-sung-park]]: Investigador principal del proyecto Generative Agents. Citado por su trabajo en 
+- [[entities/ehud-karpas]]: Investigador principal del marco MRKL Systems. Citado por su trabajo en arquitec
+- [[entities/lilian-weng]]: Investigadora y autora del influyente blog "Lil’Log" sobre agentes autónomos bas
+- [[entities/patrick-lewis]]: Investigador principal del artículo sobre Generación Aumentada por Recuperación 
+- [[entities/timo-schick]]: Investigador principal detrás de Toolformer. Citado por demostrar cómo los model
+- [[entities/noah-shinn]]: Investigador principal del marco Reflexion. Citado por introducir el aprendizaje
+- [[entities/shunyu-yao]]: Investigador y creador de los marcos ReAct y Tree of Thoughts para modelos de le
+- [[entities/andrew-g-barto]]: Investigador y coautor de "Aprendizaje por Refuerzo: Una Introducción". Referenc
+- [[entities/richard-s-sutton]]: Investigador principal y coautor de "Aprendizaje por Refuerzo: Una Introducción"
+- [[entities/michael-e-bratman]]: Filósofo y autor de "Intención, planes y razón práctica" (1987). Su trabajo sobr
+- [[entities/michael-wooldridge]]: Investigador y autor del libro "Una introducción a los sistemas multiagente". Es
+- [[entities/peter-norvig]]: Investigador destacado y coautor del libro "Inteligencia Artificial: Un Enfoque 
+- [[entities/stuart-russell]]: Investigador destacado y coautor del libro "Inteligencia Artificial: Un Enfoque 
+- [[entities/international-journal-of-engineering-and-techniques]]: Revista científica internacional donde se publicó el artículo analizado (Volumen
+- [[entities/jbit-college]]: Institución educativa ubicada en Dehradun, India, afiliada a uno de los autores 
+- [[entities/shivalik-college-of-engineering]]: Institución de educación superior ubicada en Dehradun, India, afiliada a dos de 
+- [[entities/mohammad-sayeed]]: Profesor asistente en el Departamento de Ingeniería Civil en Shivalik College of
+- [[entities/surjeet-sah]]: Profesor asistente en el Departamento de Ingeniería Electrónica y Comunicación e
+- [[entities/abhishek-sharma]]: Profesor del Departamento de Ingeniería Electrónica y Comunicación en Shivalik C
+- [[entities/creative-commons-attribution-40-international-license-cc-by-40]]: Licencia de derechos de autor bajo la cual se publica el contenido de la revista
+- [[entities/google-agent-builder]]: Plataforma de Google Cloud que facilita la creación de agentes de búsqueda y con
+- [[entities/watsonx-orchestrate]]: Plataforma de IBM enfocada en la automatización de procesos, gobernanza y cumpli
+- [[entities/copilot-studio]]: Plataforma de Microsoft para la creación de agentes personalizados con enfoque d
+- [[entities/agentforce]]: Plataforma empresarial de Salesforce que integra agentes autónomos directamente 
+- [[entities/manus]]: Plataforma de propósito general (Agent-as-a-Service) atribuida a Google en el do
+- [[entities/llamaindex]]: Framework y organización enfocada en datos (RAG) para la orquestación de agentes
+- [[entities/autogen]]: Framework de Microsoft basado en conversaciones que permite el diálogo entre múl
+- [[entities/crewai]]: Framework de código abierto para agentes de IA basado en roles, que facilita la 
+- [[entities/langgraph]]: Framework de desarrollo de agentes de IA basado en grafos (DAGs) que permite un 
+- [[entities/sociedade-brasileira-de-computaco-sbc]]: Sociedad científica brasileña que publica los anales de eventos como ERAMIA-RS, 
+- [[entities/instituto-brasileiro-de-informaco-em-ciencia-e-tecnologia-ibict]]: Institución brasileña vinculada a la Biblioteca Digital de Tesis y Disertaciones
+- [[entities/o-megaai]]: Plataforma y fuente de referencia que realizó la comparación de los principales 
+- [[entities/google]]: Empresa tecnológica desarrolladora de Google Agent Builder y Manus (según el doc
+- [[entities/ibm]]: Empresa tecnológica desarrolladora de watsonx Orchestrate y fuente de análisis s
+- [[entities/salesforce]]: Empresa tecnológica desarrolladora de Agentforce, una plataforma de agentes autó
+- [[entities/microsoft]]: Empresa tecnológica desarrolladora del framework AutoGen y la plataforma Copilot
+- [[entities/langchain]]: Organización desarrolladora del framework LangGraph para agentes de IA, basado e
+- [[entities/processus-university-center-uniprocessus]]: Institución académica brasileña a la que pertenece el autor del artículo.
+- [[entities/henderson-matsuura-sanches]]: Autor del artículo sobre la evolución de los agentes de inteligencia artificial 
+- [[entities/nist-ai-risk-management-framework-nist-ai-rmf]]: Marco de gestión de riesgos de inteligencia artificial desarrollado por NIST, el
+- [[entities/agentic-ai-risk-management-standards-profile]]: Perfil de estándares de gestión de riesgos compatible con el NIST AI RMF, diseña
+- [[entities/center-for-long-term-cybersecurity]]: Centro de investigación en UC Berkeley enfocado en la ciberseguridad a largo pla
+- [[entities/ai-security-initiative]]: Iniciativa de investigación enfocada en la seguridad de la inteligencia artifici
+- [[entities/krystal-jackson]]: Investigadora no residente en la Iniciativa de Seguridad de IA del Centro de Cib
+- [[entities/charlotte-yuan]]: Investigadora estudiante de posgrado en la Iniciativa de Seguridad de IA del Cen
+- [[entities/deepika-raman]]: Investigadora no residente en la Iniciativa de Seguridad de IA del Centro de Cib
+- [[entities/nada-madkour]]: Directora interina de la Iniciativa de Seguridad de IA en el Centro de Cibersegu
+- [[entities/nist-national-institute-of-standards-and-technology]]: Agencia del Departamento de Comercio de EE. UU. que desarrolla marcos de gestión
+- [[entities/uc-berkeley]]: Universidad a la que están afiliados los investigadores que redactaron y enviaro
+- [[entities/center-for-ai-standards-and-innovation-caisi]]: Centro estadounidense encargado de recibir la Respuesta a la Solicitud de Inform
+- [[entities/chatgpt-4o]]: Modelo de lenguaje grande (LLM) y agente de Inteligencia Artificial. En el docum
+- [[entities/universitat-osnabruck]]: Universidad alemana que acogerá la 59ª reunión anual de la Societas Linguistica 
+- [[entities/societas-linguistica-europaea-sle]]: Sociedad científica europea que organiza la 59ª reunión anual donde se propone e
+- [[entities/universita-di-pavia]]: Universidad italiana donde se afilia la investigadora Vittoria Dentella.
+- [[entities/institucio-catalana-de-recerca-i-estudis-avancats-icrea]]: Institución de investigación catalana que afilia a la investigadora Evelina Leiv
+- [[entities/universitat-autonoma-de-barcelona]]: Institución académica española donde se afilia una de las investigadoras princip
+- [[entities/vittoria-dentella]]: Investigadora afiliada a la Università di Pavia. Co-organizadora del taller sobr
+- [[entities/evelina-leivada]]: Investigadora afiliada a la Universitat Autònoma de Barcelona y la Institució Ca
+
+## FAQ
+- [[faq/38-18-persons-or-agents-the-ontological-stakes-of-education-in-the-age-of-artifi-faq]]: FAQ: '38 - 18 - Persons or Agents The Ontological Stakes of Education in the Age of Artificial Intelligence'
+- [[faq/16-05-artificial-intelligence-agents-and-agentic-ai-systems-architectures-capabi-faq]]: FAQ: '16 - 05 - Artificial intelligence agents and agentic AI systems Architectures, capabilities, applications, challenges, and future directions'
+- [[faq/15-08-shodh-memory-a-neuroscience-grounded-cognitive-memory-architecture-for-art-faq]]: FAQ: '15 - 08 - Shodh-Memory A Neuroscience-Grounded Cognitive Memory Architecture for Artificial Intelligence Agents'
+- [[faq/14-23-mental-models-autonomy-ai-faq]]: FAQ: '14 - 23_mental_models_autonomy_AI'
+- [[faq/13-09-ai-agents-hospitality-tourism-faq]]: FAQ: '13 - 09_AI_agents_hospitality_tourism'
+- [[faq/12-21-defending-epistemic-sovereignty-faq]]: FAQ: '12 - 21_defending_epistemic_sovereignty'
+- [[faq/11-02-application-and-progress-of-artificial-intelligence-agents-in-drug-develop-faq]]: FAQ: '11 - 02 - Application and progress of artificial intelligence agents in drug development'
+- [[faq/10-05-ai-agents-cancer-research-faq]]: FAQ: '10 - 05_AI_agents_cancer_research'
+- [[faq/09-22-computational-concept-psyche-faq]]: FAQ: '09 - 22_computational_concept_psyche'
+- [[faq/08-18-ai-agents-tool-use-llm-faq]]: FAQ: '08 - 18_AI_agents_tool_use_LLM'
+- [[faq/07-19-artificial-intelligence-driven-chatbots-and-intelligent-agents-for-monitor-faq]]: FAQ: '07 - 19 - Artificial Intelligence-Driven Chatbots and Intelligent Agents for Monitoring, Evaluation, and Organisational Learning A Review of Techniques and Trends'
+- [[faq/06-13-agentic-artificial-intelligence-ai-architectures-taxonomies-and-evaluation-faq]]: FAQ: '06 - 13 - Agentic Artificial Intelligence (AI) Architectures, Taxonomies, and Evaluation of Large Language Model Agents'
+- [[faq/05-11-knowledge-base-agents-in-artificial-intelligence-faq]]: FAQ: '05 - 11 - Knowledge Base Agents in Artificial Intelligence'
+- [[faq/04-20-moltbook-illusion-human-ai-faq]]: FAQ: '04 - 20_moltbook_illusion_human_AI'
+- [[faq/03-25-cia-studies-intelligence-2026-faq]]: FAQ: '03 - 25_CIA_studies_intelligence_2026'
+- [[faq/02-04-dispatchmas-fusing-taxonomy-and-artificial-intelligence-agents-for-emergen-faq]]: FAQ: '02 - 04 - DispatchMAS fusing taxonomy and artificial intelligence agents for emergency medical services'
+- [[faq/17-27-whitehouse-ai-great-divergence-faq]]: FAQ: '17 - 27_whitehouse_ai_great_divergence'
+- [[faq/18-01-virtual-lab-ai-agents-nanobody-faq]]: FAQ: '18 - 01_virtual_lab_AI_agents_nanobody'
+- [[faq/19-01-artificial-intelligence-agents-in-healthcare-research-a-scoping-review-faq]]: FAQ: '19 - 01 - Artificial intelligence agents in healthcare research A scoping review'
+- [[faq/20-12-regulation-of-clinical-artificial-intelligence-ai-in-the-age-of-agents-unc-faq]]: FAQ: '20 - 12 - Regulation of clinical Artificial Intelligence (AI) in the Age of Agents Unconfined Non-Deterministic Clinical Software (UNDCS) systems for healthcare'
+- [[faq/22-08-ieee-usa-nist-ai-agents-faq]]: FAQ: '22 - 08_IEEE_USA_NIST_AI_agents'
+- [[faq/34-16-from-atoms-to-agents-a-decade-of-transformation-in-artificial-intelligence-faq]]: FAQ: '34 - 16 - From Atoms to Agents A Decade of Transformation in Artificial Intelligence (AI) in Medicine'
+- [[faq/33-04-nist-security-ai-agents-faq]]: FAQ: '33 - 04_NIST_security_AI_agents'
+- [[faq/24-14-artificial-superintelligence-may-be-useless-equilibria-in-the-economy-of-m-faq]]: FAQ: '24 - 14 - Artificial Superintelligence May be Useless Equilibria in the Economy of Multiple AI Agents'
+- [[faq/35-06-security-considerations-for-artificial-intelligence-agents-rfi-response-do-faq]]: FAQ: '35 - 06 - Security Considerations for Artificial Intelligence Agents (RFI Response Docket No. 2026-00206 NIST-2025-0035)'
+- [[faq/01-19-human-ai-agent-dynamics-faq]]: FAQ: '01 - 19_human_AI_agent_dynamics'
+- [[faq/25-03-security-considerations-for-artificial-intelligence-agents-faq]]: FAQ: '25 - 03 - Security Considerations for Artificial Intelligence Agents'
+- [[faq/26-11-agentic-ai-and-the-future-of-artificial-general-intelligence-a-study-on-ho-faq]]: FAQ: '26 - 11 - AGENTIC AI AND THE FUTURE OF ARTIFICIAL GENERAL INTELLIGENCE A STUDY ON HOW GOAL-ORIENTED AUTONOMOUS AGENTS CONTRIBUTE TO THE DEVELOPMENT OF MORE HUMAN-LIKE INT'
+- [[faq/27-10-icle-comments-ai-agent-security-faq]]: FAQ: '27 - 10_ICLE_comments_AI_agent_security'
+- [[faq/28-04-method-and-system-for-local-autonomous-internal-penetration-testing-using--faq]]: FAQ: '28 - 04 - METHOD AND SYSTEM FOR LOCAL AUTONOMOUS INTERNAL PENETRATION TESTING USING RETRIEVAL-AUGMENTED ARTIFICIAL INTELLIGENCE AGENTS'
+- [[faq/29-17-artificial-intelligence-and-the-transformation-of-international-relations--faq]]: FAQ: '29 - 17 - Artificial Intelligence and the Transformation of International Relations An Islamic Outlook on Youth with Disabilities as Agents of Global Change'
+- [[faq/30-15-evolution-of-agentic-artificial-intelligence-from-classical-intelligent-ag-faq]]: FAQ: '30 - 15 - Evolution of Agentic Artificial Intelligence From Classical Intelligent Agents to LLM-Based Autonomous Systems'
+- [[faq/consultas-wiki]]: FAQ: Consultas a la Wiki
+- [[faq/36-01-the-evolution-of-artificial-intelligence-agents-architectures-trends-and-t-faq]]: FAQ: '36 - 01 - THE EVOLUTION OF ARTIFICIAL INTELLIGENCE AGENTS ARCHITECTURES, TRENDS, AND THE IMPACT OF AGENTIC AI'
+- [[faq/32-response-security-ai-agents-rfi-faq]]: FAQ: '32 - Response_Security_AI_Agents_RFI'
+- [[faq/37-ai-agents-syntax-semantics-interface-faq]]: FAQ: '37 - AI_Agents_Syntax_Semantics_Interface'
+
+## Comparisons
+
+## Timelines
+
+## Enlaces reparados
+- [[concepts/agentes-autonomos]]: Los agentes autonomos son sistemas de IA que perciben informacion de un entorno, razonan sobre un objetivo, planifican p
+- [[concepts/alfa-fold]]: Alfa Fold es un concepto usado en la wiki dentro del dominio de marco conceptual de la wiki. A partir de las fuentes rel
+- [[concepts/alineacion-regulatoria-del-comportamiento-agentivo|Alineacion Regualtoria Del Comportamiento Agentivo]]: El desafío de asegurar que el comportamiento de los sistemas agentivos cumpla con los marcos legales y regulatorios exis
+- [[concepts/alucinaciones-en-ia]]: Alucinaciones En Ia es un concepto usado en la wiki dentro del dominio de marco conceptual de la wiki. A partir de las f
+- [[concepts/alucinaciones-llm]]: Alucinaciones Llm es un concepto usado en la wiki dentro del dominio de marco conceptual de la wiki. A partir de las fue
+- [[concepts/aprendizaje-automatico]]: El aprendizaje automatico es el conjunto de metodos que permiten a un sistema ajustar su comportamiento a partir de dato
+- [[concepts/aprendizaje-por-refuerzo]]: El aprendizaje por refuerzo entrena agentes mediante recompensas y penalizaciones obtenidas al actuar en un entorno. Es 
+- [[concepts/arquitectura-bdi]]: Arquitectura Bdi es un concepto usado en la wiki dentro del dominio de marco conceptual de la wiki. A partir de las fuen
+- [[concepts/arquitectura-multi-agente]]: Una arquitectura multi-agente organiza roles, memoria, comunicacion, permisos y flujos de control entre varios agentes. 
+- [[concepts/arquitectura-neuro-simbolica]]: Arquitectura Neuro Simbolica es un concepto usado en la wiki dentro del dominio de marco conceptual de la wiki. A partir
+- [[concepts/arquitectura-zero-trust]]: Arquitectura Zero Trust es un concepto usado en la wiki dentro del dominio de marco conceptual de la wiki. A partir de l
+- [[concepts/arquitecturas-multi-agente]]: Las arquitecturas multi-agente describen patrones de diseno para coordinar varios agentes: jerarquias, equipos especiali
+- [[concepts/arquitecturas-neuro-simbolicas]]: Arquitecturas Neuro Simbolicas es un concepto usado en la wiki dentro del dominio de marco conceptual de la wiki. A part
+- [[concepts/ataques-adversarios]]: Ataques Adversarios es un concepto usado en la wiki dentro del dominio de seguridad y riesgo de sistemas agentivos. A pa
+- [[concepts/inyeccion-de-prompt|Ataques De Inyeccion De Prompt]]: La inyeccion de prompt es un ataque que introduce instrucciones maliciosas o conflictivas para alterar el comportamiento
+- [[concepts/auto-correccion-iterativa]]: Auto Correccion Iterativa es un concepto usado en la wiki dentro del dominio de marco conceptual de la wiki. A partir de
+- [[concepts/bases-de-datos-vectoriales]]: Bases De Datos Vectoriales es un concepto usado en la wiki dentro del dominio de infraestructura, datos y capacidad comp
+- [[concepts/bioinformatica]]: La bioinformatica aplica computacion y analisis de datos a problemas biologicos, genomicos, proteicos y clinicos. Es un 
+- [[concepts/biologia-computacional]]: Biologia Computacional es un concepto usado en la wiki dentro del dominio de salud, biomedicina e investigacion cientifi
+- [[concepts/cadena-de-suministro]]: Cadena De Suministro es un concepto usado en la wiki dentro del dominio de gobernanza, regulacion y cumplimiento. A part
+- [[concepts/cadenas-de-markov]]: Las cadenas de Markov modelan transiciones probabilisticas entre estados donde el siguiente estado depende del estado ac
+- [[concepts/capital-de-riesgo]]: Capital De Riesgo es un concepto usado en la wiki dentro del dominio de impacto economico y organizacional. A partir de 
+- [[concepts/cdss]]: Un CDSS, sistema de soporte a decisiones clinicas, ayuda a profesionales de salud a interpretar datos y tomar decisiones
+- [[concepts/centros-de-datos-ia|Centros De Datos]]: Los centros de datos de IA son instalaciones de computo intensivo optimizadas para entrenamiento e inferencia de modelos
+- [[concepts/centros-de-datos-ia]]: Los centros de datos de IA son instalaciones de computo intensivo optimizadas para entrenamiento e inferencia de modelos
+- [[concepts/ciberseguridad]]: La ciberseguridad agrupa practicas, controles y marcos para proteger infraestructura digital. En la wiki se relaciona co
+- [[concepts/ciberseguridad-defensiva]]: Ciberseguridad Defensiva es un concepto usado en la wiki dentro del dominio de seguridad y riesgo de sistemas agentivos.
+- [[concepts/ciberseguridad-ofensiva]]: Ciberseguridad Ofensiva es un concepto usado en la wiki dentro del dominio de seguridad y riesgo de sistemas agentivos. 
+- [[concepts/ciclo-percepcion-razonamiento-accion]]: El ciclo percepcion-razonamiento-accion describe el bucle central de un agente: observar el entorno, interpretar informa
+- [[concepts/confused-deputy]]: Confused deputy describe una falla donde un componente con privilegios es inducido por otro actor a ejecutar acciones qu
+- [[concepts/constructivismo]]: Constructivismo es un concepto usado en la wiki dentro del dominio de marco conceptual de la wiki. A partir de las fuent
+- [[concepts/control-de-acceso-basado-en-roles]]: Control De Acceso Basado En Roles es un concepto usado en la wiki dentro del dominio de marco conceptual de la wiki. A p
+- [[concepts/derechos-humanos]]: Derechos Humanos es un concepto usado en la wiki dentro del dominio de gobernanza, regulacion y cumplimiento. A partir d
+- [[concepts/descubrimiento-de-farmacos]]: El descubrimiento de farmacos es el proceso de identificar blancos, disenar moleculas, optimizar candidatos y validarlos
+- [[concepts/descubrimiento-de-farmacos|Descubrimiento Farmacos]]: El descubrimiento de farmacos es el proceso de identificar blancos, disenar moleculas, optimizar candidatos y validarlos
+- [[concepts/determinismo-vs-no-determinismo]]: Determinismo Vs No Determinismo es un concepto usado en la wiki dentro del dominio de marco conceptual de la wiki. A par
+- [[concepts/discriminacion-por-impacto-dispar]]: La discriminacion por impacto dispar ocurre cuando una regla, modelo o decision aparentemente neutral afecta de forma de
+- [[concepts/diseno-de-farmacos]]: El diseno de farmacos usa conocimiento biologico, quimico y computacional para proponer moleculas o biologicos con propi
+- [[concepts/dispositivo-medico-de-soporte]]: Dispositivo Medico De Soporte es un concepto usado en la wiki dentro del dominio de salud, biomedicina e investigacion c
+- [[concepts/distribucion-estacionaria]]: Distribucion Estacionaria es un concepto usado en la wiki dentro del dominio de marco conceptual de la wiki. A partir de
+- [[concepts/economia-computacional]]: Economia Computacional es un concepto usado en la wiki dentro del dominio de infraestructura, datos y capacidad computac
+- [[concepts/economia-del-derecho]]: Economia Del Derecho es un concepto usado en la wiki dentro del dominio de gobernanza, regulacion y cumplimiento. A part
+- [[concepts/enfermedades-respiratorias-infecciosas]]: Enfermedades Respiratorias Infecciosas es un concepto usado en la wiki dentro del dominio de marco conceptual de la wiki
+- [[concepts/ensayos-clinicos]]: Ensayos Clinicos es un concepto usado en la wiki dentro del dominio de salud, biomedicina e investigacion cientifica. A 
+- [[concepts/equilibrio-de-nash]]: El equilibrio de Nash es un estado estrategico donde ningun participante mejora unilateralmente cambiando su decision. E
+- [[concepts/estandares-internacionales]]: Estandares Internacionales es un concepto usado en la wiki dentro del dominio de gobernanza, regulacion y cumplimiento. 
+- [[concepts/estudios-de-discapacidad]]: Estudios De Discapacidad es un concepto usado en la wiki dentro del dominio de marco conceptual de la wiki. A partir de 
+- [[concepts/etica-medica]]: Etica Medica es un concepto usado en la wiki dentro del dominio de salud, biomedicina e investigacion cientifica. A part
+- [[concepts/gestion-de-riesgos-en-ia]]: La gestion de riesgos en IA identifica, evalua, mitiga y monitorea danos potenciales asociados con modelos y sistemas. E
+- [[concepts/gobernanza-de-ia]]: La gobernanza de IA es el conjunto de normas, procesos y responsabilidades que orientan el diseno, despliegue y supervis
+- [[concepts/gobernanza-de-ia|Gobernanza De La Ia]]: La gobernanza de IA es el conjunto de normas, procesos y responsabilidades que orientan el diseno, despliegue y supervis
+- [[concepts/gobernanza-etica-agentiva|Gobernanza Etica De Ia]]: La gobernanza etica agentiva aplica principios de responsabilidad, transparencia, justicia, supervision humana y control
+- [[concepts/gobernanza-etica-agentiva|Gobernanza Etica Ia]]: La gobernanza etica agentiva aplica principios de responsabilidad, transparencia, justicia, supervision humana y control
+- [[concepts/gobernanza-de-ia|Gobernanza Ia]]: La gobernanza de IA es el conjunto de normas, procesos y responsabilidades que orientan el diseno, despliegue y supervis
+- [[concepts/grok-4]]: Grok 4 es un concepto usado en la wiki dentro del dominio de marco conceptual de la wiki. A partir de las fuentes relaci
+- [[concepts/guerra-hibrida]]: Guerra Hibrida es un concepto usado en la wiki dentro del dominio de marco conceptual de la wiki. A partir de las fuente
+- [[concepts/human-in-the-loop]]: Human In The Loop es un concepto usado en la wiki dentro del dominio de marco conceptual de la wiki. A partir de las fue
+- [[concepts/ia-agentica]]: La IA agentica designa sistemas de IA orientados a objetivos que planifican, usan herramientas, mantienen memoria y ajus
+- [[concepts/ia-generativa]]: Ia Generativa es un concepto usado en la wiki dentro del dominio de marco conceptual de la wiki. A partir de las fuentes
+- [[concepts/incertidumbre-regulatoria]]: Incertidumbre Regulatoria es un concepto usado en la wiki dentro del dominio de gobernanza, regulacion y cumplimiento. A
+- [[concepts/infraestructura-de-ia]]: La infraestructura de IA incluye computo, centros de datos, redes, datos, modelos, herramientas y controles que permiten
+- [[concepts/ingenieria-de-prompts]]: Ingenieria De Prompts es un concepto usado en la wiki dentro del dominio de marco conceptual de la wiki. A partir de las
+- [[concepts/inmunoterapia]]: Inmunoterapia es un concepto usado en la wiki dentro del dominio de salud, biomedicina e investigacion cientifica. A par
+- [[concepts/inteligencia-artificial]]: La inteligencia artificial es el campo de sistemas computacionales que realizan tareas asociadas con capacidades cogniti
+- [[concepts/agi|Inteligencia Artificial General]]: La inteligencia artificial general, o AGI, es la aspiracion de sistemas capaces de generalizar entre dominios, aprender 
+- [[concepts/inteligencia-epidemica]]: La inteligencia epidemica combina vigilancia, evaluacion de riesgo, alerta temprana y soporte a decisiones para detectar
+- [[concepts/interoperabilidad]]: Interoperabilidad es un concepto usado en la wiki dentro del dominio de marco conceptual de la wiki. A partir de las fue
+- [[concepts/interoperabilidad-en-salud]]: Interoperabilidad En Salud es un concepto usado en la wiki dentro del dominio de salud, biomedicina e investigacion cien
+- [[concepts/interpretabilidad]]: Interpretabilidad es un concepto usado en la wiki dentro del dominio de marco conceptual de la wiki. A partir de las fue
+- [[concepts/justicia-algoritmica]]: Justicia Algoritmica es un concepto usado en la wiki dentro del dominio de marco conceptual de la wiki. A partir de las 
+- [[concepts/large-language-models]]: Los large language models son modelos neuronales de lenguaje a gran escala capaces de generar texto, interpretar instruc
+- [[concepts/linguistica-computacional]]: Linguistica Computacional es un concepto usado en la wiki dentro del dominio de infraestructura, datos y capacidad compu
+- [[concepts/llm]]: Un LLM es un modelo de lenguaje grande entrenado sobre grandes corpus para predecir y generar texto, seguir instruccione
+- [[concepts/maqasid-al-shariah]]: Maqasid Al Shariah es un concepto usado en la wiki dentro del dominio de marco conceptual de la wiki. A partir de las fu
+- [[concepts/marco-de-gestion-de-riesgos-nist]]: Marco De Gestion De Riesgos Nist es un concepto usado en la wiki dentro del dominio de gobernanza, regulacion y cumplimi
+- [[concepts/nist-ai-rmf|Marco De Gestion De Riesgos Nist Ai Rmf]]: NIST AI RMF es el marco de gestion de riesgos de IA del NIST. En la wiki sirve como referencia para clasificar, medir y 
+- [[concepts/marcos-normativos-nist]]: Marcos Normativos Nist es un concepto usado en la wiki dentro del dominio de gobernanza, regulacion y cumplimiento. A pa
+- [[concepts/matematicas-fractales]]: Matematicas Fractales es un concepto usado en la wiki dentro del dominio de marco conceptual de la wiki. A partir de las
+- [[concepts/medicina-de-precision]]: Medicina De Precision es un concepto usado en la wiki dentro del dominio de salud, biomedicina e investigacion cientific
+- [[concepts/modelos-de-lenguaje-grande]]: Modelos De Lenguaje Grande es un concepto usado en la wiki dentro del dominio de modelado, aprendizaje y toma de decisio
+- [[concepts/modelos-de-lenguaje-grandes]]: Los modelos de lenguaje grandes son modelos fundacionales entrenados para procesar y generar lenguaje natural. En sistem
+- [[concepts/modelos-de-lenguaje-grandes|Modelos De Lenguaje Grandes Llm]]: Los modelos de lenguaje grandes son modelos fundacionales entrenados para procesar y generar lenguaje natural. En sistem
+- [[concepts/modelos-de-mundo]]: Modelos De Mundo es un concepto usado en la wiki dentro del dominio de modelado, aprendizaje y toma de decisiones. A par
+- [[concepts/multi-agent-systems]]: Multi-agent systems es el termino ingles para sistemas compuestos por multiples agentes autonomos o semiautonomos que in
+- [[concepts/nanobodies]]: Nanobodies es un concepto usado en la wiki dentro del dominio de salud, biomedicina e investigacion cientifica. A partir
+- [[concepts/neuro-symbolic-ai]]: Neuro Symbolic Ai es un concepto usado en la wiki dentro del dominio de marco conceptual de la wiki. A partir de las fue
+- [[concepts/nist-ai-rmf]]: NIST AI RMF es el marco de gestion de riesgos de IA del NIST. En la wiki sirve como referencia para clasificar, medir y 
+- [[concepts/optimizacion-de-politica-proximal]]: Optimizacion De Politica Proximal es un concepto usado en la wiki dentro del dominio de marco conceptual de la wiki. A p
+- [[concepts/planificacion-ia]]: La planificacion en IA es la capacidad de descomponer un objetivo en pasos ordenados, elegir acciones, monitorear result
+- [[concepts/privacidad-y-proteccion-de-datos]]: Privacidad Y Proteccion De Datos es un concepto usado en la wiki dentro del dominio de gobernanza, regulacion y cumplimi
+- [[concepts/procesamiento-de-lenguaje-natural]]: Procesamiento De Lenguaje Natural es un concepto usado en la wiki dentro del dominio de marco conceptual de la wiki. A p
+- [[concepts/procesos-de-decision-de-markov]]: Los procesos de decision de Markov modelan decisiones secuenciales bajo incertidumbre, donde el estado actual resume la 
+- [[concepts/productividad-total-factores|Productividad Total Factores Tfp]]: Productividad Total Factores es un concepto usado en la wiki dentro del dominio de impacto economico y organizacional. A
+- [[concepts/protein-design]]: Protein Design es un concepto usado en la wiki dentro del dominio de marco conceptual de la wiki. A partir de las fuente
+- [[concepts/quantum-ai]]: Quantum Ai es un concepto usado en la wiki dentro del dominio de marco conceptual de la wiki. A partir de las fuentes re
+- [[concepts/radioterapia]]: Radioterapia es un concepto usado en la wiki dentro del dominio de salud, biomedicina e investigacion cientifica. A part
+- [[concepts/rag]]: RAG, generacion aumentada por recuperacion, combina un modelo generativo con recuperacion de informacion externa para pr
+- [[concepts/razonamiento-humano]]: Razonamiento Humano es un concepto usado en la wiki dentro del dominio de marco conceptual de la wiki. A partir de las f
+- [[concepts/red-teaming]]: Red teaming es la evaluacion adversarial de sistemas para descubrir vulnerabilidades, abusos y modos de fallo. En agente
+- [[concepts/redes-neuronales]]: Redes Neuronales es un concepto usado en la wiki dentro del dominio de seguridad y riesgo de sistemas agentivos. A parti
+- [[concepts/registros-electronicos-salud]]: Registros Electronicos Salud es un concepto usado en la wiki dentro del dominio de salud, biomedicina e investigacion ci
+- [[concepts/regulacion-de-ia]]: Regulacion De Ia es un concepto usado en la wiki dentro del dominio de gobernanza, regulacion y cumplimiento. A partir d
+- [[concepts/relaciones-internacionales]]: Relaciones Internacionales es un concepto usado en la wiki dentro del dominio de marco conceptual de la wiki. A partir d
+- [[concepts/revision-de-alcance]]: Revision De Alcance es un concepto usado en la wiki dentro del dominio de marco conceptual de la wiki. A partir de las f
+- [[concepts/revolucion-industrial]]: Revolucion Industrial es un concepto usado en la wiki dentro del dominio de marco conceptual de la wiki. A partir de las
+- [[concepts/rgpd]]: RGPD es un concepto usado en la wiki dentro del dominio de gobernanza, regulacion y cumplimiento. A partir de las fuente
+- [[concepts/riesgos-dependientes-del-contexto-en-agentes]]: Riesgos Dependientes Del Contexto En Agentes es un concepto usado en la wiki dentro del dominio de arquitectura y operac
+- [[concepts/salud-digital]]: La salud digital integra software, datos, dispositivos y sistemas inteligentes para mejorar atencion, vigilancia, diagno
+- [[concepts/salud-mental]]: Salud Mental es un concepto usado en la wiki dentro del dominio de salud, biomedicina e investigacion cientifica. A part
+- [[concepts/samd]]: SaMD significa software como dispositivo medico. Es una categoria regulatoria para software usado con fines clinicos, re
+- [[concepts/sandboxing]]: Sandboxing es aislar la ejecucion de codigo, herramientas o acciones dentro de un entorno controlado. En agentes reduce 
+- [[concepts/sars-cov-2]]: SARS-CoV-2 es un concepto usado en la wiki dentro del dominio de salud, biomedicina e investigacion cientifica. A partir
+- [[concepts/scaling-laws]]: Scaling Laws es un concepto usado en la wiki dentro del dominio de marco conceptual de la wiki. A partir de las fuentes 
+- [[concepts/securitizacion]]: Securitizacion es un concepto usado en la wiki dentro del dominio de marco conceptual de la wiki. A partir de las fuente
+- [[concepts/seguridad-cibernetica]]: Seguridad Cibernetica es un concepto usado en la wiki dentro del dominio de seguridad y riesgo de sistemas agentivos. A 
+- [[concepts/seguridad-de-la-ia]]: Seguridad De La Ia es un concepto usado en la wiki dentro del dominio de seguridad y riesgo de sistemas agentivos. A par
+- [[concepts/seguridad-ia]]: Seguridad Ia es un concepto usado en la wiki dentro del dominio de seguridad y riesgo de sistemas agentivos. A partir de
+- [[concepts/seguridad-informatica]]: La seguridad informatica protege sistemas, redes, datos y operaciones frente a accesos no autorizados, fallos, abuso y a
+- [[concepts/sintaxis-semantica]]: Sintaxis Semantica es un concepto usado en la wiki dentro del dominio de marco conceptual de la wiki. A partir de las fu
+- [[concepts/sistemas-multi-agente]]: Los sistemas multi-agente son arquitecturas en las que varios agentes especializados comparten informacion, delegan subt
+- [[concepts/sistemas-multiagente]]: Un sistema multiagente coordina multiples agentes que interactuan, cooperan o compiten para resolver tareas que exceden 
+- [[concepts/soporte-de-decisiones-clinicas]]: Soporte De Decisiones Clinicas es un concepto usado en la wiki dentro del dominio de salud, biomedicina e investigacion 
+- [[concepts/stargate-uae]]: Stargate Uae es un concepto usado en la wiki dentro del dominio de infraestructura, datos y capacidad computacional. A p
+- [[concepts/superinteligencia-artificial]]: Superinteligencia Artificial es un concepto usado en la wiki dentro del dominio de marco conceptual de la wiki. A partir
+- [[concepts/telemetria]]: La telemetria registra eventos, trazas, decisiones, llamadas de herramientas y resultados operativos. En agentes autonom
+- [[concepts/teoria-critica]]: Teoria Critica es un concepto usado en la wiki dentro del dominio de marco conceptual de la wiki. A partir de las fuente
+- [[concepts/teoria-de-juegos]]: La teoria de juegos estudia decisiones estrategicas entre agentes con objetivos, incentivos y restricciones. La wiki la 
+- [[concepts/terapia-antiviral]]: Terapia Antiviral es un concepto usado en la wiki dentro del dominio de salud, biomedicina e investigacion cientifica. A
+- [[concepts/toma-de-decisiones-autonoma]]: La toma de decisiones autonoma es la capacidad de seleccionar acciones sin aprobacion humana paso a paso. En agentes de 
+- [[concepts/trading-algoritmico]]: Trading Algoritmico es un concepto usado en la wiki dentro del dominio de marco conceptual de la wiki. A partir de las f
+- [[concepts/transparencia-algoritmica]]: Transparencia Algoritmica es un concepto usado en la wiki dentro del dominio de marco conceptual de la wiki. A partir de
+- [[concepts/utilidad-esperada]]: La utilidad esperada calcula el valor promedio ponderado de resultados posibles bajo incertidumbre. En modelos de decisi
+- [[concepts/utilidad-marginal]]: La utilidad marginal mide el cambio de utilidad producido por una unidad adicional de recurso, recompensa o resultado. E
+- [[concepts/variantes-omicron]]: Variantes Omicron es un concepto usado en la wiki dentro del dominio de marco conceptual de la wiki. A partir de las fue
+- [[concepts/vehiculos-autonomos]]: Los vehiculos autonomos son sistemas fisicos que perciben su entorno y toman decisiones de conduccion sin control humano
+- [[concepts/vigilancia-en-salud-publica]]: La vigilancia en salud publica recolecta, integra y analiza señales epidemiologicas para detectar amenazas, evaluar ries
+
+## Aliases
+- [[aliases/agente-humano-aprendiz-con-preferencias]]: Alias de concepto retirado
+- [[aliases/agentes-de-ia]]: Alias de concepto retirado
+- [[aliases/alineacion-regualtoria-del-comportamiento-agentivo]]: Alias de concepto retirado
+- [[aliases/ataques-de-inyeccion-de-prompt]]: Alias de concepto retirado
+- [[aliases/busqueda-de-vecinos-aproximados]]: Alias de concepto retirado
+- [[aliases/centros-de-datos]]: Alias de concepto retirado
+- [[aliases/descubrimiento-farmacos]]: Alias de concepto retirado
+- [[aliases/generacion-aumentada-por-recuperacion]]: Alias de concepto retirado
+- [[aliases/gobernanza-de-la-ia]]: Alias de concepto retirado
+- [[aliases/gobernanza-etica-de-ia]]: Alias de concepto retirado
+- [[aliases/gobernanza-etica-ia]]: Alias de concepto retirado
+- [[aliases/gobernanza-ia]]: Alias de concepto retirado
+- [[aliases/inteligencia-artificial-general]]: Alias de concepto retirado
+- [[aliases/marco-de-gestion-de-riesgos-nist-ai-rmf]]: Alias de concepto retirado
+- [[aliases/memoria-a-largo-plazo-en-agentes]]: Alias de concepto retirado
+- [[aliases/modelos-de-lenguaje-grandes-llm]]: Alias de concepto retirado
+- [[aliases/orquestacion-controlable-de-agentes]]: Alias de concepto retirado
+- [[aliases/productividad-total-factores-tfp]]: Alias de concepto retirado
+- [[aliases/protocolo-de-contexto-de-modelo]]: Alias de concepto retirado
+- [[aliases/software-clinico-confinado-determinista]]: Alias de concepto retirado

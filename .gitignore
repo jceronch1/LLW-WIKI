@@ -1,0 +1,33 @@
+# Local Python artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Local app/runtime artifacts
+outputs/
+raw/
+.claude/
+
+# Source PDFs and bulky/private document collections.
+# Keep these local unless they are intentionally released.
+Documentos/
+papers/
+
+# Environment and secrets
+.env
+.env.*
+*.key
+*.pem
+*.p12
+*.pfx
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/

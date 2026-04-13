@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LLM Kiwi - Wiki de Agentes de IA</title>
+<style>
+/* ─── Reset & Variables ───────────────────────────────────────────── */
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0f1117;--bg2:#161822;--bg3:#1e2030;--bg4:#272a3a;
+  --tx:#cdd6f4;--tx2:#a6adc8;--tx3:#6c7086;
+  --kiwi:#a6e3a1;--kiwi2:#40b44b;--kiwi3:#1a3d1a;
+  --blue:#89b4fa;--peach:#fab387;--red:#f38ba8;--yellow:#f9e2af;
+  --mauve:#cba6f7;--teal:#94e2d5;--pink:#f5c2e7;
+  --radius:12px;--radius-sm:8px;
+  --shadow:0 2px 12px rgba(0,0,0,.3);
+  --transition:all .2s ease;
+}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;overflow-x:hidden}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+button{cursor:pointer;font-family:inherit;font-size:.875rem}
+input,textarea,select{font-family:inherit;font-size:.875rem}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg2)}
+::-webkit-scrollbar-thumb{background:var(--bg4);border-radius:3px}
+
+/* ─── Layout ──────────────────────────────────────────────────────── */
+.app{display:flex;height:100vh}
+.sidebar{width:260px;background:var(--bg2);border-right:1px solid var(--bg4);display:flex;flex-direction:column;flex-shrink:0}
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden}
+.view{display:flex;flex-direction:column;height:100%;min-height:0}
+.content{flex:1;overflow-y:auto;padding:28px 36px}
+
+/* ─── Sidebar ─────────────────────────────────────────────────────── */
+.logo{padding:20px 20px 12px;display:flex;align-items:center;gap:10px}
+.logo svg{width:32px;height:32px}
+.logo h1{font-size:1.15rem;font-weight:700;color:var(--kiwi)}
+.logo span{font-size:.7rem;background:var(--bg4);color:var(--tx2);padding:2px 7px;border-radius:10px;margin-left:auto}
+.nav{flex:1;padding:8px 10px;overflow-y:auto}
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:var(--radius-sm);color:var(--tx2);transition:var(--transition);font-size:.875rem;margin-bottom:2px;cursor:pointer}
+.nav-item:hover{background:var(--bg3);color:var(--tx)}
+.nav-item.active{background:var(--kiwi3);color:var(--kiwi);font-weight:600}
+.nav-item svg{width:18px;height:18px;flex-shrink:0;opacity:.7}
+.nav-item.active svg{opacity:1}
+.nav-sep{height:1px;background:var(--bg4);margin:10px 14px}
+.sidebar-footer{padding:14px 16px;border-top:1px solid var(--bg4);font-size:.75rem;color:var(--tx3)}
+.model-select{width:100%;background:var(--bg3);border:1px solid var(--bg4);color:var(--tx2);padding:6px 8px;border-radius:var(--radius-sm);margin-top:6px;font-size:.75rem}
+.model-select:focus{outline:none;border-color:var(--kiwi)}
+
+/* ─── Header ──────────────────────────────────────────────────────── */
+.header{padding:16px 36px;border-bottom:1px solid var(--bg3);display:flex;align-items:center;gap:16px;background:var(--bg2)}
+.header h2{font-size:1.1rem;font-weight:600;color:var(--tx)}
+.header .badge{font-size:.7rem;padding:3px 10px;border-radius:10px;font-weight:600}
+.badge-ok{background:var(--kiwi3);color:var(--kiwi)}
+.badge-warn{background:rgba(249,226,175,.12);color:var(--yellow)}
+.badge-err{background:rgba(243,139,168,.12);color:var(--red)}
+
+/* ─── Cards ───────────────────────────────────────────────────────── */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:28px}
+.card{background:var(--bg2);border:1px solid var(--bg4);border-radius:var(--radius);padding:20px;transition:var(--transition)}
+.card:hover{border-color:var(--kiwi);transform:translateY(-1px)}
+.card-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;font-size:1.2rem}
+.card-val{font-size:1.8rem;font-weight:700;color:var(--tx);line-height:1}
+.card-label{font-size:.8rem;color:var(--tx3);margin-top:4px}
+
+/* ─── Panels ──────────────────────────────────────────────────────── */
+.panel{background:var(--bg2);border:1px solid var(--bg4);border-radius:var(--radius);margin-bottom:20px;overflow:hidden}
+.panel-header{padding:14px 20px;border-bottom:1px solid var(--bg3);display:flex;align-items:center;justify-content:space-between}
+.panel-header h3{font-size:.95rem;font-weight:600}
+.panel-body{padding:20px}
+
+/* ─── Buttons ─────────────────────────────────────────────────────── */
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:var(--radius-sm);border:1px solid transparent;font-weight:500;transition:var(--transition)}
+.btn-primary{background:var(--kiwi2);color:#fff;border-color:var(--kiwi2)}
+.btn-primary:hover{background:#36a341;transform:translateY(-1px)}
+.btn-primary:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.btn-secondary{background:var(--bg3);color:var(--tx2);border-color:var(--bg4)}
+.btn-secondary:hover{background:var(--bg4);color:var(--tx)}
+.btn-danger{background:rgba(243,139,168,.15);color:var(--red);border-color:rgba(243,139,168,.2)}
+.btn-sm{padding:5px 12px;font-size:.8rem}
+.btn-group{display:flex;gap:8px;flex-wrap:wrap}
+
+/* ─── Documents Table ─────────────────────────────────────────────── */
+.doc-list{list-style:none}
+.doc-item{display:flex;align-items:center;gap:14px;padding:12px 16px;border-bottom:1px solid var(--bg3);transition:var(--transition)}
+.doc-item:last-child{border-bottom:none}
+.doc-item:hover{background:var(--bg3)}
+.doc-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.doc-icon.ingested{background:var(--kiwi3);color:var(--kiwi)}
+.doc-icon.pending{background:var(--bg4);color:var(--tx3)}
+.doc-info{flex:1;min-width:0}
+.doc-name{font-size:.875rem;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.doc-meta{font-size:.75rem;color:var(--tx3)}
+.doc-status{font-size:.7rem;padding:3px 10px;border-radius:10px;font-weight:600}
+.doc-status.ok{background:var(--kiwi3);color:var(--kiwi)}
+.doc-status.wait{background:var(--bg4);color:var(--tx3)}
+
+/* ─── Query Input ─────────────────────────────────────────────────── */
+.query-box{position:relative}
+.query-input{width:100%;background:var(--bg3);border:2px solid var(--bg4);color:var(--tx);padding:14px 54px 14px 18px;border-radius:var(--radius);font-size:.95rem;transition:var(--transition);resize:none}
+.query-input:focus{outline:none;border-color:var(--kiwi)}
+.query-input::placeholder{color:var(--tx3)}
+.query-send{position:absolute;right:10px;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:8px;background:var(--kiwi2);border:none;color:#fff;display:flex;align-items:center;justify-content:center;transition:var(--transition)}
+.query-send:hover{background:#36a341}
+.query-send:disabled{opacity:.4;cursor:not-allowed}
+.query-opts{display:flex;gap:12px;align-items:center;margin-top:10px}
+.query-opts label{font-size:.8rem;color:var(--tx3);display:flex;align-items:center;gap:5px;cursor:pointer}
+.query-opts input[type=checkbox]{accent-color:var(--kiwi2)}
+
+/* ─── Answer & Chat ───────────────────────────────────────────────── */
+.chat-history{display:flex;flex-direction:column;gap:16px;margin-bottom:20px}
+.chat-msg{max-width:90%;padding:14px 18px;border-radius:var(--radius);font-size:.875rem;line-height:1.7}
+.chat-msg.user{align-self:flex-end;background:var(--kiwi3);color:var(--kiwi);border-bottom-right-radius:4px}
+.chat-msg.assistant{align-self:flex-start;background:var(--bg3);border-bottom-left-radius:4px}
+.chat-msg .pages-used{margin-top:8px;padding-top:8px;border-top:1px solid var(--bg4);font-size:.75rem;color:var(--tx3)}
+.chat-msg pre{background:var(--bg);padding:10px;border-radius:6px;margin:8px 0;overflow-x:auto;font-size:.8rem}
+.chat-msg code{font-size:.8rem;background:var(--bg);padding:2px 5px;border-radius:3px}
+.chat-msg ul,.chat-msg ol{padding-left:20px;margin:6px 0}
+.chat-msg h1,.chat-msg h2,.chat-msg h3{margin:10px 0 6px;color:var(--kiwi)}
+.chat-msg h1{font-size:1.1rem}
+.chat-msg h2{font-size:1rem}
+.chat-msg h3{font-size:.9rem}
+.chat-msg blockquote{border-left:3px solid var(--kiwi);padding-left:12px;margin:8px 0;color:var(--tx2);font-style:italic}
+
+/* ─── Wiki Browser ────────────────────────────────────────────────── */
+.wiki-layout{display:flex;gap:20px;height:calc(100vh - 140px)}
+.wiki-sidebar{width:240px;flex-shrink:0;overflow-y:auto}
+.wiki-content{flex:1;overflow-y:auto;background:var(--bg2);border:1px solid var(--bg4);border-radius:var(--radius);padding:28px 32px}
+.wiki-content h1{color:var(--kiwi);margin-bottom:16px;font-size:1.3rem}
+.wiki-content h2{color:var(--blue);margin:20px 0 8px;font-size:1.05rem;border-bottom:1px solid var(--bg4);padding-bottom:6px}
+.wiki-content h3{color:var(--mauve);margin:14px 0 6px;font-size:.95rem}
+.wiki-content ul,.wiki-content ol{padding-left:22px;margin:6px 0}
+.wiki-content li{margin:3px 0}
+.wiki-content blockquote{border-left:3px solid var(--kiwi);padding-left:14px;margin:10px 0;color:var(--tx2);font-style:italic}
+.wiki-content pre{background:var(--bg);padding:14px;border-radius:8px;margin:10px 0;overflow-x:auto;font-size:.8rem}
+.wiki-content table{width:100%;border-collapse:collapse;margin:10px 0}
+.wiki-content th,.wiki-content td{padding:8px 12px;border:1px solid var(--bg4);text-align:left;font-size:.85rem}
+.wiki-content th{background:var(--bg3)}
+.wiki-tree-group{margin-bottom:14px}
+.wiki-tree-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--tx3);padding:4px 10px;font-weight:600}
+.wiki-tree-item{padding:7px 14px;font-size:.8rem;color:var(--tx2);cursor:pointer;border-radius:6px;transition:var(--transition);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wiki-tree-item:hover{background:var(--bg3);color:var(--tx)}
+.wiki-tree-item.active{background:var(--kiwi3);color:var(--kiwi)}
+
+/* ─── Lint ────────────────────────────────────────────────────────── */
+.lint-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
+.lint-card{text-align:center;padding:16px;border-radius:var(--radius);background:var(--bg3)}
+.lint-card .num{font-size:2rem;font-weight:700;line-height:1}
+.lint-card .lbl{font-size:.75rem;color:var(--tx3);margin-top:4px}
+.lint-issues{list-style:none}
+.lint-issue{display:flex;gap:10px;padding:10px 14px;border-bottom:1px solid var(--bg3);font-size:.85rem;align-items:flex-start}
+.lint-issue:last-child{border-bottom:none}
+.lint-type{font-size:.7rem;padding:2px 8px;border-radius:6px;font-weight:600;white-space:nowrap;flex-shrink:0;margin-top:2px}
+.lint-type.error{background:rgba(243,139,168,.12);color:var(--red)}
+.lint-type.warn{background:rgba(249,226,175,.12);color:var(--yellow)}
+.lint-type.info{background:rgba(137,180,250,.12);color:var(--blue)}
+
+/* ─── Progress ────────────────────────────────────────────────────── */
+.progress-bar{width:100%;height:6px;background:var(--bg4);border-radius:3px;overflow:hidden;margin:10px 0}
+.progress-fill{height:100%;background:var(--kiwi2);border-radius:3px;transition:width .3s ease}
+.step-list{list-style:none;margin-top:12px}
+.step-item{display:flex;align-items:center;gap:8px;padding:5px 0;font-size:.8rem;color:var(--tx2)}
+.step-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.step-dot.done{background:var(--kiwi)}
+.step-dot.running{background:var(--yellow);animation:pulse 1s infinite}
+.step-dot.error{background:var(--red)}
+.step-detail{color:var(--tx3);margin-left:auto;font-size:.75rem}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* ─── Loading ─────────────────────────────────────────────────────── */
+.spinner{display:inline-block;width:18px;height:18px;border:2px solid var(--bg4);border-top-color:var(--kiwi);border-radius:50%;animation:spin .6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-overlay{display:flex;align-items:center;justify-content:center;gap:10px;padding:40px;color:var(--tx3);font-size:.9rem}
+
+/* ─── Toast ───────────────────────────────────────────────────────── */
+.toast-container{position:fixed;top:20px;right:20px;z-index:999;display:flex;flex-direction:column;gap:8px}
+.toast{padding:12px 18px;border-radius:var(--radius-sm);font-size:.85rem;box-shadow:var(--shadow);animation:slideIn .3s ease;max-width:360px}
+.toast-success{background:var(--kiwi3);color:var(--kiwi);border:1px solid rgba(166,227,161,.2)}
+.toast-error{background:rgba(243,139,168,.12);color:var(--red);border:1px solid rgba(243,139,168,.2)}
+.toast-info{background:rgba(137,180,250,.12);color:var(--blue);border:1px solid rgba(137,180,250,.2)}
+@keyframes slideIn{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
+
+/* ─── Empty State ─────────────────────────────────────────────────── */
+.empty-state{text-align:center;padding:60px 20px;color:var(--tx3)}
+.empty-state svg{width:64px;height:64px;opacity:.3;margin-bottom:16px}
+.empty-state h3{color:var(--tx2);margin-bottom:8px;font-weight:500}
+.empty-state p{font-size:.85rem;max-width:400px;margin:0 auto}
+
+/* ─── Log ─────────────────────────────────────────────────────────── */
+.log-content{font-family:'Cascadia Code','Fira Code',monospace;font-size:.8rem;line-height:1.8;white-space:pre-wrap;color:var(--tx2)}
+.log-content h2{color:var(--kiwi);font-family:inherit;font-size:.85rem}
+
+/* ─── Graph ──────────────────────────────────────────────────────── */
+.graph-layout{display:flex;gap:0;height:calc(100vh - 140px)}
+.graph-sidebar{width:220px;flex-shrink:0;overflow-y:auto;padding:16px;border-right:1px solid var(--bg4)}
+.graph-canvas{flex:1;position:relative;background:var(--bg)}
+#cy{width:100%;height:100%}
+.graph-filter-group{margin-bottom:16px}
+.graph-filter-group h4{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--tx3);margin-bottom:8px;font-weight:600}
+.graph-filter{display:flex;align-items:center;gap:8px;padding:4px 0;font-size:.8rem;color:var(--tx2);cursor:pointer}
+.graph-filter input{accent-color:var(--kiwi2)}
+.graph-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.graph-search{width:100%;background:var(--bg3);border:1px solid var(--bg4);color:var(--tx);padding:8px 10px;border-radius:var(--radius-sm);font-size:.8rem;margin-bottom:12px}
+.graph-search:focus{outline:none;border-color:var(--kiwi)}
+.graph-search::placeholder{color:var(--tx3)}
+.graph-stats{font-size:.75rem;color:var(--tx3);margin-top:12px;line-height:1.8}
+.graph-stats span{color:var(--tx2);font-weight:600}
+.graph-info{position:absolute;bottom:16px;left:16px;background:var(--bg2);border:1px solid var(--bg4);border-radius:var(--radius);padding:14px 18px;max-width:340px;font-size:.8rem;display:none;z-index:10;box-shadow:var(--shadow)}
+.graph-info h4{color:var(--kiwi);margin-bottom:4px;font-size:.9rem}
+.graph-info .type-badge{font-size:.65rem;padding:2px 8px;border-radius:6px;font-weight:600;margin-left:6px;vertical-align:middle}
+.graph-info p{color:var(--tx2);margin:4px 0}
+.graph-controls{position:absolute;top:12px;right:12px;display:flex;flex-direction:column;gap:4px;z-index:10}
+.graph-controls button{width:32px;height:32px;border-radius:var(--radius-sm);background:var(--bg2);border:1px solid var(--bg4);color:var(--tx2);display:flex;align-items:center;justify-content:center;font-size:1rem;transition:var(--transition)}
+.graph-controls button:hover{background:var(--bg3);color:var(--tx);border-color:var(--kiwi)}
+.graph-insights{position:absolute;bottom:0;left:0;right:0;max-height:45%;overflow-y:auto;background:var(--bg2);border-top:2px solid var(--kiwi3);z-index:10;display:none}
+.graph-insights .gi-header{position:sticky;top:0;background:var(--bg2);z-index:1;padding:10px 20px;border-bottom:1px solid var(--bg3);display:flex;align-items:center;justify-content:space-between}
+.graph-insights .gi-header h3{font-size:.9rem;font-weight:600;color:var(--kiwi)}
+.graph-insights .gi-body{padding:16px 20px;font-size:.85rem;line-height:1.7}
+.graph-insights h2,.graph-insights h3{color:var(--kiwi);font-size:.9rem;margin:10px 0 4px}
+.graph-insights strong{color:var(--tx)}
+.graph-insights ul{padding-left:18px;margin:4px 0}
+.graph-insights li{margin:3px 0}
+.graph-mode-btn.active{background:var(--kiwi3) !important;color:var(--kiwi) !important;border-color:var(--kiwi3) !important}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/cytoscape@3.28.1/dist/cytoscape.min.js"></script>
+</head>
+<body>
+<div class="app">
+<!-- ─── Sidebar ─────────────────────────────────────────────────── -->
+<aside class="sidebar">
+  <div class="logo">
+    <svg viewBox="0 0 100 100" fill="none">
+      <circle cx="50" cy="50" r="46" fill="#1a3d1a" stroke="#a6e3a1" stroke-width="3"/>
+      <ellipse cx="50" cy="48" rx="28" ry="30" fill="#40b44b"/>
+      <ellipse cx="50" cy="48" rx="22" ry="24" fill="#6bcf6b"/>
+      <circle cx="42" cy="40" r="3" fill="#1a3d1a"/>
+      <circle cx="58" cy="40" r="3" fill="#1a3d1a"/>
+      <ellipse cx="50" cy="50" rx="6" ry="4" fill="#1a3d1a" opacity=".6"/>
+      <line x1="50" y1="18" x2="50" y2="8" stroke="#40b44b" stroke-width="3" stroke-linecap="round"/>
+      <ellipse cx="52" cy="6" rx="4" ry="3" fill="#6bcf6b"/>
+    </svg>
+    <h1>LLM Kiwi</h1>
+    <span>v1.0</span>
+  </div>
+
+  <nav class="nav" id="nav">
+    <div class="nav-item active" data-view="dashboard" onclick="showView('dashboard')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      Dashboard
+    </div>
+    <div class="nav-item" data-view="ingest" onclick="showView('ingest')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+      Ingestar
+    </div>
+    <div class="nav-item" data-view="query" onclick="showView('query')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      Consultar
+    </div>
+    <div class="nav-item" data-view="wiki" onclick="toggleWikiSub()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+      Wiki
+      <svg class="wiki-chevron" id="wikiChevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;margin-left:auto;transition:transform .2s"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div class="wiki-submenu" id="wikiSubmenu" style="display:none;padding-left:32px">
+      <div class="nav-item nav-sub" data-view="wiki" data-wiki-cat="all" onclick="showWikiCat('all')" style="font-size:.8rem;padding:7px 14px">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><circle cx="12" cy="12" r="10"/></svg>
+        Todas
+      </div>
+      <div class="nav-item nav-sub" data-view="wiki" data-wiki-cat="root" onclick="showWikiCat('root')" style="font-size:.8rem;padding:7px 14px">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+        General
+      </div>
+      <div class="nav-item nav-sub" data-view="wiki" data-wiki-cat="sources" onclick="showWikiCat('sources')" style="font-size:.8rem;padding:7px 14px">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/></svg>
+        Fuentes
+      </div>
+      <div class="nav-item nav-sub" data-view="wiki" data-wiki-cat="concepts" onclick="showWikiCat('concepts')" style="font-size:.8rem;padding:7px 14px">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        Conceptos
+      </div>
+      <div class="nav-item nav-sub" data-view="wiki" data-wiki-cat="entities" onclick="showWikiCat('entities')" style="font-size:.8rem;padding:7px 14px">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+        Entidades
+      </div>
+      <div class="nav-item nav-sub" data-view="wiki" data-wiki-cat="faq" onclick="showWikiCat('faq')" style="font-size:.8rem;padding:7px 14px">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        FAQ
+      </div>
+    </div>
+    <div class="nav-item" data-view="graph" onclick="showView('graph')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="6" r="2.5"/><circle cx="19" cy="6" r="2.5"/><circle cx="12" cy="20" r="2.5"/><line x1="7.2" y1="7.2" x2="10.2" y2="18.2"/><line x1="16.8" y1="7.2" x2="13.8" y2="18.2"/><line x1="7.5" y1="6" x2="16.5" y2="6"/></svg>
+      Grafo
+    </div>
+    <div class="nav-item" data-view="lint" onclick="showView('lint')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Salud (Lint)
+    </div>
+    <div class="nav-sep"></div>
+    <div class="nav-item" data-view="log" onclick="showView('log')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      Log
+    </div>
+  </nav>
+
+  <div class="sidebar-footer">
+    <div>Modelo Ollama:</div>
+    <select class="model-select" id="modelSelect" onchange="changeModel(this.value)"></select>
+  </div>
+</aside>
+
+<!-- ─── Main ────────────────────────────────────────────────────── -->
+<div class="main">
+
+<!-- ═══ DASHBOARD ════════════════════════════════════════════════ -->
+<div id="view-dashboard" class="view">
+  <div class="header"><h2>Dashboard</h2><span class="badge badge-ok" id="ollamaStatus">...</span></div>
+  <div class="content">
+    <div class="cards" id="dashCards"></div>
+    <div class="panel">
+      <div class="panel-header"><h3>Actividad reciente</h3></div>
+      <div class="panel-body"><div class="log-content" id="dashLog">Cargando...</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ INGEST ══════════════════════════════════════════════════ -->
+<div id="view-ingest" class="view" style="display:none">
+  <div class="header">
+    <h2>Ingestar Documentos</h2>
+    <div class="btn-group">
+      <button class="btn btn-primary" onclick="ingestAll()" id="btnIngestAll">Ingestar todos los pendientes</button>
+    </div>
+  </div>
+  <div class="content">
+    <div id="ingestProgress" style="display:none">
+      <div class="panel">
+        <div class="panel-header"><h3 id="ingestTitle">Ingesta en progreso...</h3></div>
+        <div class="panel-body">
+          <div id="ingestStep" style="color:var(--tx2);font-size:.85rem;margin-bottom:6px"></div>
+          <div class="progress-bar"><div class="progress-fill" id="ingestBar" style="width:0"></div></div>
+          <ul class="step-list" id="ingestSteps"></ul>
+        </div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-header"><h3>Documentos</h3><span id="docCount" style="font-size:.8rem;color:var(--tx3)"></span></div>
+      <div class="panel-body" style="padding:0"><ul class="doc-list" id="docList"></ul></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ QUERY ═══════════════════════════════════════════════════ -->
+<div id="view-query" class="view" style="display:none">
+  <div class="header"><h2>Consultar Wiki</h2></div>
+  <div class="content">
+    <div class="chat-history" id="chatHistory"></div>
+    <div class="query-box">
+      <textarea class="query-input" id="queryInput" rows="2" placeholder="Escribe tu pregunta sobre Agentes de IA..." onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendQuery()}"></textarea>
+      <button class="query-send" onclick="sendQuery()" id="btnQuery">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </div>
+    <div class="query-opts">
+      <label><input type="checkbox" id="chkSave"> Guardar respuesta en FAQ</label>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ WIKI ════════════════════════════════════════════════════ -->
+<div id="view-wiki" class="view" style="display:none">
+  <div class="header"><h2>Explorar Wiki</h2><span id="wikiCount" style="font-size:.8rem;color:var(--tx3)"></span></div>
+  <div class="content" style="padding-bottom:0">
+    <div class="wiki-layout">
+      <div class="wiki-sidebar" id="wikiTree"></div>
+      <div class="wiki-content" id="wikiContent">
+        <div class="empty-state">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+          <h3>Selecciona una pagina</h3>
+          <p>Elige una pagina del arbol lateral para ver su contenido.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ LINT ════════════════════════════════════════════════════ -->
+<div id="view-lint" class="view" style="display:none">
+  <div class="header">
+    <h2>Salud de la Wiki</h2>
+    <div class="btn-group">
+      <button class="btn btn-secondary" onclick="runLint(false,false)">Revision rapida</button>
+      <button class="btn btn-primary" onclick="runLint(true,false)">Analisis profundo</button>
+      <button class="btn btn-danger btn-sm" onclick="runLint(false,true)">Auto-fix</button>
+    </div>
+  </div>
+  <div class="content">
+    <div id="lintResults">
+      <div class="empty-state">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <h3>Revision de salud</h3>
+        <p>Ejecuta una revision para detectar problemas de consistencia, enlaces rotos, paginas huerfanas y mas.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ GRAPH ═══════════════════════════════════════════════════ -->
+<div id="view-graph" class="view" style="display:none">
+  <div class="header">
+    <h2>Grafo del Conocimiento</h2>
+    <span id="graphBadge" class="badge badge-ok" style="display:none"></span>
+    <button class="btn btn-secondary btn-sm" onclick="reloadGraph()" style="margin-left:auto">Recargar</button>
+  </div>
+  <div class="content" style="padding:0">
+    <div class="graph-layout">
+      <div class="graph-sidebar">
+        <div class="graph-filter-group">
+          <h4>Explorar</h4>
+          <input type="text" class="graph-search" id="graphQuery" placeholder="Ej: seguridad en agentes..."
+            onkeydown="if(event.key==='Enter')exploreGraph()">
+          <div style="display:flex;gap:4px;margin-top:6px">
+            <button class="btn btn-primary btn-sm" id="btnGraphSearch" onclick="exploreGraph(false)" style="flex:1" title="Busqueda rapida por coincidencia de texto">Buscar</button>
+            <button class="btn btn-secondary btn-sm" id="btnGraphLLM" onclick="exploreGraph(true)" title="Busqueda inteligente con LLM + analisis">&#129504; LLM</button>
+          </div>
+        </div>
+        <div class="graph-filter-group">
+          <h4>Vista</h4>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <button class="btn btn-secondary btn-sm graph-mode-btn active" data-mode="overview" onclick="loadGraphMode('overview')">Vista General</button>
+            <button class="btn btn-secondary btn-sm graph-mode-btn" data-mode="search" onclick="loadGraphMode('search')">Ultima Busqueda</button>
+          </div>
+        </div>
+        <div class="graph-filter-group">
+          <h4>Tipos de nodo</h4>
+          <div id="graphFilters"></div>
+        </div>
+        <div class="graph-filter-group">
+          <h4>Layout</h4>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <button class="btn btn-secondary btn-sm" onclick="changeGraphLayout('cose')">Organico</button>
+            <button class="btn btn-secondary btn-sm" onclick="changeGraphLayout('concentric')">Concentrico</button>
+            <button class="btn btn-secondary btn-sm" onclick="changeGraphLayout('circle')">Circular</button>
+            <button class="btn btn-secondary btn-sm" onclick="changeGraphLayout('breadthfirst')">Jerarquico</button>
+          </div>
+        </div>
+        <div class="graph-stats" id="graphStats"></div>
+      </div>
+      <div class="graph-canvas">
+        <div id="cy"></div>
+        <div class="graph-controls">
+          <button onclick="cy.fit()" title="Ajustar vista">&#8690;</button>
+          <button onclick="cy.zoom(cy.zoom()*1.3);cy.center()" title="Acercar">+</button>
+          <button onclick="cy.zoom(cy.zoom()/1.3);cy.center()" title="Alejar">&minus;</button>
+          <button onclick="resetGraphHighlight()" title="Limpiar seleccion">&#8634;</button>
+        </div>
+        <div class="graph-info" id="graphInfo"></div>
+        <div class="graph-insights" id="graphInsights">
+          <div class="gi-header">
+            <h3>Analisis LLM</h3>
+            <button class="btn btn-secondary btn-sm" onclick="document.getElementById('graphInsights').style.display='none'">Cerrar</button>
+          </div>
+          <div class="gi-body" id="graphInsightsBody"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ LOG ══════════════════════════════════════════════════════ -->
+<div id="view-log" class="view" style="display:none">
+  <div class="header"><h2>Historial (Log)</h2></div>
+  <div class="content">
+    <div class="panel">
+      <div class="panel-body"><div class="log-content" id="logContent">Cargando...</div></div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /main -->
+</div><!-- /app -->
+
+<!-- ─── Toast Container ───────────────────────────────────────── -->
+<div class="toast-container" id="toasts"></div>
+
+<!-- ═══ JAVASCRIPT ══════════════════════════════════════════════ -->
+<script>
+const API = '';
+let currentView = 'dashboard';
+let pollInterval = null;
+
+// ─── Navigation ──────────────────────────────────────────────────
+function showView(name) {
+  document.querySelectorAll('.view').forEach(v => v.style.display = 'none');
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  const el = document.getElementById('view-' + name);
+  if (el) el.style.display = '';
+  const nav = document.querySelector(`.nav-item[data-view="${name}"]`);
+  if (nav) nav.classList.add('active');
+  currentView = name;
+  if (name === 'dashboard') loadDashboard();
+  if (name === 'ingest') loadDocuments();
+  if (name === 'wiki') {
+    // Open submenu and load
+    wikiSubOpen = true;
+    document.getElementById('wikiSubmenu').style.display = '';
+    document.getElementById('wikiChevron').style.transform = 'rotate(180deg)';
+    loadWikiTree();
+  }
+  if (name === 'graph') loadGraph();
+  if (name === 'log') loadLog();
+}
+
+// ─── Toast ───────────────────────────────────────────────────────
+function toast(msg, type='info') {
+  const c = document.getElementById('toasts');
+  const t = document.createElement('div');
+  t.className = `toast toast-${type}`;
+  t.textContent = msg;
+  c.appendChild(t);
+  setTimeout(() => { t.style.opacity='0'; t.style.transform='translateX(40px)'; setTimeout(()=>t.remove(),300); }, 4000);
+}
+
+// ─── API Helpers ─────────────────────────────────────────────────
+async function api(url, opts={}) {
+  try {
+    const r = await fetch(API + url, {
+      headers: {'Content-Type':'application/json'},
+      ...opts,
+      body: opts.body ? JSON.stringify(opts.body) : undefined,
+    });
+    const contentType = r.headers.get('content-type') || '';
+    if (!contentType.includes('application/json')) {
+      throw new Error(`Error del servidor (${r.status}). Respuesta no es JSON.`);
+    }
+    const data = await r.json();
+    if (!r.ok) throw new Error(data.error || `Error ${r.status}`);
+    return data;
+  } catch(e) {
+    toast(e.message, 'error');
+    throw e;
+  }
+}
+
+// ─── Markdown Renderer (lightweight) ─────────────────────────────
+function renderMd(text) {
+  if (!text) return '';
+  let h = text
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+    .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+    .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    .replace(/^\&gt; (.+)$/gm, '<blockquote>$1</blockquote>')
+    .replace(/^- (.+)$/gm, '<li>$1</li>')
+    .replace(/^\d+\. (.+)$/gm, '<li>$1</li>')
+    .replace(/\[\[([^\]|]+?)(?:\|([^\]]+?))?\]\]/g, (m, link, label) => {
+      return `<a href="#" onclick="openWikiLink('${link}');return false">${label||link}</a>`;
+    });
+  // Wrap consecutive <li> in <ul>
+  h = h.replace(/((?:<li>.*<\/li>\n?)+)/g, '<ul>$1</ul>');
+  // Wrap consecutive <blockquote> lines
+  h = h.replace(/<\/blockquote>\n<blockquote>/g, '<br>');
+  // Paragraphs
+  h = h.replace(/\n{2,}/g, '</p><p>');
+  h = '<p>' + h + '</p>';
+  h = h.replace(/<p><(h[123]|ul|blockquote|pre)/g, '<$1');
+  h = h.replace(/<\/(h[123]|ul|blockquote|pre)><\/p>/g, '</$1>');
+  h = h.replace(/<p>\s*<\/p>/g, '');
+  return h;
+}
+
+// ─── Dashboard ───────────────────────────────────────────────────
+async function loadDashboard() {
+  try {
+    const s = await api('/api/status');
+
+    document.getElementById('ollamaStatus').textContent = s.ollama_ok ? 'Ollama OK' : 'Ollama OFF';
+    document.getElementById('ollamaStatus').className = 'badge ' + (s.ollama_ok ? 'badge-ok' : 'badge-err');
+
+    const sel = document.getElementById('modelSelect');
+    if (sel.options.length === 0 && s.available_models) {
+      s.available_models.forEach(m => {
+        const o = document.createElement('option');
+        o.value = m; o.textContent = m;
+        if (m === s.model) o.selected = true;
+        sel.appendChild(o);
+      });
+    }
+
+    const types = s.pages_by_type || {};
+    document.getElementById('dashCards').innerHTML = `
+      <div class="card">
+        <div class="card-icon" style="background:var(--kiwi3);color:var(--kiwi)">&#128218;</div>
+        <div class="card-val">${s.total_pages}</div>
+        <div class="card-label">Paginas wiki</div>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:rgba(137,180,250,.12);color:var(--blue)">&#128196;</div>
+        <div class="card-val">${s.total_documents}</div>
+        <div class="card-label">Documentos</div>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:var(--kiwi3);color:var(--kiwi)">&#9989;</div>
+        <div class="card-val">${s.ingested}</div>
+        <div class="card-label">Ingestados</div>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:rgba(249,226,175,.12);color:var(--yellow)">&#9203;</div>
+        <div class="card-val">${s.pending}</div>
+        <div class="card-label">Pendientes</div>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:rgba(203,166,247,.12);color:var(--mauve)">&#128161;</div>
+        <div class="card-val">${types.concepts||0}</div>
+        <div class="card-label">Conceptos</div>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:rgba(148,226,213,.12);color:var(--teal)">&#127963;</div>
+        <div class="card-val">${types.entities||0}</div>
+        <div class="card-label">Entidades</div>
+      </div>
+    `;
+
+    const logEl = document.getElementById('dashLog');
+    logEl.innerHTML = (s.recent_log && s.recent_log.length)
+      ? s.recent_log.map(e => renderMd(e)).join('<hr style="border-color:var(--bg4);margin:12px 0">')
+      : '<span style="color:var(--tx3)">Sin actividad reciente.</span>';
+  } catch(e) {}
+}
+
+// ─── Model ───────────────────────────────────────────────────────
+async function changeModel(model) {
+  await api('/api/model', { method:'POST', body:{model} });
+  toast('Modelo cambiado: ' + model, 'success');
+}
+
+// ─── Documents ───────────────────────────────────────────────────
+async function loadDocuments() {
+  try {
+    const docs = await api('/api/documents');
+    const list = document.getElementById('docList');
+    const pending = docs.filter(d=>!d.ingested).length;
+    document.getElementById('docCount').textContent = `${docs.length} documentos | ${pending} pendientes`;
+    document.getElementById('btnIngestAll').disabled = pending === 0;
+
+    list.innerHTML = docs.map(d => `
+      <li class="doc-item">
+        <div class="doc-icon ${d.ingested?'ingested':'pending'}">${d.ingested?'&#9989;':'&#128196;'}</div>
+        <div class="doc-info">
+          <div class="doc-name">${d.name}</div>
+          <div class="doc-meta">${d.size_human}</div>
+        </div>
+        <span class="doc-status ${d.ingested?'ok':'wait'}">${d.ingested?'Ingestado':'Pendiente'}</span>
+        ${d.ingested
+          ? `<button class="btn btn-secondary btn-sm" onclick="ingestFile('${d.name}')">Re-ingestar</button>`
+          : `<button class="btn btn-primary btn-sm" onclick="ingestFile('${d.name}')">Ingestar</button>`}
+      </li>
+    `).join('');
+  } catch(e) {}
+}
+
+// ─── Ingest ──────────────────────────────────────────────────────
+async function ingestFile(filename) {
+  try {
+    const r = await api('/api/ingest', { method:'POST', body:{file:filename} });
+    toast('Ingesta iniciada: ' + filename, 'info');
+    pollIngest(r.task_id);
+  } catch(e) {}
+}
+
+async function ingestAll() {
+  try {
+    const r = await api('/api/ingest', { method:'POST', body:{all:true} });
+    toast('Ingesta masiva iniciada', 'info');
+    pollIngest(r.task_id);
+  } catch(e) {}
+}
+
+function pollIngest(taskId) {
+  const box = document.getElementById('ingestProgress');
+  box.style.display = '';
+  if (pollInterval) clearInterval(pollInterval);
+
+  pollInterval = setInterval(async () => {
+    try {
+      const t = await api('/api/ingest/status/' + taskId);
+      document.getElementById('ingestTitle').textContent =
+        t.status === 'completed' ? 'Ingesta completada' :
+        t.status === 'error' ? 'Error en la ingesta' :
+        'Ingesta en progreso...';
+      document.getElementById('ingestStep').textContent = t.current_step || '';
+
+      const pct = t.total_files > 0
+        ? ((t.current_file_idx + (t.status==='completed'?1:0)) / t.total_files * 100)
+        : 0;
+      document.getElementById('ingestBar').style.width = (t.status==='completed'?100:pct) + '%';
+
+      const steps = document.getElementById('ingestSteps');
+      steps.innerHTML = (t.steps||[]).map(s => `
+        <li class="step-item">
+          <span class="step-dot ${s.done?'done':'error'}"></span>
+          ${s.name}
+          <span class="step-detail">${s.detail||''}</span>
+        </li>
+      `).join('');
+
+      if (t.status === 'running') {
+        const last = t.steps?.length ? t.steps[t.steps.length-1] : null;
+        if (!last || last.done) {
+          steps.innerHTML += '<li class="step-item"><span class="step-dot running"></span>' + (t.current_step||'Procesando...') + '</li>';
+        }
+      }
+
+      if (t.status !== 'running') {
+        clearInterval(pollInterval);
+        pollInterval = null;
+        if (t.status === 'completed') {
+          toast(`Ingesta completada: +${(t.created||[]).length} paginas creadas, ~${(t.updated||[]).length} actualizadas`, 'success');
+          loadDocuments();
+          loadDashboard();
+        } else if (t.status === 'error') {
+          toast('Error: ' + (t.error||'desconocido'), 'error');
+        }
+      }
+    } catch(e) { clearInterval(pollInterval); pollInterval = null; }
+  }, 2000);
+}
+
+// ─── Query ───────────────────────────────────────────────────────
+const chatMessages = [];
+
+async function sendQuery() {
+  const input = document.getElementById('queryInput');
+  const question = input.value.trim();
+  if (!question) return;
+  const save = document.getElementById('chkSave').checked;
+
+  input.value = '';
+  chatMessages.push({role:'user', content: question});
+  renderChat();
+
+  const btn = document.getElementById('btnQuery');
+  btn.disabled = true;
+  // Show loading
+  chatMessages.push({role:'loading', content:''});
+  renderChat();
+
+  try {
+    const r = await api('/api/query', { method:'POST', body:{question, save} });
+    chatMessages.pop(); // remove loading
+    chatMessages.push({
+      role:'assistant', content: r.answer,
+      pages: r.pages_consulted, saved: r.saved
+    });
+    renderChat();
+    if (save) toast('Respuesta guardada en FAQ', 'success');
+  } catch(e) {
+    chatMessages.pop();
+    chatMessages.push({role:'assistant', content:'Error al procesar la consulta: ' + e.message});
+    renderChat();
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+function renderChat() {
+  const el = document.getElementById('chatHistory');
+  el.innerHTML = chatMessages.map((m, idx) => {
+    if (m.role === 'user') {
+      return `<div class="chat-msg user">${escHtml(m.content)}</div>`;
+    }
+    if (m.role === 'loading') {
+      return `<div class="chat-msg assistant"><div class="spinner"></div> Buscando en la wiki...</div>`;
+    }
+    let html = `<div class="chat-msg assistant">${renderMd(m.content)}`;
+    if (m.pages && m.pages.length) {
+      html += `<div class="pages-used">Paginas consultadas: ${m.pages.join(', ')}</div>`;
+      html += `<div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">`;
+      html += `<button class="btn btn-secondary btn-sm" onclick="graphFromQuery(${idx})">&#128268; Ver Grafo</button>`;
+      if (!m.saved) {
+        html += `<button class="btn btn-secondary btn-sm" id="btnSaveFaq${idx}" onclick="saveToFaqPost(${idx})">&#128190; Guardar en FAQ</button>`;
+      } else {
+        html += `<span style="font-size:.75rem;color:var(--kiwi);display:flex;align-items:center;gap:4px">&#9989; Guardado en FAQ</span>`;
+      }
+      html += `</div>`;
+    }
+    return html + '</div>';
+  }).join('');
+  el.scrollTop = el.scrollHeight;
+}
+
+async function saveToFaqPost(msgIdx) {
+  const m = chatMessages[msgIdx];
+  if (!m || !m.content) return;
+  let question = '';
+  for (let i = msgIdx - 1; i >= 0; i--) {
+    if (chatMessages[i].role === 'user') { question = chatMessages[i].content; break; }
+  }
+  try {
+    await api('/api/query/save-faq', {method: 'POST', body: {question, answer: m.content}});
+    m.saved = true;
+    renderChat();
+    toast('Respuesta guardada en FAQ', 'success');
+  } catch(e) {}
+}
+
+function graphFromQuery(msgIdx) {
+  const m = chatMessages[msgIdx];
+  if (!m || !m.pages || !m.pages.length) return;
+  let question = '';
+  for (let i = msgIdx - 1; i >= 0; i--) {
+    if (chatMessages[i].role === 'user') { question = chatMessages[i].content; break; }
+  }
+  // Show graph view WITHOUT triggering loadGraph (avoids race condition)
+  document.querySelectorAll('.view').forEach(v => v.style.display = 'none');
+  document.querySelectorAll('.nav-item:not(.nav-sub)').forEach(n => n.classList.remove('active'));
+  document.getElementById('view-graph').style.display = '';
+  const nav = document.querySelector('.nav-item[data-view="graph"]');
+  if (nav) nav.classList.add('active');
+  currentView = 'graph';
+
+  const seeds = m.pages.map(p => p.replace('.md', ''));
+  // Set the query in the search box for reference
+  document.getElementById('graphQuery').value = question;
+  lastSearchQuery = question;
+  renderGraphExplore({mode: 'query_pages', seeds, query: question, analyze: true});
+}
+
+function escHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+
+// ─── Wiki Browser ────────────────────────────────────────────────
+let wikiPages = [];
+let wikiCatFilter = 'all';
+let wikiSubOpen = false;
+
+function toggleWikiSub() {
+  wikiSubOpen = !wikiSubOpen;
+  document.getElementById('wikiSubmenu').style.display = wikiSubOpen ? '' : 'none';
+  document.getElementById('wikiChevron').style.transform = wikiSubOpen ? 'rotate(180deg)' : '';
+  if (wikiSubOpen && currentView !== 'wiki') {
+    showWikiCat(wikiCatFilter);
+  }
+}
+
+function showWikiCat(cat) {
+  wikiCatFilter = cat;
+  // Highlight active sub-item
+  document.querySelectorAll('.nav-sub').forEach(n => n.classList.remove('active'));
+  const active = document.querySelector(`.nav-sub[data-wiki-cat="${cat}"]`);
+  if (active) active.classList.add('active');
+  // Also highlight parent Wiki item
+  const wikiNav = document.querySelector('.nav-item[data-view="wiki"]');
+  if (wikiNav) wikiNav.classList.add('active');
+  // Show wiki view and load
+  document.querySelectorAll('.view').forEach(v => v.style.display = 'none');
+  document.querySelectorAll('.nav-item:not(.nav-sub)').forEach(n => {
+    if (n.dataset.view !== 'wiki') n.classList.remove('active');
+  });
+  const el = document.getElementById('view-wiki');
+  if (el) el.style.display = '';
+  currentView = 'wiki';
+  // Ensure submenu stays open
+  wikiSubOpen = true;
+  document.getElementById('wikiSubmenu').style.display = '';
+  document.getElementById('wikiChevron').style.transform = 'rotate(180deg)';
+  loadWikiTree();
+}
+
+async function loadWikiTree() {
+  try {
+    wikiPages = await api('/api/wiki/pages');
+    const catLabels = {root:'General',sources:'Fuentes',concepts:'Conceptos',entities:'Entidades',faq:'FAQ',comparisons:'Comparaciones',timelines:'Lineas de Tiempo'};
+    const filtered = wikiCatFilter === 'all' ? wikiPages : wikiPages.filter(p => p.type === wikiCatFilter);
+    const label = wikiCatFilter === 'all' ? 'Todas' : (catLabels[wikiCatFilter] || wikiCatFilter);
+    document.getElementById('wikiCount').textContent = `${filtered.length} de ${wikiPages.length} paginas — ${label}`;
+    const tree = document.getElementById('wikiTree');
+
+    const groups = {};
+    filtered.forEach(p => {
+      const g = p.type;
+      if (!groups[g]) groups[g] = [];
+      groups[g].push(p);
+    });
+
+    const order = ['root','sources','concepts','entities','faq','comparisons','timelines'];
+
+    tree.innerHTML = order
+      .filter(g => groups[g])
+      .map(g => `
+        <div class="wiki-tree-group">
+          <div class="wiki-tree-label">${catLabels[g]||g} (${groups[g].length})</div>
+          ${groups[g].map(p => `
+            <div class="wiki-tree-item" data-path="${p.path}" onclick="openWikiPage('${p.path}')">${p.title}</div>
+          `).join('')}
+        </div>
+      `).join('');
+  } catch(e) {}
+}
+
+async function openWikiPage(path) {
+  try {
+    if (!path.endsWith('.md')) path += '.md';
+    const data = await api('/api/wiki/page/' + path);
+    document.getElementById('wikiContent').innerHTML = renderMd(data.content);
+    document.querySelectorAll('.wiki-tree-item').forEach(i => i.classList.remove('active'));
+    const active = document.querySelector(`.wiki-tree-item[data-path="${path}"]`);
+    if (active) active.classList.add('active');
+  } catch(e) {
+    document.getElementById('wikiContent').innerHTML = `<div class="empty-state"><h3>Pagina no encontrada</h3><p>${path}</p></div>`;
+  }
+}
+
+function openWikiLink(link) {
+  showView('wiki');
+  setTimeout(() => openWikiPage(link), 200);
+}
+
+// ─── Lint ────────────────────────────────────────────────────────
+async function runLint(deep=false, fix=false) {
+  const container = document.getElementById('lintResults');
+  container.innerHTML = '<div class="loading-overlay"><div class="spinner"></div> Analizando la wiki...</div>';
+
+  try {
+    const r = await api('/api/lint', { method:'POST', body:{deep, fix} });
+
+    const typeLabels = {
+      index_missing:['Sin indexar','warn'], broken_link:['Enlace roto','error'],
+      orphan:['Huerfana','warn'], empty:['Vacia','error'],
+      duplicate_suspect:['Posible duplicado','warn'], missing_section:['Seccion faltante','warn'],
+      no_title:['Sin titulo','warn'],
+      llm_contradiccion:['Contradiccion','error'], llm_falta_enlace:['Falta enlace','info'],
+      llm_tema_faltante:['Tema faltante','info'], llm_concepto_sin_pagina:['Sin pagina','info'],
+      llm_sugerencia:['Sugerencia','info'],
+    };
+
+    let html = `
+      <div class="lint-summary">
+        <div class="lint-card"><div class="num" style="color:var(--tx)">${r.total}</div><div class="lbl">Total</div></div>
+        <div class="lint-card"><div class="num" style="color:var(--red)">${r.errors}</div><div class="lbl">Errores</div></div>
+        <div class="lint-card"><div class="num" style="color:var(--yellow)">${r.warnings}</div><div class="lbl">Advertencias</div></div>
+      </div>`;
+
+    if (r.fixed > 0) {
+      html += `<div style="padding:10px 16px;background:var(--kiwi3);border-radius:var(--radius-sm);margin-bottom:16px;color:var(--kiwi);font-size:.85rem">Se corrigieron ${r.fixed} problemas automaticamente.</div>`;
+    }
+
+    if (r.total === 0) {
+      html += '<div class="empty-state" style="padding:30px"><h3>Todo en orden</h3><p>No se detectaron problemas en la wiki.</p></div>';
+    } else {
+      html += '<div class="panel"><div class="panel-header"><h3>Problemas detectados</h3></div><div class="panel-body" style="padding:0"><ul class="lint-issues">';
+      for (const [type, items] of Object.entries(r.issues)) {
+        const [label, severity] = typeLabels[type] || [type, 'info'];
+        for (const item of items) {
+          html += `
+            <li class="lint-issue">
+              <span class="lint-type ${severity}">${label}</span>
+              <div><strong>${item.page}</strong><br><span style="color:var(--tx3)">${item.description}</span></div>
+            </li>`;
+        }
+      }
+      html += '</ul></div></div>';
+    }
+
+    container.innerHTML = html;
+    if (r.total === 0) toast('Wiki en buen estado', 'success');
+
+  } catch(e) {
+    container.innerHTML = '<div class="empty-state"><h3>Error</h3><p>' + e.message + '</p></div>';
+  }
+}
+
+// ─── Log ─────────────────────────────────────────────────────────
+async function loadLog() {
+  try {
+    const r = await api('/api/log');
+    document.getElementById('logContent').innerHTML = renderMd(r.content);
+  } catch(e) {}
+}
+
+// ─── Graph ──────────────────────────────────────────────────────
+let cy = null;
+let graphMode = 'overview';
+let lastSearchQuery = '';
+const TYPE_COLORS = {sources:'#89b4fa',concepts:'#cba6f7',entities:'#94e2d5',faq:'#fab387',aliases:'#f5c2e7',root:'#a6e3a1',comparisons:'#f9e2af',timelines:'#f9e2af',usage:'#6c7086'};
+const TYPE_LABELS = {sources:'Fuentes',concepts:'Conceptos',entities:'Entidades',faq:'FAQ',aliases:'Aliases',root:'General',comparisons:'Comparaciones',timelines:'Lineas de tiempo',usage:'Uso'};
+
+async function loadGraph() { loadGraphMode('overview'); }
+
+async function loadGraphMode(mode) {
+  graphMode = mode;
+  document.querySelectorAll('.graph-mode-btn').forEach(b =>
+    b.classList.toggle('active', b.dataset.mode === mode));
+  if (mode === 'overview') {
+    await renderGraphExplore({mode: 'overview'});
+  } else if (mode === 'search' && lastSearchQuery) {
+    await renderGraphExplore({mode: 'smart_search', query: lastSearchQuery});
+  } else {
+    await renderGraphExplore({mode: 'overview'});
+  }
+}
+
+async function exploreGraph(withAnalysis) {
+  const query = document.getElementById('graphQuery').value.trim();
+  if (!query) { toast('Escribe un tema para explorar', 'info'); return; }
+  lastSearchQuery = query;
+  graphMode = 'search';
+  document.querySelectorAll('.graph-mode-btn').forEach(b =>
+    b.classList.toggle('active', b.dataset.mode === 'search'));
+  // Buscar = coincidencia de texto (search), +LLM = búsqueda inteligente (smart_search)
+  const mode = withAnalysis ? 'smart_search' : 'search';
+  // Feedback visual: marca el botón activo
+  const btnSearch = document.getElementById('btnGraphSearch');
+  const btnLLM = document.getElementById('btnGraphLLM');
+  if (withAnalysis) {
+    btnLLM.className = 'btn btn-primary btn-sm';
+    btnSearch.className = 'btn btn-secondary btn-sm';
+    btnSearch.style.flex = '1';
+  } else {
+    btnSearch.className = 'btn btn-primary btn-sm';
+    btnSearch.style.flex = '1';
+    btnLLM.className = 'btn btn-secondary btn-sm';
+  }
+  await renderGraphExplore({mode, query, analyze: !!withAnalysis});
+}
+
+async function renderGraphExplore(params) {
+  if (cy) { cy.destroy(); cy = null; }
+  const container = document.getElementById('cy');
+  container.innerHTML = '<div class="loading-overlay"><div class="spinner"></div> ' +
+    (params.analyze ? 'Analizando con LLM...' : 'Construyendo grafo...') + '</div>';
+  document.getElementById('graphInsights').style.display = 'none';
+  document.getElementById('graphInfo').style.display = 'none';
+
+  try {
+    const data = await api('/api/graph/explore', {method: 'POST', body: params});
+    if (!data.nodes || data.nodes.length === 0) {
+      container.innerHTML = '<div class="empty-state"><h3>Sin resultados</h3>' +
+        '<p>No se encontraron nodos. Intenta con otros terminos.</p></div>';
+      return;
+    }
+
+    const isOverview = data.nodes.some(n => n.is_cluster);
+    const elems = [];
+
+    data.nodes.forEach(n => {
+      elems.push({data: {
+        id: n.id, label: n.label, type: n.type,
+        links: n.links || n.count || 1,
+        color: TYPE_COLORS[n.type] || '#6c7086',
+        is_seed: n.is_seed || false,
+        is_cluster: n.is_cluster || false,
+        count: n.count || 0,
+        top: (n.top || []).join('\n'),
+      }});
+    });
+
+    data.edges.forEach(e => {
+      elems.push({data: {
+        id: e.source + '>' + e.target,
+        source: e.source, target: e.target,
+        weight: e.weight || 1, label: e.label || '',
+      }});
+    });
+
+    container.innerHTML = '';
+
+    // Estilos distintos para overview vs subgrafo
+    const styles = isOverview ? [
+      {selector: 'node', style: {
+        'background-color': 'data(color)', 'border-width': 3,
+        'border-color': 'data(color)', 'border-opacity': 0.4,
+        'label': function(n) {
+          var t = TYPE_LABELS[n.data('label')] || n.data('label');
+          return t + '\n(' + n.data('count') + ')';
+        },
+        'font-size': '13px', 'color': '#cdd6f4', 'font-weight': 'bold',
+        'text-outline-color': '#0f1117', 'text-outline-width': 2,
+        'text-wrap': 'wrap', 'text-max-width': '120px',
+        'text-valign': 'center', 'text-halign': 'center',
+        'width': 'mapData(links, 0, 350, 70, 170)',
+        'height': 'mapData(links, 0, 350, 70, 170)',
+        'opacity': 0.92,
+      }},
+      {selector: 'edge', style: {
+        'width': 'mapData(weight, 1, 500, 2, 14)',
+        'line-color': '#3a3d4d', 'curve-style': 'bezier',
+        'label': 'data(label)', 'font-size': '10px', 'color': '#a6adc8',
+        'text-outline-color': '#0f1117', 'text-outline-width': 1.5,
+        'text-rotation': 'autorotate', 'opacity': 0.5,
+      }},
+    ] : [
+      {selector: 'node', style: {
+        'background-color': 'data(color)', 'label': 'data(label)',
+        'font-size': '9px', 'color': '#cdd6f4',
+        'text-outline-color': '#0f1117', 'text-outline-width': 1.5,
+        'text-valign': 'bottom', 'text-margin-y': 5,
+        'text-wrap': 'wrap', 'text-max-width': '100px',
+        'width': 'mapData(links, 0, 20, 14, 42)',
+        'height': 'mapData(links, 0, 20, 14, 42)',
+        'opacity': 0.9,
+      }},
+      {selector: 'node[?is_seed]', style: {
+        'border-width': 3, 'border-color': '#f9e2af',
+        'opacity': 1, 'font-size': '10px', 'font-weight': 'bold',
+      }},
+      {selector: 'edge', style: {
+        'width': 1, 'line-color': '#3a3d4d', 'curve-style': 'bezier',
+        'target-arrow-shape': 'triangle', 'target-arrow-color': '#3a3d4d',
+        'arrow-scale': 0.6, 'opacity': 0.4,
+      }},
+      {selector: '.highlighted', style: {'opacity': 1, 'z-index': 10}},
+      {selector: 'edge.highlighted', style: {
+        'line-color': '#a6e3a1', 'target-arrow-color': '#a6e3a1',
+        'opacity': 0.8, 'width': 2,
+      }},
+      {selector: '.faded', style: {'opacity': 0.08}},
+    ];
+
+    const layoutOpts = isOverview
+      ? {name: 'circle', animate: false, spacingFactor: 1.5}
+      : {name: 'cose', animate: false, nodeDimensionsIncludeLabels: true,
+         randomize: true, idealEdgeLength: 120, nodeRepulsion: 12000,
+         nodeOverlap: 40, gravity: 0.4, numIter: 1000};
+
+    cy = cytoscape({
+      container, elements: elems, style: styles, layout: layoutOpts,
+      wheelSensitivity: 0.3, minZoom: 0.1, maxZoom: 4,
+    });
+
+    // Eventos
+    cy.on('tap', 'node', function(e) {
+      const nd = e.target.data();
+      if (nd.is_cluster) { showClusterInfo(nd); }
+      else { showNodeInfo(nd); highlightNeighbors(e.target); }
+    });
+    cy.on('tap', function(e) {
+      if (e.target === cy) {
+        resetGraphHighlight();
+        document.getElementById('graphInfo').style.display = 'none';
+      }
+    });
+    if (!isOverview) {
+      cy.on('dbltap', 'node', function(e) { openWikiLink(e.target.data('id')); });
+    }
+
+    buildGraphFilters(data.nodes);
+    updateGraphStats(data);
+
+    const badge = document.getElementById('graphBadge');
+    badge.textContent = data.nodes.length + ' nodos · ' + data.edges.length + ' aristas';
+    if (data.total_nodes) badge.textContent += ' (de ' + data.total_nodes + ')';
+    badge.style.display = '';
+
+    if (data.insights) {
+      document.getElementById('graphInsightsBody').innerHTML = renderMd(data.insights);
+      document.getElementById('graphInsights').style.display = '';
+    }
+  } catch(e) {
+    container.innerHTML = '<div class="empty-state"><h3>Error</h3><p>' + e.message + '</p></div>';
+  }
+}
+
+function showClusterInfo(d) {
+  const info = document.getElementById('graphInfo');
+  const topList = d.top ? d.top.split('\n').filter(Boolean).map(t =>
+    '<li>' + escHtml(t) + '</li>').join('') : '';
+  info.innerHTML = '<h4>' + (TYPE_LABELS[d.type] || d.type) +
+    '<span class="type-badge" style="background:' + d.color + '22;color:' + d.color +
+    '">' + d.count + ' paginas</span></h4>' +
+    (topList ? '<ul style="margin:6px 0;padding-left:16px;font-size:.8rem">' + topList + '</ul>' : '') +
+    '<button class="btn btn-primary btn-sm" style="margin-top:6px" ' +
+    'onclick="exploreCategory(\'' + d.type + '\')">Explorar categoria</button>';
+  info.style.display = '';
+}
+
+async function exploreCategory(type) {
+  await renderGraphExplore({mode: 'category', category: type, max_nodes: 35});
+}
+
+function showNodeInfo(d) {
+  const info = document.getElementById('graphInfo');
+  const nb = cy.getElementById(d.id).neighborhood('node').length;
+  info.innerHTML = '<h4>' + escHtml(d.label) +
+    '<span class="type-badge" style="background:' + d.color + '22;color:' + d.color + '">' +
+    (TYPE_LABELS[d.type] || d.type) + '</span></h4>' +
+    '<p style="font-size:.75rem;color:var(--tx3)">' + d.id + '</p>' +
+    '<p>Vecinos: ' + nb +
+    (d.is_seed ? ' · <strong style="color:var(--yellow)">Resultado directo</strong>' : '') + '</p>' +
+    '<div style="display:flex;gap:4px;margin-top:6px">' +
+    '<button class="btn btn-secondary btn-sm" onclick="openWikiLink(\'' + d.id + '\')">Ver Wiki</button>' +
+    '<button class="btn btn-secondary btn-sm" onclick="exploreNeighborhood(\'' + d.id +
+    '\')">Explorar vecinos</button></div>';
+  info.style.display = '';
+}
+
+async function exploreNeighborhood(nodeId) {
+  await renderGraphExplore({mode: 'neighborhood', node_id: nodeId, depth: 1, max_nodes: 30});
+}
+
+function highlightNeighbors(node) {
+  cy.elements().removeClass('highlighted').addClass('faded');
+  node.neighborhood().add(node).removeClass('faded').addClass('highlighted');
+}
+
+function resetGraphHighlight() {
+  if (cy) cy.elements().removeClass('faded highlighted');
+}
+
+function toggleGraphType(cb) {
+  if (cy) cy.nodes().filter(n => n.data('type') === cb.dataset.type)
+    .style('display', cb.checked ? 'element' : 'none');
+}
+
+function buildGraphFilters(nodes) {
+  const el = document.getElementById('graphFilters'), counts = {};
+  nodes.forEach(n => { counts[n.type] = (counts[n.type] || 0) + 1; });
+  el.innerHTML = Object.entries(counts).sort((a, b) => b[1] - a[1])
+    .map(([t, c]) =>
+      '<label class="graph-filter"><input type="checkbox" checked data-type="' + t +
+      '" onchange="toggleGraphType(this)"><span class="graph-dot" style="background:' +
+      (TYPE_COLORS[t] || '#6c7086') + '"></span>' + (TYPE_LABELS[t] || t) + ' (' + c + ')</label>'
+    ).join('');
+}
+
+function changeGraphLayout(name) {
+  if (!cy) return;
+  const opts = {
+    cose: {name: 'cose', animate: true, animationDuration: 800, randomize: false,
+      nodeDimensionsIncludeLabels: true, idealEdgeLength: 120, nodeRepulsion: 12000,
+      gravity: 0.4, numIter: 1000},
+    concentric: {name: 'concentric', animate: true, animationDuration: 500,
+      concentric: n => n.degree(), levelWidth: () => 3},
+    circle: {name: 'circle', animate: true, animationDuration: 500},
+  };
+  cy.layout(opts[name] || {name}).run();
+}
+
+function updateGraphStats(data) {
+  const el = document.getElementById('graphStats'), counts = {};
+  data.nodes.forEach(n => { counts[n.type] = (counts[n.type] || 0) + 1; });
+  let h = '<div>Mostrando: <span>' + data.nodes.length + '</span> nodos</div>';
+  h += '<div>Aristas: <span>' + data.edges.length + '</span></div>';
+  if (data.total_nodes) h += '<div>Total wiki: <span>' + data.total_nodes + '</span></div>';
+  h += '<div style="margin-top:6px">';
+  Object.entries(counts).sort((a, b) => b[1] - a[1]).forEach(([t, c]) => {
+    h += '<div><span style="color:' + (TYPE_COLORS[t] || '#6c7086') + '">' +
+      (TYPE_LABELS[t] || t) + '</span>: ' + c + '</div>';
+  });
+  el.innerHTML = h + '</div>';
+}
+
+// ─── Init ────────────────────────────────────────────────────────
+loadDashboard();
+</script>
+</body>
+</html>
