@@ -271,6 +271,55 @@ def fix_index(issues):
     return len(entries)
 
 
+def fix_broken_links(issues):
+    """Elimina o limpia enlaces rotos de las páginas wiki."""
+    broken = [i for i in issues if i[0] == "broken_link"]
+    if not broken:
+        return 0
+
+    # Agrupar por página: {page: [link1, link2, ...]}
+    by_page = defaultdict(list)
+    for _, page, desc in broken:
+        # Extraer el link del texto "Enlace roto: [[xxx]]"
+        m = re.search(r'\[\[(.+?)\]\]', desc)
+        if m:
+            by_page[page].append(m.group(1))
+
+    fixed = 0
+    for page, links in by_page.items():
+        fpath = WIKI_DIR / page
+        content = read_file(fpath)
+        if not content:
+            continue
+
+        original = content
+        for link in links:
+            # Nombre legible del enlace
+            display = link.split('/')[-1].replace('-', ' ').title()
+
+            # Caso 1: línea que es solo "- [[link]]" → quitar la línea completa
+            content = re.sub(
+                r'^[ \t]*-\s*\[\[' + re.escape(link) + r'(?:\|[^\]]+)?\]\]\s*\n?',
+                '', content, flags=re.MULTILINE
+            )
+
+            # Caso 2: [[link]] dentro de texto → reemplazar con el texto legible
+            content = re.sub(
+                r'\[\[' + re.escape(link) + r'(?:\|([^\]]+))?\]\]',
+                lambda m: m.group(1) if m.group(1) else display,
+                content
+            )
+
+        # Limpiar líneas vacías consecutivas
+        content = re.sub(r'\n{3,}', '\n\n', content)
+
+        if content != original:
+            write_file(fpath, content)
+            fixed += len(links)
+
+    return fixed
+
+
 # ─── Reporte ─────────────────────────────────────────────────────────────────
 
 def print_report(all_issues):

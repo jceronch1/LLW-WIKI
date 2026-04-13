@@ -45,7 +45,7 @@ from query import select_relevant_pages, load_pages_content, answer_question, sa
 from lint import (
     check_index_completeness, check_broken_links, check_orphan_pages,
     check_empty_pages, check_duplicate_concepts, check_page_structure,
-    deep_analysis, fix_index,
+    deep_analysis, fix_index, fix_broken_links,
 )
 
 # ─── Flask App ────────────────────────────────────────────────────────────────
@@ -803,7 +803,11 @@ def api_lint():
         fixed_count = 0
         if do_fix:
             try:
-                fixed_count = fix_index(issues)
+                fixed_count += fix_broken_links(issues)
+            except Exception as e:
+                issues.append(("lint_error", "fix_broken_links", f"Error al corregir enlaces rotos: {e}"))
+            try:
+                fixed_count += fix_index(issues)
             except Exception as e:
                 issues.append(("lint_error", "fix_index", f"Error al corregir índice: {e}"))
 
