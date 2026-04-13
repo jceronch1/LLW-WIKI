@@ -2,6 +2,30 @@
 
 LLM Wiki es una aplicación local para convertir una colección de PDFs sobre IA y agentes en una wiki Markdown consultable. El flujo principal ingesta documentos, crea páginas fuente, extrae conceptos y entidades, mantiene enlaces internos y expone una interfaz web en Flask.
 
+## Relación con el patrón LLM Wiki de Karpathy
+
+Esta aplicación implementa una versión concreta del patrón [LLM Wiki propuesto por Andrej Karpathy](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f). La idea central de ese patrón es reemplazar el uso pasivo de RAG por una base de conocimiento persistente: en vez de recuperar fragmentos crudos en cada pregunta, el LLM compila conocimiento una vez, lo integra en Markdown, mantiene enlaces internos y permite que la síntesis se acumule con cada fuente y cada consulta.
+
+La correspondencia principal es:
+
+| Patrón LLM Wiki | Implementación en esta app |
+| --- | --- |
+| Fuentes crudas e inmutables | PDFs locales en `papers/` o `Documentos/`, excluidos de Git por defecto. |
+| Wiki persistente | Archivos Markdown en `wiki/`, organizados en fuentes, conceptos, entidades, FAQ y páginas generales. |
+| Schema de comportamiento | Reglas del mantenedor en `schema/AGENTS.md`, usadas para orientar ingesta, consulta y mantenimiento. |
+| Operación de ingesta | `scripts/ingest.py` y la vista web de ingesta crean páginas fuente, conceptos, entidades, FAQ, índice y log. |
+| Operación de consulta | `scripts/query.py` selecciona páginas relevantes y responde usando la wiki como capa compilada de conocimiento. |
+| Operación de lint/mantenimiento | `scripts/lint.py` revisa enlaces rotos, páginas huérfanas, duplicados, estructura e índice. |
+| Index y log | `wiki/index.md` funciona como catálogo navegable; `wiki/log.md` registra la evolución cronológica. |
+
+La diferencia práctica frente al texto original de Karpathy es que aquí el patrón no queda como una guía abstracta para un agente en Obsidian o en un editor, sino como una aplicación local operativa: tiene interfaz web, CLI, integración con Ollama, subida y borrado de PDFs, configuración de dominio y controles de salud de la wiki. Esto convierte la idea de "wiki como artefacto acumulativo" en un flujo repetible para investigación documental sobre agentes de IA.
+
+## Apreciación
+
+LLM Wiki es valioso porque cambia el centro de gravedad del sistema: el conocimiento deja de vivir en respuestas efímeras de chat y pasa a vivir en archivos versionables, enlazados y auditables. Esta app aprovecha esa lógica y la aterriza en un entorno local, pragmático y controlable. No busca ser solo un chatbot sobre PDFs; busca ser una máquina de mantenimiento de conocimiento: lee fuentes, produce estructura, conserva historial, permite revisar salud y facilita que cada nueva ingesta mejore la base existente.
+
+El resultado es especialmente útil para dominios densos, como agentes de inteligencia artificial, donde los conceptos, entidades, papers y regulaciones se conectan entre sí. La app todavía puede crecer hacia visualización de grafos, mejores validaciones de seguridad y búsqueda híbrida, pero su arquitectura ya respeta lo esencial del patrón: fuentes separadas, wiki persistente, reglas explícitas y operaciones acumulativas.
+
 ## Componentes
 
 - `scripts/app.py`: servidor Flask e interfaz web.
