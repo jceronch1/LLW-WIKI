@@ -1,7 +1,7 @@
 # LLM Wiki
 
 LLM Wiki es una aplicación local para convertir una colección de PDFs sobre cualquier tema en una wiki Markdown consultable. El flujo principal ingesta documentos, crea páginas fuente, extrae conceptos y entidades, mantiene enlaces internos y expone una interfaz web en Flask.
-(img/llmwiki1.png)
+![](img/llmwiki1.png)
 
 ## Relación con el patrón LLM Wiki de Karpathy
 
