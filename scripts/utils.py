@@ -7,6 +7,7 @@ import os
 import re
 import json
 import requests
+import anthropic
 import fitz  # PyMuPDF
 from pathlib import Path
 from datetime import datetime
@@ -23,9 +24,10 @@ CONFIG_PATH = BASE_DIR / "config.json"
 
 OLLAMA_URL = "http://localhost:11434/api/chat"
 DEFAULT_MODEL = "qwen2.5:7b"
+DEFAULT_CLAUDE_MODEL = "claude-sonnet-4-6"
+DEFAULT_PROVIDER = "claude"
 
-# Límites de texto (en caracteres). qwen2.5:7b soporta 128K tokens.
-# Usamos límites conservadores para dejar espacio al prompt y la respuesta.
+# Límites de texto (en caracteres).
 MAX_CONTEXT_CHARS = 60000
 CHUNK_SIZE = 20000
 CHUNK_OVERLAP = 800
@@ -108,12 +110,51 @@ def chunk_text(text, chunk_size=CHUNK_SIZE, overlap=CHUNK_OVERLAP):
     return chunks
 
 
-# ─── Ollama API ──────────────────────────────────────────────────────────────
+# ─── LLM API ─────────────────────────────────────────────────────────────────
 
-def call_ollama(messages, model=None, temperature=0.3, timeout=300):
-    """Llama a la API de chat de Ollama y retorna el contenido de la respuesta."""
+def call_claude(messages, model=None, temperature=0.3):
+    """Llama a la API de Claude (Anthropic) y retorna el contenido de la respuesta."""
+    model = model or DEFAULT_CLAUDE_MODEL
+    api_key = os.environ.get("ANTHROPIC_API_KEY")
+    if not api_key:
+        error("No se encontró ANTHROPIC_API_KEY en las variables de entorno.")
+        raise SystemExit(1)
+
+    client = anthropic.Anthropic(api_key=api_key)
+
+    system_msg = ""
+    chat_messages = []
+    for m in messages:
+        if m["role"] == "system":
+            system_msg = m["content"]
+        else:
+            chat_messages.append({"role": m["role"], "content": m["content"]})
+
+    kwargs = {
+        "model": model,
+        "max_tokens": 8192,
+        "messages": chat_messages,
+    }
+    if system_msg:
+        kwargs["system"] = system_msg
+
+    try:
+        response = client.messages.create(**kwargs)
+        return clean_response(response.content[0].text)
+    except anthropic.AuthenticationError:
+        error("API key de Claude inválida. Verifica ANTHROPIC_API_KEY.")
+        raise SystemExit(1)
+    except anthropic.RateLimitError:
+        error("Límite de uso de Claude alcanzado. Intenta más tarde.")
+        raise
+    except Exception as e:
+        error(f"Error con Claude API: {e}")
+        raise
+
+
+def _call_ollama_direct(messages, model=None, temperature=0.3, timeout=300):
+    """Llama directamente a Ollama (uso interno)."""
     model = model or DEFAULT_MODEL
-
     try:
         resp = requests.post(OLLAMA_URL, json={
             "model": model,
@@ -127,7 +168,6 @@ def call_ollama(messages, model=None, temperature=0.3, timeout=300):
         resp.raise_for_status()
         content = resp.json()["message"]["content"]
         return clean_response(content)
-
     except requests.ConnectionError:
         error("No se puede conectar a Ollama. ¿Está corriendo?")
         error("Ejecuta: ollama serve")
@@ -141,6 +181,18 @@ def call_ollama(messages, model=None, temperature=0.3, timeout=300):
     except Exception as e:
         error(f"Error con Ollama: {e}")
         raise
+
+
+def call_ollama(messages, model=None, temperature=0.3, timeout=300):
+    """Llama al proveedor configurado en config.json (Claude o Ollama)."""
+    cfg = load_config()
+    provider = cfg.get("provider", DEFAULT_PROVIDER)
+    if provider == "claude":
+        claude_model = cfg.get("model", DEFAULT_CLAUDE_MODEL)
+        return call_claude(messages, model=claude_model, temperature=temperature)
+    else:
+        ollama_model = cfg.get("model", DEFAULT_MODEL)
+        return _call_ollama_direct(messages, model=ollama_model, temperature=temperature, timeout=timeout)
 
 
 def clean_response(text):

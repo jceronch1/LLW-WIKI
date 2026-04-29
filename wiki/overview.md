@@ -1,12 +1,11 @@
-# Overview - LLM Kiwi
+# Resumen General — Riskmark
 
 ## Dominio
-Esta wiki compila y estructura conocimiento sobre **Agentes de Inteligencia Artificial**.
 
-Wiki que compila y estructura conocimiento sobre Agentes de IA: arquitecturas, taxonomias, aplicaciones, seguridad y tendencias.
+Riskmark es una consultora especializada en gestión de riesgos, ingeniería y medio ambiente, principalmente para la industria minera.
 
-## Fuentes principales
-Los documentos fuente se encuentran en `/papers/`.
+Esta wiki compila el conocimiento institucional a partir de los entregables a clientes en su versión final.
 
 ## Estado actual
+
 - Wiki inicializada. Pendiente de ingesta de documentos.

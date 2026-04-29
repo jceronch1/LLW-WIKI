@@ -1182,18 +1182,31 @@ def main():
 
     active_model = args.model
 
+    cfg = load_config()
+    provider = cfg.get("provider", "ollama")
+    cfg_model = cfg.get("model", active_model)
+
     print(f"\n  LLM Kiwi - Wiki de Agentes de IA")
     print(f"  {'-' * 40}")
-    print(f"  Modelo:  {active_model}")
+    print(f"  Proveedor: {provider.upper()}")
+    print(f"  Modelo:  {cfg_model}")
     print(f"  Puerto:  {args.port}")
     print(f"  Wiki:    {WIKI_DIR}")
     print(f"  Docs:    {DOCS_DIR}")
 
-    ollama = check_ollama()
-    if ollama:
-        print(f"  Ollama:  OK ({len(ollama)} modelos)")
+    if provider == "claude":
+        import os
+        key = os.environ.get("ANTHROPIC_API_KEY", "")
+        if key.startswith("sk-ant"):
+            print(f"  Claude:  API key OK")
+        else:
+            print(f"  Claude:  ADVERTENCIA - ANTHROPIC_API_KEY no encontrada")
     else:
-        print(f"  Ollama:  NO DISPONIBLE - ejecuta 'ollama serve'")
+        ollama = check_ollama()
+        if ollama:
+            print(f"  Ollama:  OK ({len(ollama)} modelos)")
+        else:
+            print(f"  Ollama:  NO DISPONIBLE - ejecuta 'ollama serve'")
 
     print(f"  {'-' * 40}")
     print(f"  http://localhost:{args.port}\n")

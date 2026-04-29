@@ -1,5 +1,7 @@
 {
-  "topic": "Agentes de Inteligencia Artificial",
-  "description": "Wiki que compila y estructura conocimiento sobre Agentes de IA: arquitecturas, taxonomias, aplicaciones, seguridad y tendencias.",
-  "domain": "Papers academicos, documentos tecnicos, regulaciones y estudios sobre Agentes de Inteligencia Artificial: arquitecturas, taxonomias, aplicaciones, seguridad y tendencias."
+  "provider": "ollama",
+  "model": "gemma3:4b",
+  "topic": "Conocimiento Institucional de Riskmark",
+  "description": "Wiki que compila y estructura el conocimiento de Riskmark a partir de sus entregables a clientes: propuestas técnicas, informes ejecutivos, matrices de trabajo y presentaciones de taller.",
+  "domain": "Consultoría en gestión de riesgos, ingeniería y medio ambiente para la industria minera. Entregables a clientes en sus versiones finales. Metodologías, estándares técnicos, marcos regulatorios y lecciones aprendidas de proyectos de Riskmark."
 }
